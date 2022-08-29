@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 040da57ff4570c44886690d8c06d8574
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - stats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
+  - inWater: {fileID: 11400000, guid: b5e3a4ce244726f408c17db368cfd62d, type: 2}
+  - electric: {fileID: 11400000, guid: 71230ebf69e5e4c45b89cb8a3e65b37b, type: 2}
+  - heal: {fileID: 11400000, guid: 0aabd857927d9dd41a8a4183bc886055, type: 2}
+  - orange: {fileID: 11400000, guid: 120ed66d48c9da44aa38a82fc1fa1e40, type: 2}
+  - lemon: {fileID: 11400000, guid: 6a357dc4906be6a479056eff471f758e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
