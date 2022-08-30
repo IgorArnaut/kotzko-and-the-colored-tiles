@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SceneManager2 : MonoBehaviour
 {
+	public static SceneManager2 sManager2;
+
     private Animator anim;
 
     void Awake() {
+		sManager2 = this;
         anim = GetComponentInChildren<Animator>();
     }
 

@@ -7,8 +7,6 @@ public class Terminal : MonoBehaviour
 
 	private GameObject clue;
 
-	[SerializeField]
-	private DialogManager manager;
 	[SerializeField] 
 	private List<string> lines;
 	private bool inRange;
@@ -27,7 +25,7 @@ public class Terminal : MonoBehaviour
 	void Update()
 	{	
 		if (inRange && Input.GetKeyDown(KeyCode.E))
-			manager.Write(new Queue<string>(lines));
+			DialogManager.dManager.Write(new Queue<string>(lines));
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -51,7 +49,7 @@ public class Terminal : MonoBehaviour
 			anim.SetBool("inRange", false);
 			clue.SetActive(false);
 			clue.GetComponent<Animator>().SetInteger("clue", 0);
-			manager.textBox.SetActive(false);
+			DialogManager.dManager.textBox.SetActive(false);
 		}
 	}
 }

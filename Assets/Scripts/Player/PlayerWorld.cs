@@ -29,7 +29,7 @@ public class PlayerWorld : Player
 			anim.SetFloat("lastMoveX", inputX);
 			anim.SetFloat("lastMoveY", inputY);
 		}
-		
+
 		if (inputX == 1.0f) {
 			sr.flipX = true;
 			transform.GetChild(1).GetComponent<SpriteRenderer>().flipX = true;

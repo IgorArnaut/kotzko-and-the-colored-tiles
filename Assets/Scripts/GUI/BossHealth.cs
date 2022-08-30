@@ -2,6 +2,7 @@
 
 public class BossHealth : MonoBehaviour
 {
+	[SerializeField]
 	private RectTransform redBar;
 
 	private Stats bossStats;
@@ -10,8 +11,6 @@ public class BossHealth : MonoBehaviour
 
 	void Start()
 	{
-		redBar = transform.GetChild(0).GetComponent<RectTransform>();
-
 		bossStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>().stats;
 
 		width = redBar.sizeDelta.x;
@@ -20,7 +19,6 @@ public class BossHealth : MonoBehaviour
 	void Update()
 	{
 		float bossDelta = Mathf.Abs(1.0f * bossStats.HP / bossStats.MaxHP);
-		Debug.Log(bossDelta);
-		redBar.sizeDelta = new Vector2(width * bossDelta, redBar.sizeDelta.y);
+		redBar.sizeDelta = Vector2.Lerp(redBar.sizeDelta, new Vector2(width * bossDelta, redBar.sizeDelta.y), 100.0f * Time.deltaTime);
 	}
 }

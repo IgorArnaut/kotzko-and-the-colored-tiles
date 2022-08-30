@@ -24,26 +24,21 @@ public class BossStrike : StateMachineBehaviour
 		cc = animator.gameObject.GetComponent<CapsuleCollider2D>();
 		sr = animator.gameObject.GetComponent<SpriteRenderer>();
 		transform = animator.gameObject.transform;
-		
-		player = GameObject.FindGameObjectWithTag("Player");
-		
-		stats = animator.gameObject.GetComponent<Boss>().stats;
-		
-		cc.isTrigger = true;
 
-		target = targets[Random.Range(0, targets.Count)];
-		
-		animator.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+		Init();
 	}
 
-	
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		MoveToTarget();
+		HurtPlayer();
 	}
 
-	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		cc.isTrigger = false;
+	private void Init()
+	{
+		player = GameObject.FindGameObjectWithTag("Player");
+		stats = anim.gameObject.GetComponent<Boss>().stats;
+		target = targets[Random.Range(0, targets.Count)];
 	}
 
 	private void MoveToTarget()
@@ -54,13 +49,10 @@ public class BossStrike : StateMachineBehaviour
 		if (transform.position.x < target.x)
 			sr.flipX = false;
 
-		Vector2 delta = Vector2.Lerp(transform.position, target, Time.deltaTime * stats.speed * 2.0f);
+		Vector2 delta = Vector2.Lerp(transform.position, target, Time.deltaTime * stats.speed * 4.0f);
 		transform.position = delta;
 		anim.SetFloat("horizontal", delta.normalized.x);
 		anim.SetFloat("vertical", delta.normalized.y);
-
-		if (player != null)
-			HurtPlayer();
 
 		anim.SetBool("strike", Vector2.Distance(transform.position, target) == 0.0f);
 	}
@@ -68,10 +60,10 @@ public class BossStrike : StateMachineBehaviour
 	private void HurtPlayer() {
 		bool playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
 
-		if (playerCollided)
+		if (playerCollided && player != null)
 		{
 			player.GetComponent<Animator>().SetTrigger("hurt");
-			playerStats.TakeDamge(stats.ATK);
+			playerStats.TakeDamge((int)(1.0f));
 		}
 	}
 }

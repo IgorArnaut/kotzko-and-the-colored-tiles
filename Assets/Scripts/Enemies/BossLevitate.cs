@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossLevitate : StateMachineBehaviour
 {
+	private Animator anim;
 	private CapsuleCollider2D cc;
 	
 	private Boss b;
@@ -17,13 +18,11 @@ public class BossLevitate : StateMachineBehaviour
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		b = animator.gameObject.GetComponent<Boss>();
+		anim = animator;
 		cc = animator.gameObject.GetComponent<CapsuleCollider2D>();
+		b = animator.gameObject.GetComponent<Boss>();
 
-		animator.gameObject.GetComponent<SpriteRenderer>().flipX = false;
-		
-		swords = new(8);
-		b.StartCoroutine(SpawnSwords());
+		Init();
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -34,6 +33,13 @@ public class BossLevitate : StateMachineBehaviour
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		DestroySwords();
+	}
+
+	private void Init()
+	{
+		anim.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+		swords = new(8);
+		b.StartCoroutine(SpawnSwords());
 	}
 
 	private void MoveSwords()
@@ -70,7 +76,9 @@ public class BossLevitate : StateMachineBehaviour
 			swordPos.y = cc.bounds.center.y + 1.5f * Mathf.Cos(angle * Mathf.Deg2Rad);
 
 			swords.Add(Instantiate(sword, swordPos, Quaternion.Euler(Vector3.back * angle)));
-			yield return new WaitForSeconds(0.0f);
+			yield return new WaitForSeconds(0.1f);
 		}
+		
+		yield return new WaitForSeconds(0.5f);
 	}
 }

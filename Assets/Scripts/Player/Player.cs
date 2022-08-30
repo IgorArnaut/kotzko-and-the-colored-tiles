@@ -23,10 +23,7 @@ public abstract class Player : MonoBehaviour
 	protected void Die()
 	{
 		if (stats.IsDead())
-		{
-			GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 			anim.SetTrigger("dead");
-		}
 	}
 
 	public void Kill()

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
 	protected Animator anim;
 
@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
 	public bool playerCollided;
 
-	void Awake() {
+	virtual protected void Awake() {
 		anim = GetComponent<Animator>();
 	}
 
@@ -22,14 +22,7 @@ public class Enemy : MonoBehaviour
 		Die();
 	}
 
-	private void Die()
-	{
-		if (stats.IsDead())
-		{
-			GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-			anim.SetTrigger("dead");
-		}
-	}
+	abstract protected void Die();
 
 	protected void Kill()
 	{

@@ -23,6 +23,11 @@ public class PlayerBattle : Player
 		cc = GetComponent<CapsuleCollider2D>();
 	}
 
+	private void Start()
+	{
+		anim.SetFloat("lastMoveX", 1.0f);
+	}
+
 	void Update()
 	{
 		Defend();
@@ -48,13 +53,14 @@ public class PlayerBattle : Player
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
 
-		if (inputX <= 0.0f)
-			sr.flipX = true;
-		else
+		if (inputX == -1.0f || inputX == 1.0f)
+			anim.SetFloat("lastMoveX", inputX);
+
+		if (inputX == 1.0f)
 			sr.flipX = false;
 
-		if (inputX > 0.0f || inputX <= 0.0f)
-			anim.SetFloat("lastMoveX", inputX);
+		if (inputX == -1.0f)
+			sr.flipX = true;
 
 		if (rb.bodyType != RigidbodyType2D.Static)
 			rb.velocity = new Vector2(inputX * stats.speed, rb.velocity.y);

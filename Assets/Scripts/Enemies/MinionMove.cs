@@ -6,9 +6,9 @@ public class MinionMove : StateMachineBehaviour
 	private SpriteRenderer sr;
 	private Transform transform;
 
-	private Stats stats;
-
 	private GameObject player;
+
+	private Stats stats;
 
 	[SerializeField]
 	private float distance;
@@ -20,15 +20,21 @@ public class MinionMove : StateMachineBehaviour
 		sr = animator.gameObject.GetComponent<SpriteRenderer>();
 		transform = animator.gameObject.transform;
 
-		stats = animator.gameObject.GetComponent<Minion>().stats;
-
-		player = GameObject.FindGameObjectWithTag("Player");
+		Init();
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		if (player != null)
 			Move();
+		else
+			anim.SetBool("walk", false);
+	}
+
+	private void Init()
+	{
+		player = GameObject.FindGameObjectWithTag("Player");
+		stats = anim.gameObject.GetComponent<Minion>().stats;
 	}
 
 	private void Move()
@@ -48,7 +54,7 @@ public class MinionMove : StateMachineBehaviour
 			transform.position = Vector2.MoveTowards(transform.position, playerPos, stats.speed * Time.deltaTime);
 			anim.SetBool("walk", Vector2.Distance(transform.position, playerPos) < distance);
 		}
-		
+
 		if (playerCollided)
 			anim.SetTrigger("attack");
 	}

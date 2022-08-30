@@ -8,9 +8,6 @@ public class GreenTileAction : TileAction
 	private GameObject player;
 	private GameObject clue;
 
-	[SerializeField]
-	private SceneManager2 manager;
-
 	public bool stepped;
 
 	void Awake()
@@ -33,7 +30,7 @@ public class GreenTileAction : TileAction
 	{
 		clue.SetActive(false);
 		clue.GetComponent<Animator>().SetInteger("clue", 0);
-		manager.Transition("Battle");
+		SceneManager2.sManager2.Transition("Battle");
 	}
 
 	override protected void DoEnterAction()
@@ -45,6 +42,7 @@ public class GreenTileAction : TileAction
 			clue.SetActive(true);
 			clue.GetComponent<Animator>().SetInteger("clue", 3);
 			player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
 			Invoke(nameof(LoadScene), 1.0f);
 		}
 	}

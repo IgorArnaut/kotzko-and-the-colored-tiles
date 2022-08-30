@@ -13,17 +13,4 @@ public class GameSaveManager : MonoBehaviour
 	public GameObject[] gates;
 
 	public Progress progress;
-
-	private void Awake()
-	{
-		if (instance == null)
-			instance = this;
-		else
-		{
-			Destroy(gameObject);
-			return;
-		}
-
-		DontDestroyOnLoad(this);
-	}
 }

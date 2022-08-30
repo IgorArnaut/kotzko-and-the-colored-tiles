@@ -5,6 +5,7 @@ public class PlayerAttack : StateMachineBehaviour
 	private Animator anim;
 
 	private GameObject enemy;
+	private bool enemyCollided;
 
 	[SerializeField]
 	private Stats stats;
@@ -14,19 +15,26 @@ public class PlayerAttack : StateMachineBehaviour
 	{
 		anim = animator;
 
-		enemy = animator.gameObject.GetComponent<PlayerBattle>().enemy;
+		Init();
+	}
 
-		if (enemy != null) {
+	public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+	{
+		HurtEnemy();
+	}
+
+	private void Init()
+	{
+		enemy = anim.gameObject.GetComponent<PlayerBattle>().enemy;
+		enemyCollided = anim.gameObject.GetComponent<PlayerBattle>().enemyCollided;
+
+		if (enemy != null)
 			enemyStats = enemy.GetComponent<Enemy>().stats;
-			HurtEnemy();
-		}
 	}
 
 	private void HurtEnemy()
 	{
-		bool enemyCollided = anim.gameObject.GetComponent<PlayerBattle>().enemyCollided;
-
-		if (enemyCollided)
+		if (enemyCollided && enemy != null)
 		{
 			enemy.GetComponent<Animator>().SetTrigger("hurt");
 			enemyStats.TakeDamge(stats.ATK);

@@ -5,26 +5,25 @@ using TMPro;
 
 public class DialogManager : MonoBehaviour
 {
+	public static DialogManager dManager;
+
 	public GameObject textBox;
 	[SerializeField]
 	private TextMeshProUGUI dialogText;
 	
 	private bool running;
 
+	void Awake()
+	{
+		dManager = this;
+	}
+
 	public void Write(Queue<string> lines)
 	{
 		textBox.SetActive(true);
 
 		if (Input.GetKeyDown(KeyCode.E) && !running)
-		{
-			StartCoroutine(Write(lines.Dequeue()));
-			
-			if (lines.Count < 0)
-			{
-				textBox.SetActive(false);
-				return;
-			}
-		}
+			StartCoroutine(Write(lines.Peek()));
 	}
 
 	private IEnumerator Write(string line)

@@ -78,7 +78,7 @@ ScriptedImporter:
       x: 0
       y: 0
       width: 192
-      height: 224
+      height: 256
     spriteID: 31e66a3a01ac55048b5b8c2d4d6d1067
     spriteBone: []
     spriteOutline: []
@@ -97,7 +97,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 0
-      y: 192
+      y: 224
       width: 24
       height: 32
     spriteID: 1d51097687b4a0341bd6f5ac2326c888
@@ -118,7 +118,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 24
-      y: 192
+      y: 224
       width: 24
       height: 32
     spriteID: 257ab2ddb44fa5b44b4c93d650e08a60
@@ -139,7 +139,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 96
-      y: 192
+      y: 224
       width: 24
       height: 32
     spriteID: 9ce33fa482d3d6447be9ae159e40610a
@@ -160,7 +160,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 120
-      y: 192
+      y: 224
       width: 24
       height: 32
     spriteID: 8da0978659321844598291d4ede73ef3
@@ -181,7 +181,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 0
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: d0e45e9f586cd774ea405fa0c010b397
@@ -202,7 +202,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 24
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: 3c32fe2f296874642963592cac04aa3c
@@ -223,7 +223,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 48
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: 81e1e3c1ada573942b9a7af2bdd96d39
@@ -244,7 +244,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 72
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: c7ca3e123820539498c580a84be5ca3c
@@ -265,7 +265,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 96
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: d66e1b5cdf4c90840b3c4bc30bea45c2
@@ -286,7 +286,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 120
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: 8d873ba28cb94f547b77b387e41a7960
@@ -307,7 +307,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 144
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: 706206b0123f69748aa5932f53fd4f20
@@ -328,7 +328,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 168
-      y: 160
+      y: 192
       width: 24
       height: 32
     spriteID: a16d2233866b9294c8d2209cd26353d9
@@ -349,7 +349,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 0
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: db2c5f31cf00d5446af72d73c1c524a0
@@ -370,7 +370,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 24
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: a36a3875296a86c468c32b2f47363956
@@ -391,7 +391,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 48
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: b9e64e782d4063842804d7187ba30462
@@ -412,7 +412,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 72
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: 3de1287573f44454386d185802e9b690
@@ -433,7 +433,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 96
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: 855749116d988324f98caf47fbf4ab56
@@ -454,7 +454,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 120
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: 97fa5c1ccb89c0c41861e6c10c40202a
@@ -475,7 +475,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 144
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: 95217c55e8a6e674196b1772fbcc74e7
@@ -496,7 +496,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 168
-      y: 128
+      y: 160
       width: 24
       height: 32
     spriteID: 44b027f9c4b15634ea7e24563b3e7931
@@ -517,7 +517,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 0
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: fa0d7098ee9663140a83a63ac1d0120d
@@ -538,7 +538,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 24
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: 2d4cb278173e1c8418bc664a744f7c2f
@@ -559,7 +559,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 48
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: 063bdb1e13cdafd43b8de029b4708356
@@ -580,7 +580,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 72
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: 86c6008261e6e4a43a433542f2430abc
@@ -601,7 +601,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 96
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: 05c4ea113eed9314bb3d3b97fd828393
@@ -622,7 +622,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 120
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: cd82a48345fbf5e4e8df9b371599f469
@@ -643,7 +643,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 144
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: 72290e4d112175342a53117f8d36e1f9
@@ -664,7 +664,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 168
-      y: 96
+      y: 128
       width: 24
       height: 32
     spriteID: 6bd09d83b3ed2754b9e783cf4d3d250c
@@ -685,7 +685,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 0
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: 219bdb7bbd2691f4495656f02c440e1a
@@ -706,7 +706,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 24
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: bdb76154507cb6242910c2cc7da19a1f
@@ -727,7 +727,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 48
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: e9b494363799f574aa91dd75355c398f
@@ -748,7 +748,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 72
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: fbb1b6b7f47cf234f9db7c5f7bc48f04
@@ -769,7 +769,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 96
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: 1b9e1a3b8f1a4d64b95aa335c9ade3bc
@@ -790,7 +790,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 120
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: 1cbcc42961282cc46a861bb5bf552a6c
@@ -811,7 +811,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 144
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: c53d4f0eddd99ef4287c3c82c70f30eb
@@ -832,7 +832,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 168
-      y: 64
+      y: 96
       width: 24
       height: 32
     spriteID: 020f623172eaa80469257928930fedc3
@@ -853,7 +853,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 0
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: fff20a5942fcf9149869224c4dff906d
@@ -874,7 +874,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 24
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: 6466cb97937dd3448ada109af9e7a4b7
@@ -895,7 +895,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 48
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: 12240e37f9fb7fa4c9dd7c84e1e2c6b5
@@ -916,7 +916,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 72
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: ff55fec8e2e2c904095bc1397cd8ebc3
@@ -937,7 +937,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 96
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: a12a3b0e3ab29eb4d9e31e4953f46320
@@ -958,7 +958,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 120
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: 0fcb51c24a900a346b9100e7dee1802e
@@ -979,7 +979,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 144
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: be87718d6220e6b4286986b691e22981
@@ -1000,7 +1000,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 168
-      y: 32
+      y: 64
       width: 24
       height: 32
     spriteID: 82a3b8342bf113248b6ff1c3f6adf164
@@ -1021,7 +1021,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 32
       width: 24
       height: 32
     spriteID: 83b52a35e664a5440a5b340077ee278c
@@ -1042,10 +1042,178 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 96
-      y: 0
+      y: 32
       width: 24
       height: 32
     spriteID: 88199df13e0d21d40b645e533d2f83ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_46
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 24
+      height: 32
+    spriteID: 45b58755892ec4d47b65758bbd5ead08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_47
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 0
+      width: 24
+      height: 32
+    spriteID: 42566fe39bddfa64892594bed42d4235
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_48
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 0
+      width: 24
+      height: 32
+    spriteID: 32ee35f54814b0f4c99039913d09da4c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_49
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 0
+      width: 24
+      height: 32
+    spriteID: cf6a6737bdbaa254c9b200d14a741984
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_50
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 0
+      width: 24
+      height: 32
+    spriteID: 33d8fcf78b0a14d429b5979517c5622c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_51
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 120
+      y: 0
+      width: 24
+      height: 32
+    spriteID: f7a8e687cf31f334bb30ca0a7dc3c78a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_52
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 144
+      y: 0
+      width: 24
+      height: 32
+    spriteID: d6e2debb51518614597f0eb1fd81cb47
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  - name: player-battle_53
+    originalName: 
+    pivot: {x: 0.5, y: 0.0625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 168
+      y: 0
+      width: 24
+      height: 32
+    spriteID: 46e6d52bb71f7d349ac157c0ea07a141
     spriteBone: []
     spriteOutline: []
     vertices: []

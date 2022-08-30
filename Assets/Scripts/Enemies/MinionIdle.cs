@@ -15,20 +15,28 @@ public class MinionIdle : StateMachineBehaviour
 		sr = animator.gameObject.GetComponent<SpriteRenderer>();
 		transform = animator.gameObject.transform;
 
-		player = GameObject.FindGameObjectWithTag("Player");
+		Init();
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		Vector2 playerPos = player.transform.position;
+		if (player != null)
+		{
+			Vector2 playerPos = player.transform.position;
 
-		if (transform.position.x > playerPos.x)
-			sr.flipX = true;
+			if (transform.position.x > playerPos.x)
+				sr.flipX = true;
 
-		if (transform.position.x < playerPos.x)
-			sr.flipX = false;
+			if (transform.position.x < playerPos.x)
+				sr.flipX = false;
 
-		if (Vector2.Distance(transform.position, playerPos) < distance)
-			animator.SetBool("walk", true);
+			if (Vector2.Distance(transform.position, playerPos) < distance)
+				animator.SetBool("walk", true);
+		}
+	}
+
+	private void Init()
+	{
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 }

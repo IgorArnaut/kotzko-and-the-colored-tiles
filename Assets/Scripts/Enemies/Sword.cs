@@ -10,7 +10,7 @@ public class Sword : MonoBehaviour
 		if (collision.gameObject.CompareTag("Player"))
 		{
 			collision.gameObject.GetComponent<Animator>().SetTrigger("hurt");
-			playerStats.TakeDamge(5);
+			playerStats.TakeDamge(10);
 			Destroy(gameObject);
 		}
 	}
