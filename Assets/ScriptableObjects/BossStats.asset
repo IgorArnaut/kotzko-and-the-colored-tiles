@@ -15,5 +15,5 @@ MonoBehaviour:
   MaxHP: 150
   HP: 150
   ATK: 5
-  DEF: 8
+  DEF: 5
   speed: 5

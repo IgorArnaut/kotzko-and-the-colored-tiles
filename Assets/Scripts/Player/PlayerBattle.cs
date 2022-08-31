@@ -8,6 +8,7 @@ public class PlayerBattle : Player
 	private float jumpForce;
 	[SerializeField]
 	private LayerMask ground;
+	private bool grounded;
 
 	public BoolValue defend;
 
@@ -41,9 +42,7 @@ public class PlayerBattle : Player
 	void FixedUpdate()
 	{
 		if (!defend.value)
-		{
 			Move();
-		}
 	}
 
 	override protected void Move()
@@ -63,6 +62,7 @@ public class PlayerBattle : Player
 			rb.velocity = new Vector2(inputX * stats.speed, rb.velocity.y);
 	
 		anim.SetFloat("horizontal", rb.velocity.x);
+
 		anim.SetFloat("speed", rb.velocity.sqrMagnitude);
 	}
 
@@ -74,10 +74,13 @@ public class PlayerBattle : Player
 
 	private void Jump()
 	{
-		bool grounded = IsGrounded();
+		grounded = IsGrounded();
 
 		if (Input.GetKeyDown(KeyCode.Space) && grounded)
+		{
+			anim.SetTrigger("jump");
 			rb.velocity = Vector2.up * jumpForce;
+		}
 	}
 
 	private bool IsGrounded() {

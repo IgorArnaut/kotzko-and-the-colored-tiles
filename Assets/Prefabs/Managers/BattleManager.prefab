@@ -96,6 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7778691742f7ca54cbf0d55b6e4c037d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  src: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: fb376edc2c60a7949811772cce79987f, type: 3}
+  - {fileID: 8300000, guid: 5f79b0f663a3fad4fa06281ded545d83, type: 3}
   defeat:
   - You are defeated!
   victory:

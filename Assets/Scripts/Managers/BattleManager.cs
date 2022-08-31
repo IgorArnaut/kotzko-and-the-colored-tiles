@@ -6,6 +6,11 @@ using TMPro;
 public class BattleManager : MonoBehaviour
 {
 	[SerializeField]
+	private AudioSource src;
+	[SerializeField]
+	private AudioClip[] clips;
+
+	[SerializeField]
 	private string[] defeat;
 	[SerializeField]
 	private string[] victory;
@@ -37,17 +42,26 @@ public class BattleManager : MonoBehaviour
 		if (player == null && !once)
 		{
 			once = true;
+
+			src.Stop();
+			src.PlayOneShot(clips[0]);
+			
 			StartCoroutine(Write(defeat, "GameOver"));
 		}
 
 		if (enemy == null && !once) {
 			once = true;
+			
+			src.Stop();
+			src.PlayOneShot(clips[1]);
+			
 			StartCoroutine(Write(victory, "Dungeon"));
 		}
 	}
 
 	private IEnumerator Write(string[] lines, string sceneName)
 	{
+		yield return new WaitForSeconds(2.0f);
 		textBox.SetActive(true);
 
 		foreach (string line in lines)
