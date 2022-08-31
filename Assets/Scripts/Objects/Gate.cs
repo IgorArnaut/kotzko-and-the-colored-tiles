@@ -4,6 +4,8 @@ public abstract class Gate : MonoBehaviour
 {
 	private Animator anim;
 
+	private bool inRange;
+
 	public bool locked;
 
 	void Awake()
@@ -11,18 +13,27 @@ public abstract class Gate : MonoBehaviour
 		anim = GetComponent<Animator>();
 	}
 
-	void Start()
+	void Update()
 	{
-		locked = true;
+		Open();
+	}
+
+	private void Open()
+	{
+		if (!locked)
+		{
+			if (inRange)
+				anim.SetBool("open", true);
+			else
+				anim.SetBool("open", false);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
-			if (!locked)
-				anim.SetBool("open", true);
-			
+			inRange = true;
 			Unlock();
 		}
 	}
@@ -30,10 +41,7 @@ public abstract class Gate : MonoBehaviour
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player") && !locked)
-		{
-			if (!locked)
-				anim.SetBool("open", false);
-		}
+			inRange = false;
 	}
 
 	public abstract void Unlock();

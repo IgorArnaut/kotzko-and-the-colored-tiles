@@ -13,12 +13,17 @@ public class Status : MonoBehaviour
 
 	private Animator anim;
 
-	private void Start()
+	void Awake()
 	{
 		anim = GetComponent<Animator>();
 	}
 
 	void Update()
+	{
+		ChangeStatus();
+	}
+
+	private void ChangeStatus()
 	{
 		anim.SetBool("electric", electric.value);
 		anim.SetBool("heal", heal.value);

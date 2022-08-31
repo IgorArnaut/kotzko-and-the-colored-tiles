@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OrangeTileAction : TileAction
 {
 	[SerializeField]
 	private Stats playerStats;
+
 	public BoolValue orange;
 
 	private float temp;

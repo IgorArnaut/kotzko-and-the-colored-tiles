@@ -121,8 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31256dd5fcc08547998851f9ec680e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clue: {fileID: 8131984865196716170, guid: c707435d05ef4dc41ba04408fd28c900, type: 3}
-  player: {fileID: 1407440875311547409, guid: e25d050bf984353499dfda839fb1779b, type: 3}
-  playerInventory: {fileID: 11400000, guid: 1813c46d7f54c154c9f693ef94005da7, type: 2}
-  inRange: 0
+  playerInventory: {fileID: 11400000, guid: 60167b52fa446754da665391f5f28220, type: 2}
   open: 0

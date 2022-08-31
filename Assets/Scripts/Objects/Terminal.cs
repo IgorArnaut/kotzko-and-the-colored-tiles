@@ -6,10 +6,10 @@ public class Terminal : MonoBehaviour
 	private Animator anim;
 
 	private GameObject clue;
+	private bool inRange;
 
 	[SerializeField] 
-	private List<string> lines;
-	private bool inRange;
+	private string[] lines;
 
 	void Awake()
 	{
@@ -21,9 +21,13 @@ public class Terminal : MonoBehaviour
 		clue = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
 	}
 
-	// Update is called once per frame
 	void Update()
-	{	
+	{
+		StartDialog();
+	}
+
+	private void StartDialog()
+	{
 		if (inRange && Input.GetKeyDown(KeyCode.E))
 			DialogManager.dManager.Write(new Queue<string>(lines));
 	}

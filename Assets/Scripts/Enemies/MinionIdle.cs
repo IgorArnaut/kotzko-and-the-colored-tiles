@@ -30,8 +30,7 @@ public class MinionIdle : StateMachineBehaviour
 			if (transform.position.x < playerPos.x)
 				sr.flipX = false;
 
-			if (Vector2.Distance(transform.position, playerPos) < distance)
-				animator.SetBool("walk", true);
+			animator.SetBool("walk", Vector2.Distance(transform.position, playerPos) < distance);
 		}
 	}
 

@@ -1,14 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterGate : Gate
 {
 	[SerializeField] 
-	private List<GreenTileAction> greenTiles;
+	private GreenTileAction[] greenTiles;
 
 	public override void Unlock()
 	{
-		if (locked && greenTiles.Count != 0)
+		if (locked && greenTiles.Length != 0)
 		{
 			foreach (GreenTileAction tile in greenTiles)
 			{

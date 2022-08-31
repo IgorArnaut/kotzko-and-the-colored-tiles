@@ -21,6 +21,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 908863794816907131, guid: 6622e725429a72c4eb9594d126f2ddb8,
         type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 908863794816907131, guid: 6622e725429a72c4eb9594d126f2ddb8,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -87,6 +92,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5087561068011108801, guid: 6622e725429a72c4eb9594d126f2ddb8,
         type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087561068011108801, guid: 6622e725429a72c4eb9594d126f2ddb8,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -99,7 +109,7 @@ PrefabInstance:
     - target: {fileID: 7954956044600710179, guid: 6622e725429a72c4eb9594d126f2ddb8,
         type: 3}
       propertyPath: m_Name
-      value: Chest_Miniboss1
+      value: Chest_Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6622e725429a72c4eb9594d126f2ddb8, type: 3}
@@ -121,9 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b6f404863e3584daf81f9dfbd639e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clue: {fileID: 8131984865196716170, guid: c707435d05ef4dc41ba04408fd28c900, type: 3}
-  player: {fileID: 1407440875311547409, guid: e25d050bf984353499dfda839fb1779b, type: 3}
-  playerInventory: {fileID: 11400000, guid: 1813c46d7f54c154c9f693ef94005da7, type: 2}
-  inRange: 0
+  playerInventory: {fileID: 11400000, guid: 60167b52fa446754da665391f5f28220, type: 2}
   open: 0
-  bossName: 

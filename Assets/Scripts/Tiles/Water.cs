@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Water : TileAction
 {
 	[SerializeField]
 	private Stats playerStats;
+
 	public BoolValue inWater;
 
 	private float temp;

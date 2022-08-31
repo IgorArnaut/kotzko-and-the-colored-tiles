@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6720ae1f3ce044546a49133c0306b15d, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: Bricks
   m_EditorClassIdentifier: 
-  MaxHP: 100
-  HP: 88
-  ATK: 100
-  DEF: 10
-  speed: 5
+  m_DefaultSprite: {fileID: 0}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules: []

@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class PlayerBattle : Player
 {
-	// Components
 	private CapsuleCollider2D cc;
 
-	// Jump
 	[SerializeField]
 	private float jumpForce;
 	[SerializeField]
@@ -13,7 +11,6 @@ public class PlayerBattle : Player
 
 	public BoolValue defend;
 
-	// Collision
 	public bool enemyCollided;
 	public GameObject enemy;
 
@@ -67,6 +64,12 @@ public class PlayerBattle : Player
 	
 		anim.SetFloat("horizontal", rb.velocity.x);
 		anim.SetFloat("speed", rb.velocity.sqrMagnitude);
+	}
+
+	protected override void Die()
+	{
+		if (stats.IsDead())
+			anim.SetTrigger("dead");
 	}
 
 	private void Jump()

@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PinkTileAction : TileAction
 {
 	[SerializeField]
 	private Stats playerStats;
+
 	public BoolValue heal;
 
 	private IEnumerator Heal()

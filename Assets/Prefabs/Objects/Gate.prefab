@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7382369513342305169}
   - component: {fileID: 6055731235248582198}
   - component: {fileID: 3192960412182703970}
+  - component: {fileID: 4369767823920716746}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Gate
@@ -98,6 +99,17 @@ MonoBehaviour:
   directionX: 0
   directionY: 0
   flip: 0
+--- !u!210 &4369767823920716746
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736187516557526418}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &4189571455747872354
 GameObject:
   m_ObjectHideFlags: 0

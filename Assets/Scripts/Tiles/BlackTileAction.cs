@@ -5,8 +5,8 @@ public class BlackTileAction : TileAction
 {
 	[SerializeField]
 	private Stats playerStats;
-	
-	private bool black = true;
+
+	private bool black; 
 	private Tilemap tilemap;
 
 	void Awake()
@@ -14,12 +14,25 @@ public class BlackTileAction : TileAction
 		tilemap = GetComponent<Tilemap>();
 	}
 
+	void Start()
+	{
+		black = true;
+	}
+
 	void Update()
 	{
-		if (tilemap.GetAnimationFrame(new Vector3Int(8, 29, 0)) == 1)
-			black = false;
-		else
-			black = true;
+		black = IsBlack();	
+	}
+
+	private bool IsBlack()
+	{
+		foreach (Vector3Int tilePos in tilemap.cellBounds.allPositionsWithin)
+		{
+			if (tilemap.GetAnimationFrame(tilePos) == 0)
+				return true;
+		}
+
+		return false;
 	}
 
 	private void OnTriggerStay2D(Collider2D collision)

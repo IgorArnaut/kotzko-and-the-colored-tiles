@@ -2,15 +2,12 @@
 
 public abstract class Player : MonoBehaviour
 {
-	// Components
 	protected Animator anim;
 	protected Rigidbody2D rb;
 	protected SpriteRenderer sr;
 
-	// Stats
 	public Stats stats;
 
-	// Use this for initialization
 	virtual protected void Awake()
 	{
 		anim = GetComponent<Animator>();
@@ -20,11 +17,7 @@ public abstract class Player : MonoBehaviour
 
 	protected abstract void Move();
 
-	protected void Die()
-	{
-		if (stats.IsDead())
-			anim.SetTrigger("dead");
-	}
+	protected abstract void Die();
 
 	public void Kill()
 	{

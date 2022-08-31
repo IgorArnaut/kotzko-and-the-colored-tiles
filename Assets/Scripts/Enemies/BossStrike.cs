@@ -4,13 +4,12 @@ using UnityEngine;
 public class BossStrike : StateMachineBehaviour
 {
 	private Animator anim;
-	private CapsuleCollider2D cc;
 	private SpriteRenderer sr;
 	private Transform transform;
 	
-	private GameObject player;
-
 	private Stats stats;
+
+	private GameObject player;
 	[SerializeField]
 	private Stats playerStats;
 
@@ -21,7 +20,6 @@ public class BossStrike : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
-		cc = animator.gameObject.GetComponent<CapsuleCollider2D>();
 		sr = animator.gameObject.GetComponent<SpriteRenderer>();
 		transform = animator.gameObject.transform;
 
@@ -36,8 +34,8 @@ public class BossStrike : StateMachineBehaviour
 
 	private void Init()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
 		stats = anim.gameObject.GetComponent<Boss>().stats;
+		player = GameObject.FindGameObjectWithTag("Player");
 		target = targets[Random.Range(0, targets.Count)];
 	}
 

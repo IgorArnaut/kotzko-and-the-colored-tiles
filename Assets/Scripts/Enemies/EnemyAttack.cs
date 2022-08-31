@@ -4,10 +4,9 @@ public class EnemyAttack : StateMachineBehaviour
 {
 	private Animator anim;
 
-	private GameObject player;
-	private bool playerCollided;
-
 	private Stats stats;
+
+	private GameObject player;
 	[SerializeField]
 	private Stats playerStats;
 
@@ -25,13 +24,14 @@ public class EnemyAttack : StateMachineBehaviour
 
 	private void Init()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
-		playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
 		stats = anim.gameObject.GetComponent<Enemy>().stats;
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	private void HurtPlayer()
 	{
+		bool playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
+
 		if (playerCollided && player != null)
 		{
 			player.GetComponent<Animator>().SetTrigger("hurt");

@@ -5,12 +5,12 @@ public abstract class Chest : MonoBehaviour
 	private Animator anim;
 
 	private GameObject player;
-	private GameObject clue;
-
 	[SerializeField] 
 	protected Inventory playerInventory;
 
+	private GameObject clue;
 	private bool inRange;
+
 	public bool open;
 
 	void Awake()
@@ -24,12 +24,18 @@ public abstract class Chest : MonoBehaviour
 		clue = player.transform.GetChild(0).gameObject;
 
 		inRange = false;
-		open = false;
+
+		if (open)
+			anim.SetTrigger("open2");
 	}
 
 	void Update()
 	{
-		Open();
+		if (!open)
+			Open();
+
+		if (open)
+			anim.SetTrigger("open2");
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -54,7 +60,7 @@ public abstract class Chest : MonoBehaviour
 
 	private void Open()
 	{
-		if (Input.GetKeyDown(KeyCode.E) && inRange && !open)
+		if (Input.GetKeyDown(KeyCode.E) && inRange)
 		{
 			open = true;
 			anim.SetTrigger("open");

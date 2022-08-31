@@ -2,15 +2,16 @@
 
 public class PlayerHealth : MonoBehaviour
 {
-	[SerializeField]
-	private RectTransform greenBar;
-	[SerializeField]
-	private Animator face;
 
 	[SerializeField]
 	private Stats playerStats;
 
+	[SerializeField]
+	private RectTransform greenBar;
 	private float width;
+
+	[SerializeField]
+	private Animator face;
 
 	void Start()
 	{
@@ -18,6 +19,11 @@ public class PlayerHealth : MonoBehaviour
 	}
 
 	void Update()
+	{
+		ReziseHealthBar();
+	}
+
+	private void ReziseHealthBar()
 	{
 		float playerDelta = playerStats.HP > 0.0f ? 1.0f * playerStats.HP / playerStats.MaxHP : 0.0f;
 

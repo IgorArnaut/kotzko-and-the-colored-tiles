@@ -6,13 +6,12 @@ public class BossMove : StateMachineBehaviour
 	private SpriteRenderer sr;
 	private Transform transform;
 
-	private GameObject player;
-
 	private Stats stats;
+
+	private GameObject player;
 
 	[SerializeField]
 	private float distance;
-	private bool playerCollided;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
@@ -33,13 +32,13 @@ public class BossMove : StateMachineBehaviour
 
 	private void Init()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
 		stats = anim.gameObject.GetComponent<Boss>().stats;
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	private void Move()
 	{
-		playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
+		bool playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
 
 		if (!playerCollided)
 		{

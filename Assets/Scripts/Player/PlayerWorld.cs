@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerWorld : Player
 {
-	// Ailments
 	public BoolValue inWater;
 	public BoolValue electric;
 	public BoolValue heal;
@@ -11,10 +10,7 @@ public class PlayerWorld : Player
 
 	void Update()
 	{
-		anim.SetBool("inWater", inWater.value);
-		anim.SetBool("electric", electric.value);
-
-		ChangeColor();
+		ChangeStatus();
 		Move();
 		Die();
 	}
@@ -48,8 +44,20 @@ public class PlayerWorld : Player
 		anim.SetFloat("speed", rb.velocity.sqrMagnitude);
 	}
 
-	private void ChangeColor()
+	protected override void Die()
 	{
+		if (orange.value && inWater.value)
+			anim.SetTrigger("deadw");
+
+		if (stats.IsDead())
+			anim.SetTrigger("dead");
+	}
+
+	private void ChangeStatus()
+	{
+		anim.SetBool("inWater", inWater.value);
+		anim.SetBool("electric", electric.value);
+
 		if (orange.value)
 			sr.color = Color.Lerp(Color.HSVToRGB(40.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
 		else if (lemon.value)

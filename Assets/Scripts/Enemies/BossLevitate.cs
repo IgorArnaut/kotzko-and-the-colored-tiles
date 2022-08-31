@@ -6,7 +6,6 @@ public class BossLevitate : StateMachineBehaviour
 {
 	private Animator anim;
 	private CapsuleCollider2D cc;
-	
 	private Boss b;
 
 	[SerializeField] 
@@ -23,6 +22,7 @@ public class BossLevitate : StateMachineBehaviour
 		b = animator.gameObject.GetComponent<Boss>();
 
 		Init();
+		b.StartCoroutine(SpawnSwords());
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -39,7 +39,6 @@ public class BossLevitate : StateMachineBehaviour
 	{
 		anim.gameObject.GetComponent<SpriteRenderer>().flipX = false;
 		swords = new(8);
-		b.StartCoroutine(SpawnSwords());
 	}
 
 	private void MoveSwords()

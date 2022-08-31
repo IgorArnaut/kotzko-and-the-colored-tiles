@@ -6,9 +6,9 @@ using TMPro;
 public class BattleManager : MonoBehaviour
 {
 	[SerializeField]
-	private List<string> defeat;
+	private string[] defeat;
 	[SerializeField]
-	private List<string> victory;
+	private string[] victory;
 
 	private GameObject player;
 	private GameObject enemy;
@@ -29,22 +29,25 @@ public class BattleManager : MonoBehaviour
 
 	void Update()
 	{
-		if (player == null && !once) {
-			once = true;
+		LoseWin();
+	}
 
+	private void LoseWin()
+	{
+		if (player == null && !once)
+		{
+			once = true;
 			StartCoroutine(Write(defeat, "GameOver"));
 		}
 
 		if (enemy == null && !once) {
 			once = true;
-
 			StartCoroutine(Write(victory, "Dungeon"));
 		}
 	}
 
-	private IEnumerator Write(List<string> lines, string sceneName)
+	private IEnumerator Write(string[] lines, string sceneName)
 	{
-		yield return new WaitForSeconds(1.0f);
 		textBox.SetActive(true);
 
 		foreach (string line in lines)
