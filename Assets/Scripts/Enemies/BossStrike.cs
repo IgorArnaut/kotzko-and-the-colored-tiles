@@ -4,7 +4,6 @@ using UnityEngine;
 public class BossStrike : StateMachineBehaviour
 {
 	private Animator anim;
-	private AudioSource src;
 	private SpriteRenderer sr;
 	private Transform transform;
 	
@@ -26,12 +25,11 @@ public class BossStrike : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
-		src = animator.GetComponent<AudioSource>();
 		sr = animator.gameObject.GetComponent<SpriteRenderer>();
 		transform = animator.gameObject.transform;
 
 		Init();
-		src.PlayOneShot(clips[0]);
+		anim.GetComponent<AudioSource>().PlayOneShot(clips[0]);
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -55,7 +53,7 @@ public class BossStrike : StateMachineBehaviour
 		if (transform.position.x < target.x)
 			sr.flipX = false;
 
-		Vector2 delta = Vector2.Lerp(transform.position, target, Time.deltaTime * stats.speed * 4.0f);
+		Vector2 delta = Vector2.Lerp(transform.position, target, Time.deltaTime * stats.SPEED * 4.0f);
 		transform.position = delta;
 		anim.SetFloat("horizontal", delta.normalized.x);
 		anim.SetFloat("vertical", delta.normalized.y);
@@ -72,7 +70,7 @@ public class BossStrike : StateMachineBehaviour
 			if (!defend.value)
 				player.GetComponent<Animator>().SetTrigger("hurt");
 			else
-				src.PlayOneShot(clips[1]);
+				anim.GetComponent<AudioSource>().PlayOneShot(clips[1]);
 
 
 			playerStats.TakeDamge((int)(1.0f));

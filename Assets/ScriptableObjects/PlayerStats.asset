@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6720ae1f3ce044546a49133c0306b15d, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  MaxHP: 100
-  HP: 100
-  ATK: 15
+  MAXHP: 100
+  HP: 68
+  ATK: 10
   DEF: 10
-  speed: 5
+  SPEED: 5

@@ -59,7 +59,7 @@ public class PlayerBattle : Player
 			sr.flipX = true;
 
 		if (rb.bodyType != RigidbodyType2D.Static)
-			rb.velocity = new Vector2(inputX * stats.speed, rb.velocity.y);
+			rb.velocity = new Vector2(inputX * stats.SPEED, rb.velocity.y);
 	
 		anim.SetFloat("horizontal", rb.velocity.x);
 

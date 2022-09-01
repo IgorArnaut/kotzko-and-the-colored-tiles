@@ -7,11 +7,11 @@ public class BossGate : Gate
 
 	public override void Unlock()
 	{
-		if (playerInventory.bossKey > 0 && locked)
+		if (playerInventory.BOSSKEY > 0 && locked)
 		{
 			locked = false;
-			src.PlayOneShot(clips[0]);
-			playerInventory.bossKey--;
+			GetComponent<AudioSource>().PlayOneShot(clips[0]);
+			playerInventory.BOSSKEY--;
 		}
 	}
 }

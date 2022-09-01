@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6720ae1f3ce044546a49133c0306b15d, type: 3}
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  MaxHP: 75
+  MAXHP: 75
   HP: 75
   ATK: 5
   DEF: 5
-  speed: 5
+  SPEED: 5

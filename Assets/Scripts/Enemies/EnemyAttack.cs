@@ -3,7 +3,6 @@
 public class EnemyAttack : StateMachineBehaviour
 {
 	private Animator anim;
-	private AudioSource src;
 
 	private Stats stats;
 
@@ -20,7 +19,6 @@ public class EnemyAttack : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
-		src = animator.gameObject.GetComponent<AudioSource>();
 
 		Init();
 	}
@@ -48,7 +46,7 @@ public class EnemyAttack : StateMachineBehaviour
 			if (!defend.value)
 				player.GetComponent<Animator>().SetTrigger("hurt");
 			else
-				src.PlayOneShot(clip);
+				anim.GetComponent<AudioSource>().PlayOneShot(clip);
 
 			playerStats.TakeDamge(stats.ATK);
 		}

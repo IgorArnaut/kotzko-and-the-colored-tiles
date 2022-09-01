@@ -15,7 +15,7 @@ public class MonsterGate : Gate
 					return;
 			}
 
-			src.PlayOneShot(clips[0]);
+			GetComponent<AudioSource>().PlayOneShot(clips[0]);
 			locked = false;
 		}
 	}

@@ -123,4 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 11400000, guid: 60167b52fa446754da665391f5f28220, type: 2}
   open: 0
-  clip: {fileID: 8300000, guid: 98097597221e21146b8f165de934b9c6, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 98097597221e21146b8f165de934b9c6, type: 3}
+  - {fileID: 8300000, guid: 6b7b4252d40f4c842b393dd270756a2c, type: 3}
+  key: {fileID: 4052481613748482320, guid: 1945daa6a862dc44ca707fe74dbdc718, type: 3}

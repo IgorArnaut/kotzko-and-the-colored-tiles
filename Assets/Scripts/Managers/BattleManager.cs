@@ -20,6 +20,9 @@ public class BattleManager : MonoBehaviour
 
 	private bool once;
 
+	[SerializeField]
+	private AudioClip clip;
+
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -65,7 +68,8 @@ public class BattleManager : MonoBehaviour
 			foreach (char c in line)
 			{
 				dialogText.text += c;
-				yield return new WaitForSeconds(0.01f);
+				GetComponent<AudioSource>().PlayOneShot(clip);
+				yield return new WaitForSeconds(0.05f);
 			}
 			
 			yield return new WaitForSeconds(1.0f);

@@ -6,7 +6,7 @@ public class BlackTileAction : TileAction
 	[SerializeField]
 	private Stats playerStats;
 
-	private bool black; 
+	public bool black; 
 	private Tilemap tilemap;
 
 	void Awake()

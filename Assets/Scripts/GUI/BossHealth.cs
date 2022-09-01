@@ -18,7 +18,7 @@ public class BossHealth : MonoBehaviour
 
 	void Update()
 	{
-		float bossDelta = Mathf.Abs(1.0f * bossStats.HP / bossStats.MaxHP);
+		float bossDelta = Mathf.Abs(1.0f * bossStats.HP / bossStats.MAXHP);
 		redBar.sizeDelta = Vector2.Lerp(redBar.sizeDelta, new Vector2(width * bossDelta, redBar.sizeDelta.y), 100.0f * Time.deltaTime);
 	}
 }

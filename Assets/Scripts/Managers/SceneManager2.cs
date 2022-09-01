@@ -13,7 +13,7 @@ public class SceneManager2 : MonoBehaviour
 		anim = GetComponentInChildren<Animator>();
     }
 
-    public void Transition(string sceneName) {
+	public void Transition(string sceneName) {
         anim.SetTrigger("transition");
         StartCoroutine(LoadScene(sceneName));
     }

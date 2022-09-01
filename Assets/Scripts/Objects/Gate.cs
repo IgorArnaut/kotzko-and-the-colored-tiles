@@ -3,9 +3,6 @@
 public abstract class Gate : MonoBehaviour
 {
 	private Animator anim;
-	protected AudioSource src;
-
-	private bool inRange;
 
 	[SerializeField]
 	protected AudioClip[] clips;
@@ -14,44 +11,38 @@ public abstract class Gate : MonoBehaviour
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
-		src = GetComponent<AudioSource>();
+
 	}
 
-	void Update()
+	void Start()
 	{
-		Open();
-	}
-
-	private void Open()
-	{
-		if (!locked)
-		{
-			if (inRange)
-			{
-				anim.SetBool("open", true);
-				src.PlayOneShot(clips[1]);
-			}
-			else
-			{
-				anim.SetBool("open", false);
-				src.PlayOneShot(clips[2]);
-			}
-		}
+		locked = true;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
-			inRange = true;
 			Unlock();
+
+			if (!locked)
+			{
+				anim.SetBool("open", true);
+				GetComponent<AudioSource>().PlayOneShot(clips[1]);
+			}
 		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player") && !locked)
-			inRange = false;
+		{
+			if (!locked)
+			{
+				anim.SetBool("open", false);
+				GetComponent<AudioSource>().PlayOneShot(clips[2]);
+			}
+		}
 	}
 
 	public abstract void Unlock();

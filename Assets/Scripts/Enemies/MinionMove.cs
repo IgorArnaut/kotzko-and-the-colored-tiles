@@ -50,7 +50,7 @@ public class MinionMove : StateMachineBehaviour
 			if (transform.position.x < playerPos.x)
 				sr.flipX = false;
 
-			transform.position = Vector2.MoveTowards(transform.position, playerPos, stats.speed * Time.deltaTime);
+			transform.position = Vector2.MoveTowards(transform.position, playerPos, stats.SPEED * Time.deltaTime);
 			anim.SetBool("walk", Vector2.Distance(transform.position, playerPos) < distance);
 		}
 

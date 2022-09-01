@@ -3,15 +3,15 @@
 [CreateAssetMenu]
 public class Stats : ScriptableObject
 {
-	public int MaxHP;
+	public int MAXHP;
 	public int HP;
 	public int ATK;
 	public int DEF;
-	public float speed;
+	public float SPEED;
 
 	public void Heal(int amount)
 	{
-		if (HP < MaxHP)
+		if (HP < MAXHP)
 			HP += amount;
 	}
 

@@ -37,7 +37,7 @@ public class PlayerWorld : Player
 		}
 
 		if (rb.bodyType != RigidbodyType2D.Static)
-			rb.velocity = new Vector2(inputX, inputY) * stats.speed;
+			rb.velocity = new Vector2(inputX, inputY) * stats.SPEED;
 
 		anim.SetFloat("horizontal", rb.velocity.x);
 		anim.SetFloat("vertical", rb.velocity.y);
@@ -59,7 +59,15 @@ public class PlayerWorld : Player
 		anim.SetBool("electric", electric.value);
 
 		if (orange.value)
+		{
 			sr.color = Color.Lerp(Color.HSVToRGB(40.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
+
+			if (inWater.value)
+			{
+				sr.color = Color.white;
+				anim.SetTrigger("deadw");
+			}
+		}
 		else if (lemon.value)
 			sr.color = Color.Lerp(Color.HSVToRGB(60.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
 		else if (heal.value)

@@ -14,9 +14,9 @@ public class PlayerHeal : StateMachineBehaviour
 
 	private void Heal()
 	{
-		if (inventory.hearts > 0)
+		if (inventory.HEARTS > 0)
 		{
-			inventory.hearts--;
+			inventory.HEARTS--;
 			stats.Heal(10);
 		}
 	}

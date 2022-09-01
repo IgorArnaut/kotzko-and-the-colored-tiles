@@ -5,7 +5,6 @@ using UnityEngine;
 public class BossSummon : StateMachineBehaviour
 {
 	private Animator anim;
-	private AudioSource src;
 	private CapsuleCollider2D cc;
 	private Boss b;
 
@@ -24,7 +23,6 @@ public class BossSummon : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
-		src = animator.gameObject.GetComponent<AudioSource>();
 		cc = animator.gameObject.GetComponent<CapsuleCollider2D>();
 		b = animator.gameObject.GetComponent<Boss>();
 
@@ -88,7 +86,7 @@ public class BossSummon : StateMachineBehaviour
 			yield return new WaitForSeconds(0.1f);
 		}
 
-		src.PlayOneShot(clip);
+		anim.GetComponent<AudioSource>().PlayOneShot(clip);
 		finished = true;
 	}
 }

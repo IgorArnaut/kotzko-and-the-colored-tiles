@@ -11,20 +11,20 @@ public class Water : TileAction
 
 	void Start()
 	{
-		temp = playerStats.speed;
+		temp = playerStats.SPEED;
 	}
 
 	override protected void DoEnterAction()
 	{
 		inWater.value = true;
 
-		playerStats.speed *= 0.75f;
+		playerStats.SPEED *= 0.75f;
 	}
 
 	override protected void DoExitAction()
 	{
 		inWater.value = false;
 
-		playerStats.speed = temp;
+		playerStats.SPEED = temp;
 	}
 }

@@ -1,11 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Chest : MonoBehaviour
 {
 	private Animator anim;
-	private AudioSource src;
 
-	private GameObject player;
+	protected GameObject player;
 	[SerializeField] 
 	protected Inventory playerInventory;
 
@@ -14,12 +14,11 @@ public abstract class Chest : MonoBehaviour
 
 	public bool open;
 	[SerializeField]
-	protected AudioClip clip;
+	protected AudioClip[] clips;
 
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
-		src = GetComponent<AudioSource>();
 	}
 
 	void Start()
@@ -66,7 +65,7 @@ public abstract class Chest : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.E) && inRange)
 		{
 			open = true;
-			src.PlayOneShot(clip);
+			GetComponent<AudioSource>().PlayOneShot(clips[0]);
 			anim.SetTrigger("open");
 			GiveItems();
 			PlayerItem();
@@ -81,4 +80,21 @@ public abstract class Chest : MonoBehaviour
 	}
 
 	public abstract void GiveItems();
+
+	protected IEnumerator Write(string line, GameObject obj)
+	{
+		DialogManager.Manager.textBox.SetActive(true);
+		DialogManager.Manager.dialogText.text = "";
+
+		foreach (char c in line)
+		{
+			DialogManager.Manager.dialogText.text += c;
+			GetComponent<AudioSource>().PlayOneShot(clips[1]);
+			yield return new WaitForSeconds(0.05f);
+		}
+
+		yield return new WaitForSeconds(1.0f);
+		Destroy(obj);
+		DialogManager.Manager.textBox.SetActive(false);
+	}
 }

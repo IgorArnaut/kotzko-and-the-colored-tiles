@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class OrangeTileAction : TileAction
@@ -11,18 +12,25 @@ public class OrangeTileAction : TileAction
 
 	void Start()
 	{
-		temp = playerStats.speed;
+		temp = playerStats.SPEED;
 	}
 
 	override protected void DoEnterAction()
 	{
-		orange.value = true;
-		playerStats.speed /= 2;
+		StartCoroutine(nameof(Orange));
 	}
 
 	override protected void DoExitAction()
 	{
+		return;
+	}
+
+	private IEnumerator Orange()
+	{
+		orange.value = true;
+		playerStats.SPEED /= 2;
+		yield return new WaitForSeconds(60.0f);
+		playerStats.SPEED = temp;
 		orange.value = false;
-		playerStats.speed = temp;
 	}
 }

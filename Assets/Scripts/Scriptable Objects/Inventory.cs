@@ -3,8 +3,8 @@
 [CreateAssetMenu]
 public class Inventory : ScriptableObject
 {
-	public int gems;
-	public int hearts;
-	public int keys;
-	public int bossKey;
+	public int GEMS;
+	public int HEARTS;
+	public int KEYS;
+	public int BOSSKEY;
 }

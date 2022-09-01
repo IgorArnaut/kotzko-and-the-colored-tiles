@@ -23,7 +23,7 @@ public class Minion : Enemy
 	{
         base.Update();
 
-		float delta = stats.HP > 0.0f ? Mathf.Abs(1.0f * stats.HP / stats.MaxHP) : 0.0f;
+		float delta = stats.HP > 0.0f ? Mathf.Abs(1.0f * stats.HP / stats.MAXHP) : 0.0f;
 		redBar.localScale = Vector2.Lerp(redBar.localScale, new Vector2(delta * width, redBar.localScale.y), 100.0f * Time.deltaTime);
 	}
 }

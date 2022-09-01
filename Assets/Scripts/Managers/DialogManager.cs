@@ -8,22 +8,42 @@ public class DialogManager : MonoBehaviour
 	public static DialogManager Manager;
 
 	public GameObject textBox;
-	[SerializeField]
-	private TextMeshProUGUI dialogText;
-	
+	public TextMeshProUGUI dialogText;
+
+	private int i;
 	private bool running;
+
+	[SerializeField]
+	private AudioClip clip;
 
 	void Awake()
 	{
 		Manager = this;
 	}
 
-	public void Write(Queue<string> lines)
+	void Start()
+	{
+		i = 0;
+	}
+
+	public void Write(string[] lines)
 	{
 		textBox.SetActive(true);
 
 		if (Input.GetKeyDown(KeyCode.E) && !running)
-			StartCoroutine(Write(lines.Peek()));
+		{
+			if (i < lines.Length)
+			{
+				StartCoroutine(Write(lines[i]));
+				i++;
+			}
+			else
+			{
+				i = 0;
+				dialogText.text = "";
+				textBox.SetActive(false);
+			}
+		}
 	}
 
 	private IEnumerator Write(string line)
@@ -34,7 +54,8 @@ public class DialogManager : MonoBehaviour
 		foreach (char c in line)
 		{
 			dialogText.text += c;
-			yield return new WaitForSeconds(0.01f);
+			GetComponent<AudioSource>().PlayOneShot(clip);
+			yield return new WaitForSeconds(0.05f);
 		}
 
 		running = false;

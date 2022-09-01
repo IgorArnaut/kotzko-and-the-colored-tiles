@@ -7,11 +7,11 @@ public class KeyGate : Gate
 
 	public override void Unlock()
 	{
-		if (playerInventory.keys > 0 && locked)
+		if (playerInventory.KEYS > 0 && locked)
 		{
 			locked = false;
-			src.PlayOneShot(clips[0]);
-			playerInventory.keys--;
+			GetComponent<AudioSource>().PlayOneShot(clips[0]);
+			playerInventory.KEYS--;
 		}
 	}
 }

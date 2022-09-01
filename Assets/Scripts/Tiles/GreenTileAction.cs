@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class GreenTileAction : TileAction
 	private GameObject player;
 	private GameObject clue;
 
+	[SerializeField]
+	private AudioClip clip;
 	public bool stepped;
 
 	void Awake()
@@ -35,6 +38,8 @@ public class GreenTileAction : TileAction
 	private void LoadScene()
 	{
 		clue.SetActive(false);
+		MusicManager.Manager.Stop();
+		MusicManager.Manager.PlayOneshot(clip);
 		SceneManager2.Manager.Transition("Battle");
 	}
 
@@ -42,12 +47,11 @@ public class GreenTileAction : TileAction
 	{
 		if (!stepped)
 		{
-			stepped = true;
-
 			clue.SetActive(true);
 			clue.GetComponent<Animator>().SetTrigger("exclamation");
 			player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
+			stepped = true;
 			SaveManager.Instance.Save();
 			Invoke(nameof(LoadScene), 1.0f);
 		}

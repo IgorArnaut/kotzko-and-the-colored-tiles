@@ -3,7 +3,6 @@ using UnityEngine;
 public class BossFall : StateMachineBehaviour
 {
 	private Animator anim;
-	private AudioSource src;
 	private CapsuleCollider2D cc;
 
 	private Stats stats;
@@ -17,7 +16,6 @@ public class BossFall : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
-		src = animator.gameObject.GetComponent<AudioSource>();
 		cc = animator.gameObject.GetComponent<CapsuleCollider2D>();
 
 		Init();
@@ -31,7 +29,7 @@ public class BossFall : StateMachineBehaviour
 
 	private void Init()
 	{
-		src.PlayOneShot(clip);
+		anim.GetComponent<AudioSource>().PlayOneShot(clip);
 		anim.gameObject.GetComponent<Rigidbody2D>().gravityScale = 5.0f;
 
 		stats = anim.gameObject.GetComponent<Enemy>().stats;

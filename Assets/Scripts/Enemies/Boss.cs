@@ -33,13 +33,13 @@ public class Boss : Enemy
 
 	private void ResizeHealthBar()
 	{
-		float delta = stats.HP > 0.0f ? 1.0f * stats.HP / stats.MaxHP : 0.0f;
+		float delta = stats.HP > 0.0f ? 1.0f * stats.HP / stats.MAXHP : 0.0f;
 		redBar.sizeDelta = new Vector2(width * delta, redBar.sizeDelta.y);
 	}
 
 	private void ChangeColor()
 	{
-		if (stats.HP < stats.MaxHP / 2.0f)
+		if (stats.HP < stats.MAXHP / 2.0f)
 		{
 			sr.color = Color.HSVToRGB(0.0f, 0.3f, 1.0f);
 			GetComponent<Rigidbody2D>().gravityScale = 0.0f;

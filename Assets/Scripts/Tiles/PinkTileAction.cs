@@ -10,7 +10,7 @@ public class PinkTileAction : TileAction
 
 	private IEnumerator Heal()
 	{
-		while (playerStats.HP < playerStats.MaxHP)
+		while (playerStats.HP < playerStats.MAXHP)
 		{
 			yield return new WaitForSeconds(0.2f);
 			playerStats.Heal(5);
