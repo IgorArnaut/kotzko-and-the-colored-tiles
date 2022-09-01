@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SceneManager2 : MonoBehaviour
 {
-	public static SceneManager2 sManager2;
+	public static SceneManager2 Manager;
 
-    private Animator anim;
+	private Animator anim;
 
     void Awake() {
-		sManager2 = this;
-        anim = GetComponentInChildren<Animator>();
+		Manager = this;
+		anim = GetComponentInChildren<Animator>();
     }
 
     public void Transition(string sceneName) {

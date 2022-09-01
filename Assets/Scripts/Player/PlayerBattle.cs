@@ -85,7 +85,6 @@ public class PlayerBattle : Player
 
 	private bool IsGrounded() {
 		RaycastHit2D rc = Physics2D.CapsuleCast(cc.bounds.center, cc.bounds.size, CapsuleDirection2D.Horizontal, 0.0f, Vector2.down , 0.1f, ground);
-		Debug.Log(rc.collider);
 		return rc.collider != null;
 	}
 

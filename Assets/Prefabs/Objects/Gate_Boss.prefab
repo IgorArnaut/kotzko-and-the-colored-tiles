@@ -161,5 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7917a7d9c377d3c479865665f57ff546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 9cf166c73de362647b94970ff0cdf4f8, type: 3}
+  - {fileID: 8300000, guid: 8c188707e5cf19644b8f9080762e5a20, type: 3}
+  - {fileID: 8300000, guid: 5d3bb18f9f2e5354191acc282139bc66, type: 3}
   locked: 1
   playerInventory: {fileID: 11400000, guid: 60167b52fa446754da665391f5f28220, type: 2}

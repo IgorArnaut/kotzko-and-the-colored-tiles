@@ -4,9 +4,12 @@ using UnityEngine;
 public class Terminal : MonoBehaviour
 {
 	private Animator anim;
+	private AudioSource src;
 
 	private GameObject clue;
 	private bool inRange;
+	[SerializeField]
+	private AudioClip[] clips;
 
 	[SerializeField] 
 	private string[] lines;
@@ -14,6 +17,7 @@ public class Terminal : MonoBehaviour
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
 	}
 
 	void Start()
@@ -29,7 +33,7 @@ public class Terminal : MonoBehaviour
 	private void StartDialog()
 	{
 		if (inRange && Input.GetKeyDown(KeyCode.E))
-			DialogManager.dManager.Write(new Queue<string>(lines));
+			DialogManager.Manager.Write(new Queue<string>(lines));
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -38,9 +42,10 @@ public class Terminal : MonoBehaviour
 		{
 			inRange = true;
 
+			src.PlayOneShot(clips[0]);
 			anim.SetBool("inRange", true);
 			clue.SetActive(true);
-			clue.GetComponent<Animator>().SetInteger("clue", 1);
+			clue.GetComponent<Animator>().SetTrigger("ellipsis");
 		}
 	}
 
@@ -50,10 +55,10 @@ public class Terminal : MonoBehaviour
 		{
 			inRange = false;
 
+			src.PlayOneShot(clips[1]);
 			anim.SetBool("inRange", false);
 			clue.SetActive(false);
-			clue.GetComponent<Animator>().SetInteger("clue", 0);
-			DialogManager.dManager.textBox.SetActive(false);
+			DialogManager.Manager.textBox.SetActive(false);
 		}
 	}
 }

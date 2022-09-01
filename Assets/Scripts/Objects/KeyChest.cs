@@ -2,6 +2,6 @@
 {
 	public override void GiveItems() 
 	{
-		playerInventory.keys += 1;
+		playerInventory.keys++;
 	}
 }

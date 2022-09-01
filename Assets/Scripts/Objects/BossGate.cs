@@ -10,7 +10,8 @@ public class BossGate : Gate
 		if (playerInventory.bossKey > 0 && locked)
 		{
 			locked = false;
-			playerInventory.bossKey -= 1;
+			src.PlayOneShot(clips[0]);
+			playerInventory.bossKey--;
 		}
 	}
 }

@@ -5,6 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
+  - defend: {fileID: 11400000, guid: 296db00b34ea26741bd88d2f93657be7, type: 2}
+  - clip: {fileID: 8300000, guid: 0dce28d8e06ecc345b6bd1dff10e51b5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

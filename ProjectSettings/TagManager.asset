@@ -8,6 +8,7 @@ TagManager:
   - Chest
   - Gate
   - GreenTile
+  - Sword
   layers:
   - Default
   - TransparentFX

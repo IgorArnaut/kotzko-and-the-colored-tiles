@@ -6,11 +6,6 @@ using TMPro;
 public class BattleManager : MonoBehaviour
 {
 	[SerializeField]
-	private AudioSource src;
-	[SerializeField]
-	private AudioClip[] clips;
-
-	[SerializeField]
 	private string[] defeat;
 	[SerializeField]
 	private string[] victory;
@@ -27,7 +22,6 @@ public class BattleManager : MonoBehaviour
 
 	void Start()
 	{
-		once = false;
 		player = GameObject.FindGameObjectWithTag("Player");
 		enemy = GameObject.FindGameObjectWithTag("Enemy");
 	}
@@ -43,17 +37,17 @@ public class BattleManager : MonoBehaviour
 		{
 			once = true;
 
-			src.Stop();
-			src.PlayOneShot(clips[0]);
+			MusicManager.Manager.Stop();
+			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[0]);
 			
 			StartCoroutine(Write(defeat, "GameOver"));
 		}
 
 		if (enemy == null && !once) {
 			once = true;
-			
-			src.Stop();
-			src.PlayOneShot(clips[1]);
+
+			MusicManager.Manager.Stop();
+			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[1]);
 			
 			StartCoroutine(Write(victory, "Dungeon"));
 		}
@@ -78,6 +72,6 @@ public class BattleManager : MonoBehaviour
 		}
 
 		textBox.SetActive(false);
-		SceneManager2.sManager2.Transition(sceneName);
+		SceneManager2.Manager.Transition(sceneName);
 	}
 }

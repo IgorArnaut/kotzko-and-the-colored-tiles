@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   MaxHP: 100
-  HP: 68
-  ATK: 10
-  DEF: 15
+  HP: 100
+  ATK: 15
+  DEF: 10
   speed: 5

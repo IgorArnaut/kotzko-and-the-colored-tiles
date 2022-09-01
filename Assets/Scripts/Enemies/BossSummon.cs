@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossLevitate : StateMachineBehaviour
+public class BossSummon : StateMachineBehaviour
 {
 	private Animator anim;
+	private AudioSource src;
 	private CapsuleCollider2D cc;
 	private Boss b;
+
+	[SerializeField]
+	private AudioClip clip;
 
 	[SerializeField] 
 	private GameObject sword;
@@ -15,9 +19,12 @@ public class BossLevitate : StateMachineBehaviour
 	[SerializeField]
 	private float speed;
 
+	private bool finished;
+
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
+		src = animator.gameObject.GetComponent<AudioSource>();
 		cc = animator.gameObject.GetComponent<CapsuleCollider2D>();
 		b = animator.gameObject.GetComponent<Boss>();
 
@@ -27,7 +34,8 @@ public class BossLevitate : StateMachineBehaviour
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		MoveSwords();
+		if (finished)
+			MoveSwords();
 	}
 
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -66,6 +74,8 @@ public class BossLevitate : StateMachineBehaviour
 
 	private IEnumerator SpawnSwords()
 	{
+		finished = false;
+
 		for (int i = 0; i < 8; i++)
 		{
 			float angle = (360.0f / 8.0f) * i;
@@ -77,7 +87,8 @@ public class BossLevitate : StateMachineBehaviour
 			swords.Add(Instantiate(sword, swordPos, Quaternion.Euler(Vector3.back * angle)));
 			yield return new WaitForSeconds(0.1f);
 		}
-		
-		yield return new WaitForSeconds(0.5f);
+
+		src.PlayOneShot(clip);
+		finished = true;
 	}
 }

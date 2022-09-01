@@ -3,7 +3,13 @@ using UnityEngine;
 public class BossFall : StateMachineBehaviour
 {
 	private Animator anim;
+	private AudioSource src;
 	private CapsuleCollider2D cc;
+
+	private Stats stats;
+
+	[SerializeField]
+	private AudioClip clip;
 
 	[SerializeField]
 	private LayerMask ground;
@@ -11,12 +17,13 @@ public class BossFall : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
+		src = animator.gameObject.GetComponent<AudioSource>();
 		cc = animator.gameObject.GetComponent<CapsuleCollider2D>();
 
 		Init();
 	}
 
-	public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+	public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		if (IsGrounded())
 			anim.SetTrigger("dead");
@@ -24,7 +31,11 @@ public class BossFall : StateMachineBehaviour
 
 	private void Init()
 	{
-		anim.gameObject.GetComponent<Rigidbody2D>().gravityScale = 5.0f;   
+		src.PlayOneShot(clip);
+		anim.gameObject.GetComponent<Rigidbody2D>().gravityScale = 5.0f;
+
+		stats = anim.gameObject.GetComponent<Enemy>().stats;
+		stats.HP = 1;
 	}
 
 	private bool IsGrounded()

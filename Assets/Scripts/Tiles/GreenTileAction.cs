@@ -35,38 +35,7 @@ public class GreenTileAction : TileAction
 	private void LoadScene()
 	{
 		clue.SetActive(false);
-		clue.GetComponent<Animator>().SetInteger("clue", 0);
-		SceneManager2.sManager2.Transition("Battle");
-	}
-
-	private void Save()
-	{
-		SaveManager.Instance.playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-		SaveManager.Instance.greenTiles = GameObject.FindGameObjectsWithTag("GreenTile")
-			.OrderBy(gt => gt.name)
-			.Select(gt => gt.GetComponent<GreenTileAction>().stepped)
-			.ToArray();
-		SaveManager.Instance.chests = GameObject.FindGameObjectsWithTag("Chest")
-			.OrderBy(c => c.name)
-			.Select(c => c.GetComponent<Chest>().open)
-			.ToArray();
-		SaveManager.Instance.gates = GameObject.FindGameObjectsWithTag("Gate")
-			.OrderBy(g => g.name)
-			.Select(g => g.GetComponent<Gate>().locked)
-			.ToArray();
-
-		Debug.Log("Stepped?");
-		foreach (bool stepped in SaveManager.Instance.greenTiles)
-			Debug.Log("stepped" + stepped);
-
-		Debug.Log("Open?");
-		foreach (bool open in SaveManager.Instance.chests)
-			Debug.Log("open " + open);
-
-		Debug.Log("Locked?");
-		foreach (bool locked in SaveManager.Instance.gates)
-			Debug.Log("locked: " + locked);
+		SceneManager2.Manager.Transition("Battle");
 	}
 
 	override protected void DoEnterAction()
@@ -76,10 +45,10 @@ public class GreenTileAction : TileAction
 			stepped = true;
 
 			clue.SetActive(true);
-			clue.GetComponent<Animator>().SetInteger("clue", 3);
+			clue.GetComponent<Animator>().SetTrigger("exclamation");
 			player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
-			Save();
+			SaveManager.Instance.Save();
 			Invoke(nameof(LoadScene), 1.0f);
 		}
 	}

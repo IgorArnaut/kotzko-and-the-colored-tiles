@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 2736187516557526418, guid: 852b2cc76227fec4c8c5803ddd40c604,
         type: 3}
       propertyPath: m_Name
-      value: Gate_Monster (4)
+      value: Gate_Monster
       objectReference: {fileID: 0}
     - target: {fileID: 3140889824197935336, guid: 852b2cc76227fec4c8c5803ddd40c604,
         type: 3}
@@ -149,6 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5365df182d29e4e8a97a406b29da7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 9cf166c73de362647b94970ff0cdf4f8, type: 3}
+  - {fileID: 8300000, guid: 8c188707e5cf19644b8f9080762e5a20, type: 3}
+  - {fileID: 8300000, guid: 5d3bb18f9f2e5354191acc282139bc66, type: 3}
+  locked: 0
   greenTiles:
   - {fileID: 0}
   - {fileID: 0}

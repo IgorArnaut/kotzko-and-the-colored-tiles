@@ -4,6 +4,7 @@ using UnityEngine;
 public class BossStrike : StateMachineBehaviour
 {
 	private Animator anim;
+	private AudioSource src;
 	private SpriteRenderer sr;
 	private Transform transform;
 	
@@ -12,6 +13,11 @@ public class BossStrike : StateMachineBehaviour
 	private GameObject player;
 	[SerializeField]
 	private Stats playerStats;
+	[SerializeField]
+	private BoolValue defend;
+
+	[SerializeField]
+	private AudioClip[] clips;
 
 	[SerializeField]
 	private List<Vector2> targets;
@@ -20,10 +26,12 @@ public class BossStrike : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
+		src = animator.GetComponent<AudioSource>();
 		sr = animator.gameObject.GetComponent<SpriteRenderer>();
 		transform = animator.gameObject.transform;
 
 		Init();
+		src.PlayOneShot(clips[0]);
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -60,7 +68,13 @@ public class BossStrike : StateMachineBehaviour
 
 		if (playerCollided && player != null)
 		{
-			player.GetComponent<Animator>().SetTrigger("hurt");
+
+			if (!defend.value)
+				player.GetComponent<Animator>().SetTrigger("hurt");
+			else
+				src.PlayOneShot(clips[1]);
+
+
 			playerStats.TakeDamge((int)(1.0f));
 		}
 	}

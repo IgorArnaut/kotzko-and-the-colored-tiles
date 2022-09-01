@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Boss : Enemy
@@ -41,6 +42,7 @@ public class Boss : Enemy
 		if (stats.HP < stats.MaxHP / 2.0f)
 		{
 			sr.color = Color.HSVToRGB(0.0f, 0.3f, 1.0f);
+			GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 			anim.SetBool("phase2", true);
 		}
 	}
@@ -48,7 +50,12 @@ public class Boss : Enemy
 	override protected void Die()
 	{
 		if (stats.IsDead())
+		{
+			foreach (GameObject sword in GameObject.FindGameObjectsWithTag("Sword"))
+				Destroy(sword);
+
 			anim.SetTrigger("fall");
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {

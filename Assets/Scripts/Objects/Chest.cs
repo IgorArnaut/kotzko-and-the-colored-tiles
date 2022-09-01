@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class Chest : MonoBehaviour
 {
 	private Animator anim;
+	private AudioSource src;
 
 	private GameObject player;
 	[SerializeField] 
@@ -12,10 +13,13 @@ public abstract class Chest : MonoBehaviour
 	private bool inRange;
 
 	public bool open;
+	[SerializeField]
+	protected AudioClip clip;
 
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
 	}
 
 	void Start()
@@ -44,7 +48,7 @@ public abstract class Chest : MonoBehaviour
 		{
 			inRange = true;
 			clue.SetActive(true);
-			clue.GetComponent<Animator>().SetInteger("clue", 2);
+			clue.GetComponent<Animator>().SetTrigger("question");
 		}
 	}
 
@@ -54,7 +58,6 @@ public abstract class Chest : MonoBehaviour
 		{
 			inRange = false;
 			clue.SetActive(false);
-			clue.GetComponent<Animator>().SetInteger("clue", 0);
 		}
 	}
 
@@ -63,6 +66,7 @@ public abstract class Chest : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.E) && inRange)
 		{
 			open = true;
+			src.PlayOneShot(clip);
 			anim.SetTrigger("open");
 			GiveItems();
 			PlayerItem();

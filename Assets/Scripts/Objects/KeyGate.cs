@@ -10,7 +10,8 @@ public class KeyGate : Gate
 		if (playerInventory.keys > 0 && locked)
 		{
 			locked = false;
-			playerInventory.keys -= 1;
+			src.PlayOneShot(clips[0]);
+			playerInventory.keys--;
 		}
 	}
 }

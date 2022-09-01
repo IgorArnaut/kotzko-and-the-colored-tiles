@@ -54,7 +54,7 @@ public class MinionMove : StateMachineBehaviour
 			anim.SetBool("walk", Vector2.Distance(transform.position, playerPos) < distance);
 		}
 
-		if (playerCollided)
+		if (playerCollided && player != null)
 			anim.SetTrigger("attack");
 	}
 }

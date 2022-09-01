@@ -5,7 +5,7 @@ using TMPro;
 
 public class DialogManager : MonoBehaviour
 {
-	public static DialogManager dManager;
+	public static DialogManager Manager;
 
 	public GameObject textBox;
 	[SerializeField]
@@ -15,7 +15,7 @@ public class DialogManager : MonoBehaviour
 
 	void Awake()
 	{
-		dManager = this;
+		Manager = this;
 	}
 
 	public void Write(Queue<string> lines)

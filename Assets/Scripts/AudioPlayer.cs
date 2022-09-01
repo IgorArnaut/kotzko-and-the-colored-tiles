@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayAudioClips : MonoBehaviour
+public class AudioPlayer : MonoBehaviour
 {
     private AudioSource src;
 

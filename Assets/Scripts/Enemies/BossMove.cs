@@ -54,12 +54,12 @@ public class BossMove : StateMachineBehaviour
 			anim.SetBool("walk", Vector2.Distance(transform.position, playerPos) < distance);
 		}
 
-		if (playerCollided)
+		if (playerCollided && player != null)
 			Attack();
 	}
 
 	private void Attack() {
-		int rnd = Random.Range(0, 1);
+		int rnd = Random.Range(0, 2);
 
 		if (rnd == 0)
 			anim.SetTrigger("attack");

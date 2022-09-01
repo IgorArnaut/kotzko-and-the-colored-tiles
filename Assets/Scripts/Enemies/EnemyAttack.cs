@@ -3,18 +3,31 @@
 public class EnemyAttack : StateMachineBehaviour
 {
 	private Animator anim;
+	private AudioSource src;
 
 	private Stats stats;
 
 	private GameObject player;
 	[SerializeField]
 	private Stats playerStats;
+	[SerializeField]
+	private BoolValue defend;
+	private bool playerCollided;
+
+	[SerializeField]
+	private AudioClip clip;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
 		anim = animator;
+		src = animator.gameObject.GetComponent<AudioSource>();
 
 		Init();
+	}
+
+	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+	{
+		playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
 	}
 
 	public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -30,11 +43,13 @@ public class EnemyAttack : StateMachineBehaviour
 
 	private void HurtPlayer()
 	{
-		bool playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
-
-		if (playerCollided && player != null)
+		if (playerCollided && !playerStats.IsDead() && player != null)
 		{
-			player.GetComponent<Animator>().SetTrigger("hurt");
+			if (!defend.value)
+				player.GetComponent<Animator>().SetTrigger("hurt");
+			else
+				src.PlayOneShot(clip);
+
 			playerStats.TakeDamge(stats.ATK);
 		}
 	}
