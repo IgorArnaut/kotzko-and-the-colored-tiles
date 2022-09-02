@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerDefend : StateMachineBehaviour
 {
+	// Defense
 	[SerializeField]
 	private Stats stats;
 	private int temp;

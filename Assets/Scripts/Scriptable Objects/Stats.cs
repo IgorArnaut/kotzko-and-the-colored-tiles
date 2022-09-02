@@ -11,14 +11,12 @@ public class Stats : ScriptableObject
 
 	public void Heal(int amount)
 	{
-		if (HP < MAXHP)
-			HP += amount;
+		if (HP < MAXHP) HP += amount;
 	}
 
 	public void TakeDamge(int amount)
 	{
-		if (HP > 0)
-			HP -= (int) (amount * (100.0f / (100 + DEF)));
+		if (HP > 0) HP -= (int) (amount * (100.0f / (100 + DEF)));
 	}
 
 	public bool IsDead()

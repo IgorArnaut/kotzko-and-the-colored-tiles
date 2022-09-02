@@ -2,52 +2,63 @@
 
 public class EnemyAttack : StateMachineBehaviour
 {
+	// Components
 	private Animator anim;
+	private AudioSource src;
+	private Enemy enemy;
 
+	// Attack
 	private Stats stats;
 
-	private GameObject player;
-	[SerializeField]
-	private Stats playerStats;
-	[SerializeField]
-	private BoolValue defend;
-	private bool playerCollided;
-
+	// Damage Player
 	[SerializeField]
 	private AudioClip clip;
+	private GameObject player;
+	[SerializeField]
+	private BoolValue defend;
+	[SerializeField]
+	private Stats playerStats;
+	private bool playerCollided;
+
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		anim = animator;
-
+		GetComponents(animator);
 		Init();
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
+		playerCollided = enemy.playerCollided;
 	}
 
 	public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		HurtPlayer();
+		DamagePlayer();
 	}
 
+	// Get Components
+	private void GetComponents(Animator animator)
+	{
+		anim = animator;
+		src = anim.gameObject.GetComponent<AudioSource>();
+		enemy = anim.gameObject.GetComponent<Enemy>();
+	}
+
+	// Initialize
 	private void Init()
 	{
-		stats = anim.gameObject.GetComponent<Enemy>().stats;
 		player = GameObject.FindGameObjectWithTag("Player");
+		stats = enemy.stats;
 	}
 
-	private void HurtPlayer()
+	// Damage Player
+	private void DamagePlayer()
 	{
 		if (playerCollided && !playerStats.IsDead() && player != null)
 		{
-			if (!defend.value)
-				player.GetComponent<Animator>().SetTrigger("hurt");
-			else
-				anim.GetComponent<AudioSource>().PlayOneShot(clip);
-
+			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt");
+			else src.PlayOneShot(clip);
 			playerStats.TakeDamge(stats.ATK);
 		}
 	}

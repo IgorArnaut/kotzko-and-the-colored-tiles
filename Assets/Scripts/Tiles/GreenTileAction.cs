@@ -1,22 +1,22 @@
-using Cinemachine;
-using System;
-using System.Linq;
 using UnityEngine;
 
 public class GreenTileAction : TileAction
 {
+	// Components
 	private SpriteRenderer sr;
 
+	// Player
 	private GameObject player;
 	private GameObject clue;
 
+	// Transition
 	[SerializeField]
 	private AudioClip clip;
 	public bool stepped;
 
 	void Awake()
 	{
-		sr = GetComponent<SpriteRenderer>();
+		GetComponents();
 	}
 
 	void Start() {
@@ -29,12 +29,19 @@ public class GreenTileAction : TileAction
 		DimTile();
 	}
 
-	private void DimTile()
+	// Get Components
+	private void GetComponents()
 	{
-		if (stepped)
-			sr.color = Color.HSVToRGB(0.0f, 0.0f, 0.8f);
+		sr = GetComponent<SpriteRenderer>();
 	}
 
+	// Dim tile
+	private void DimTile()
+	{
+		if (stepped) sr.color = Color.HSVToRGB(0.0f, 0.0f, 0.8f);
+	}
+
+	// Load Scene
 	private void LoadScene()
 	{
 		clue.SetActive(false);
@@ -47,12 +54,11 @@ public class GreenTileAction : TileAction
 	{
 		if (!stepped)
 		{
+			stepped = true;
 			clue.SetActive(true);
 			clue.GetComponent<Animator>().SetTrigger("exclamation");
 			player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-
-			stepped = true;
-			SaveManager.Instance.Save();
+			SaveManager.Manager.SaveData();
 			Invoke(nameof(LoadScene), 1.0f);
 		}
 	}

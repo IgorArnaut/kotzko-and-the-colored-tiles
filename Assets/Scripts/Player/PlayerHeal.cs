@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerHeal : StateMachineBehaviour
 {
+	// Heal
 	[SerializeField]
 	private Stats stats;
 	[SerializeField]
@@ -12,12 +13,13 @@ public class PlayerHeal : StateMachineBehaviour
 		Heal();
 	}
 
+	// Heal
 	private void Heal()
 	{
 		if (inventory.HEARTS > 0)
 		{
 			inventory.HEARTS--;
-			stats.Heal(10);
+			stats.Heal(20);
 		}
 	}
 }

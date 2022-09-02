@@ -2,23 +2,18 @@
 
 public abstract class Player : MonoBehaviour
 {
-	protected Animator anim;
-	protected Rigidbody2D rb;
-	protected SpriteRenderer sr;
-
+	// Stats
 	public Stats stats;
 
-	virtual protected void Awake()
-	{
-		anim = GetComponent<Animator>();
-		rb = GetComponent<Rigidbody2D>();
-		sr = GetComponent<SpriteRenderer>();
-	}
+	abstract protected void Awake();
 
-	protected abstract void Move();
+	// Move
+	abstract protected void Move();
 
-	protected abstract void Die();
+	// Die
+	abstract protected void Die();
 
+	// Kill
 	public void Kill()
 	{
 		Destroy(gameObject);

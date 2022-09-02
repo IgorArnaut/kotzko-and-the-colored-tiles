@@ -92,10 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ab3352b6981e948997fa8ff388cda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
+  clip: {fileID: 8300000, guid: 0dce28d8e06ecc345b6bd1dff10e51b5, type: 3}
   defend: {fileID: 11400000, guid: 296db00b34ea26741bd88d2f93657be7, type: 2}
-  clips:
-  - {fileID: 8300000, guid: 0dce28d8e06ecc345b6bd1dff10e51b5, type: 3}
+  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
 --- !u!1101 &-2660072423786364270
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

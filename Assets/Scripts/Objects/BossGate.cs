@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class BossGate : Gate
 {
+	// Inventory
 	[SerializeField]
 	private Inventory playerInventory;
 
+	// Unlock
 	public override void Unlock()
 	{
 		if (playerInventory.BOSSKEY > 0 && locked)
 		{
-			locked = false;
-			GetComponent<AudioSource>().PlayOneShot(clips[0]);
 			playerInventory.BOSSKEY--;
+			locked = false;
+			src.PlayOneShot(clips[0]);
 		}
 	}
 }

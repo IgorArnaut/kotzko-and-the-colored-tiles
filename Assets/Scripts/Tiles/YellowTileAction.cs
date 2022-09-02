@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class YellowTileAction : TileAction
 {
+	// Player
 	[SerializeField]
 	private Stats playerStats;
 	public BoolValue electric;
 
-	private IEnumerator Hurt()
+	// Damage
+	private IEnumerator Damage()
 	{
 		while (playerStats.HP >= 0)
 		{
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.2f);
 			playerStats.TakeDamge(5);
 		}
 	}
@@ -19,12 +21,12 @@ public class YellowTileAction : TileAction
 	override protected void DoEnterAction()
 	{
 		electric.value = true;
-		StartCoroutine(nameof(Hurt));
+		StartCoroutine(nameof(Damage));
 	}
 
 	override protected void DoExitAction()
 	{
 		electric.value = false;
-		StopCoroutine(nameof(Hurt));
+		StopCoroutine(nameof(Damage));
 	}
 }

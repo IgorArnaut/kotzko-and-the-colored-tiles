@@ -93,9 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ab3352b6981e948997fa8ff388cda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
+  clip: {fileID: 8300000, guid: 0dce28d8e06ecc345b6bd1dff10e51b5, type: 3}
   defend: {fileID: 11400000, guid: 296db00b34ea26741bd88d2f93657be7, type: 2}
-  clip: {fileID: 8300000, guid: b242ce9363195154abb291a9bca81667, type: 3}
+  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
 --- !u!1107 &-7713812788160854764
 AnimatorStateMachine:
   serializedVersion: 6
@@ -271,9 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ab3352b6981e948997fa8ff388cda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
-  defend: {fileID: 11400000, guid: 296db00b34ea26741bd88d2f93657be7, type: 2}
   clip: {fileID: 8300000, guid: 0dce28d8e06ecc345b6bd1dff10e51b5, type: 3}
+  defend: {fileID: 11400000, guid: 296db00b34ea26741bd88d2f93657be7, type: 2}
+  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
 --- !u!114 &-5762369967199707740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,16 +617,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716390adefdc8c84e8974203d4c44d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
   defend: {fileID: 11400000, guid: 296db00b34ea26741bd88d2f93657be7, type: 2}
+  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
   clips:
   - {fileID: 8300000, guid: 62440d77ffb848440805d3f265ef6bff, type: 3}
   - {fileID: 8300000, guid: 0dce28d8e06ecc345b6bd1dff10e51b5, type: 3}
-  targets:
-  - {x: 5.25, y: 2.5}
-  - {x: 5.25, y: -1.5}
-  - {x: -5.25, y: 2.5}
-  - {x: -5.25, y: -1.5}
 --- !u!1102 &-1442770706479684276
 AnimatorState:
   serializedVersion: 6

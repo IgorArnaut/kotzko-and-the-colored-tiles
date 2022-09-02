@@ -2,19 +2,44 @@ using UnityEngine;
 
 public class PlayerWorld : Player
 {
+	// Components
+	private Animator anim;
+	private Rigidbody2D rb2D;
+	private SpriteRenderer sr;
+
+	// Status
 	public BoolValue inWater;
 	public BoolValue electric;
 	public BoolValue heal;
 	public BoolValue orange;
 	public BoolValue lemon;
 
+	protected override void Awake()
+	{
+		GetComponents();
+	}
+
 	void Update()
 	{
 		ChangeStatus();
-		Move();
 		Die();
 	}
 
+	void FixedUpdate()
+	{
+		Move();
+		Swim();
+	}
+
+	// Get Components
+	private void GetComponents()
+	{
+		anim = GetComponent<Animator>();
+		rb2D = GetComponent<Rigidbody2D>();
+		sr = GetComponent<SpriteRenderer>();
+	}
+
+	// Move
 	override protected void Move()
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
@@ -36,26 +61,34 @@ public class PlayerWorld : Player
 			transform.GetChild(1).GetComponent<SpriteRenderer>().flipX = false;
 		}
 
-		if (rb.bodyType != RigidbodyType2D.Static)
-			rb.velocity = new Vector2(inputX, inputY) * stats.SPEED;
+		if (rb2D.bodyType != RigidbodyType2D.Static) rb2D.velocity = new Vector2(inputX, inputY) * stats.SPEED;
 
-		anim.SetFloat("horizontal", rb.velocity.x);
-		anim.SetFloat("vertical", rb.velocity.y);
-		anim.SetFloat("speed", rb.velocity.sqrMagnitude);
+		anim.SetFloat("horizontal", rb2D.velocity.x);
+		anim.SetFloat("vertical", rb2D.velocity.y);
+		anim.SetFloat("speed", rb2D.velocity.sqrMagnitude);
 	}
 
+	// Swim
+	private void Swim()
+	{
+		transform.GetChild(1).gameObject.SetActive(inWater.value);
+		anim.SetBool("inWater", inWater.value);
+	}
+
+	// Die
 	protected override void Die()
 	{
-		if (orange.value && inWater.value)
-			anim.SetTrigger("deadw");
+		if (orange.value && inWater.value) anim.SetTrigger("deadw");
 
 		if (stats.IsDead())
-			anim.SetTrigger("dead");
+		{
+			if (!inWater.value) anim.SetTrigger("dead"); else anim.SetTrigger("deadw");
+		}
 	}
 
+	// Change status
 	private void ChangeStatus()
 	{
-		anim.SetBool("inWater", inWater.value);
 		anim.SetBool("electric", electric.value);
 
 		if (orange.value)
@@ -68,11 +101,8 @@ public class PlayerWorld : Player
 				anim.SetTrigger("deadw");
 			}
 		}
-		else if (lemon.value)
-			sr.color = Color.Lerp(Color.HSVToRGB(60.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
-		else if (heal.value)
-			sr.color = Color.Lerp(Color.HSVToRGB(300.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
-		else
-			sr.color = Color.white;
+		else if (lemon.value) sr.color = Color.Lerp(Color.HSVToRGB(60.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
+		else if (heal.value) sr.color = Color.Lerp(Color.HSVToRGB(300.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
+		else sr.color = Color.white;
 	}
 }

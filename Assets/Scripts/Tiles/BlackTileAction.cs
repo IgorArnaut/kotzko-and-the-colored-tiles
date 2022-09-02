@@ -3,15 +3,19 @@ using UnityEngine.Tilemaps;
 
 public class BlackTileAction : TileAction
 {
+	// Components
+	private Tilemap tilemap;
+
+	// Player
 	[SerializeField]
 	private Stats playerStats;
 
+	// Black
 	public bool black; 
-	private Tilemap tilemap;
 
 	void Awake()
 	{
-		tilemap = GetComponent<Tilemap>();
+		GetComponents();
 	}
 
 	void Start()
@@ -24,27 +28,27 @@ public class BlackTileAction : TileAction
 		black = IsBlack();	
 	}
 
+	// Get Components
+	private void GetComponents()
+	{
+		tilemap = GetComponent<Tilemap>();
+	}
+
+	// Is black?
 	private bool IsBlack()
 	{
-		foreach (Vector3Int tilePos in tilemap.cellBounds.allPositionsWithin)
-		{
-			if (tilemap.GetAnimationFrame(tilePos) == 0)
-				return true;
-		}
-
+		foreach (Vector3Int tilePos in tilemap.cellBounds.allPositionsWithin) if (tilemap.GetAnimationFrame(tilePos) == 0) return true;
 		return false;
 	}
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.gameObject.CompareTag("Player") && black)
-			playerStats.TakeDamge(playerStats.HP);
+		if (collision.gameObject.CompareTag("Player") && black) playerStats.TakeDamge(playerStats.HP);
 	}
 
 	override protected void DoEnterAction()
 	{
-		if (black)
-			playerStats.TakeDamge(playerStats.HP);
+		if (black) playerStats.TakeDamge(playerStats.HP);
 	}
 
 	override protected void DoExitAction()

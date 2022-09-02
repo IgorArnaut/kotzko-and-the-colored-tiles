@@ -2,23 +2,29 @@ using UnityEngine;
 
 public class PlayerBattle : Player
 {
-	private CapsuleCollider2D cc;
+	// Components
+	private Animator anim;
+	private CapsuleCollider2D cc2D;
+	private Rigidbody2D rb2D;
+	private SpriteRenderer sr;
 
-	[SerializeField]
-	private float jumpForce;
+	// Jump
 	[SerializeField]
 	private LayerMask ground;
 	private bool grounded;
+	[SerializeField]
+	private float jumpForce;
 
+	// Defend
 	public BoolValue defend;
 
-	public bool enemyCollided;
+	// Enemy
 	public GameObject enemy;
+	public bool enemyCollided;
 
 	override protected void Awake()
 	{
-		base.Awake();
-		cc = GetComponent<CapsuleCollider2D>();
+		GetComponents();
 	}
 
 	private void Start()
@@ -45,31 +51,29 @@ public class PlayerBattle : Player
 			Move();
 	}
 
+	// Get Components
+	private void GetComponents()
+	{
+		anim = GetComponent<Animator>();
+		cc2D = GetComponent<CapsuleCollider2D>();
+		rb2D = GetComponent<Rigidbody2D>();
+		sr = GetComponent<SpriteRenderer>();
+	}
+
 	override protected void Move()
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
-
-		if (inputX == -1.0f || inputX == 1.0f)
-			anim.SetFloat("lastMoveX", inputX);
-
-		if (inputX == 1.0f)
-			sr.flipX = false;
-
-		if (inputX == -1.0f)
-			sr.flipX = true;
-
-		if (rb.bodyType != RigidbodyType2D.Static)
-			rb.velocity = new Vector2(inputX * stats.SPEED, rb.velocity.y);
-	
-		anim.SetFloat("horizontal", rb.velocity.x);
-
-		anim.SetFloat("speed", rb.velocity.sqrMagnitude);
+		if (inputX == -1.0f || inputX == 1.0f) anim.SetFloat("lastMoveX", inputX);
+		if (inputX == 1.0f) sr.flipX = false;
+		if (inputX == -1.0f) sr.flipX = true;
+		if (rb2D.bodyType != RigidbodyType2D.Static) rb2D.velocity = new Vector2(inputX * stats.SPEED, rb2D.velocity.y);
+		anim.SetFloat("horizontal", rb2D.velocity.x);
+		anim.SetFloat("speed", rb2D.velocity.sqrMagnitude);
 	}
 
 	protected override void Die()
 	{
-		if (stats.IsDead())
-			anim.SetTrigger("dead");
+		if (stats.IsDead()) anim.SetTrigger("dead");
 	}
 
 	private void Jump()
@@ -79,19 +83,18 @@ public class PlayerBattle : Player
 		if (Input.GetKeyDown(KeyCode.Space) && grounded)
 		{
 			anim.SetTrigger("jump");
-			rb.velocity = Vector2.up * jumpForce;
+			rb2D.velocity = Vector2.up * jumpForce;
 		}
 	}
 
 	private bool IsGrounded() {
-		RaycastHit2D rc = Physics2D.CapsuleCast(cc.bounds.center, cc.bounds.size, CapsuleDirection2D.Horizontal, 0.0f, Vector2.down , 0.1f, ground);
+		RaycastHit2D rc = Physics2D.CapsuleCast(cc2D.bounds.center, cc2D.bounds.size, CapsuleDirection2D.Horizontal, 0.0f, Vector2.down , 0.1f, ground);
 		return rc.collider != null;
 	}
 
 	private void Attack()
 	{
-		if (Input.GetMouseButtonDown(0))
-			anim.SetTrigger("attack");
+		if (Input.GetMouseButtonDown(0)) anim.SetTrigger("attack");
 	}
 
 	private void Defend()
@@ -110,8 +113,7 @@ public class PlayerBattle : Player
 
 	private void Heal()
 	{
-		if (Input.GetKeyDown(KeyCode.Z))
-			anim.SetTrigger("heal");
+		if (Input.GetKeyDown(KeyCode.Q)) anim.SetTrigger("heal");
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)

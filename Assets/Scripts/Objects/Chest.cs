@@ -3,42 +3,47 @@ using UnityEngine;
 
 public abstract class Chest : MonoBehaviour
 {
+	// Components
 	private Animator anim;
+	private AudioSource src;
 
+	// Player
 	protected GameObject player;
 	[SerializeField] 
 	protected Inventory playerInventory;
 
+	// Context clue
 	private GameObject clue;
 	private bool inRange;
 
-	public bool open;
+	// Open chest
 	[SerializeField]
-	protected AudioClip[] clips;
+	private AudioClip clip;
+	public bool open;
 
 	void Awake()
 	{
-		anim = GetComponent<Animator>();
+		GetComponents();
 	}
 
 	void Start()
 	{
+		inRange = false;
 		player = GameObject.FindGameObjectWithTag("Player");
 		clue = player.transform.GetChild(0).gameObject;
-
-		inRange = false;
-
-		if (open)
-			anim.SetTrigger("open2");
+		if (open) anim.SetTrigger("open2");
 	}
 
 	void Update()
 	{
-		if (!open)
-			Open();
+		if (!open) Open(); else anim.SetTrigger("open2");
+	}
 
-		if (open)
-			anim.SetTrigger("open2");
+	// Get Components
+	private void GetComponents()
+	{
+		anim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -60,41 +65,32 @@ public abstract class Chest : MonoBehaviour
 		}
 	}
 
+	// Open chest
 	private void Open()
 	{
 		if (Input.GetKeyDown(KeyCode.E) && inRange)
 		{
 			open = true;
-			GetComponent<AudioSource>().PlayOneShot(clips[0]);
+			src.PlayOneShot(clip);
 			anim.SetTrigger("open");
 			GiveItems();
-			PlayerItem();
 		}
 	}
 
-	public void PlayerItem()
+	protected void PlayerItem()
 	{
 		clue.SetActive(false);
-		clue.GetComponent<Animator>().SetInteger("clue", 0);
 		player.GetComponent<Animator>().SetTrigger("item");
 	}
 
+	// Give items
 	public abstract void GiveItems();
 
+	// Write text
 	protected IEnumerator Write(string line, GameObject obj)
 	{
-		DialogManager.Manager.textBox.SetActive(true);
-		DialogManager.Manager.dialogText.text = "";
-
-		foreach (char c in line)
-		{
-			DialogManager.Manager.dialogText.text += c;
-			GetComponent<AudioSource>().PlayOneShot(clips[1]);
-			yield return new WaitForSeconds(0.05f);
-		}
-
-		yield return new WaitForSeconds(1.0f);
+		DialogManager.Manager.WriteLine(line);
 		Destroy(obj);
-		DialogManager.Manager.textBox.SetActive(false);
+		yield return new WaitForSeconds(0.0f);
 	}
 }

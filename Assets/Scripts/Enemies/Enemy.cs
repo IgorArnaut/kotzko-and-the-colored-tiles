@@ -2,15 +2,13 @@
 
 public abstract class Enemy : MonoBehaviour
 {
-	protected Animator anim;
-
+	// Stats
 	public Stats stats;
 
+	// Player
 	public bool playerCollided;
 
-	virtual protected void Awake() {
-		anim = GetComponent<Animator>();
-	}
+	abstract protected void Awake();
 
 	virtual protected void Start()
 	{
@@ -22,6 +20,7 @@ public abstract class Enemy : MonoBehaviour
 		Die();
 	}
 
+	// Death
 	abstract protected void Die();
 
 	protected void Kill()
@@ -29,15 +28,14 @@ public abstract class Enemy : MonoBehaviour
 		Destroy(gameObject);
 	}
 
+	// Collision
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.CompareTag("Player"))
-			playerCollided = true;
+		if (collision.gameObject.CompareTag("Player")) playerCollided = true;
 	}
 
 	private void OnCollisionExit2D(Collision2D collision)
 	{
-		if (collision.gameObject.CompareTag("Player"))
-			playerCollided = false;
+		if (collision.gameObject.CompareTag("Player")) playerCollided = false;
 	}
 }

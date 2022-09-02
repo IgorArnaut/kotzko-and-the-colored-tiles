@@ -1,24 +1,33 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class DialogManager : MonoBehaviour
 {
+	// Manager
 	public static DialogManager Manager;
 
+	// Compoentns
+	private AudioSource src;
+
+	// Text box
 	public GameObject textBox;
 	public TextMeshProUGUI dialogText;
 
-	private int i;
-	private bool running;
-
+	// Write text
 	[SerializeField]
-	private AudioClip clip;
+	public AudioClip clip;
+	[SerializeField]
+	public GameObject[] keyboard;
+	public bool running;
+	public bool finished;
+	private int i;
+
 
 	void Awake()
 	{
 		Manager = this;
+		GetComponents();
 	}
 
 	void Start()
@@ -26,38 +35,98 @@ public class DialogManager : MonoBehaviour
 		i = 0;
 	}
 
-	public void Write(string[] lines)
+	// Get Components
+	private void GetComponents()
+	{
+		src = GetComponent<AudioSource>();
+	}
+
+	// Stop writing
+	public void StopWriting()
+	{
+		if (Input.GetKeyDown(KeyCode.X))
+		{
+			keyboard[1].GetComponent<Animator>().SetTrigger("press");
+			StopAllCoroutines();
+
+			textBox.SetActive(false);
+			foreach (GameObject key in keyboard) key.SetActive(false);
+
+			dialogText.text = "";
+			running = false;
+			i = 0;
+		}
+	}
+
+	// Write text
+	public void WriteLine(string line)
 	{
 		textBox.SetActive(true);
+		StartCoroutine(CWriteLine(line));
+		textBox.SetActive(false);
+	}
 
-		if (Input.GetKeyDown(KeyCode.E) && !running)
+	public void WriteLines(string[] lines)
+	{
+		textBox.SetActive(true);
+		foreach (GameObject key in keyboard) key.SetActive(true);
+
+		if (Input.GetKeyDown(KeyCode.Z) && !running)
 		{
+			keyboard[0].GetComponent<Animator>().SetTrigger("press");
+
 			if (i < lines.Length)
 			{
-				StartCoroutine(Write(lines[i]));
+				StartCoroutine(CWriteLine(lines[i]));
 				i++;
 			}
 			else
 			{
-				i = 0;
-				dialogText.text = "";
 				textBox.SetActive(false);
+				foreach (GameObject key in keyboard) key.SetActive(false);
+
+				dialogText.text = "";
+				i = 0;
 			}
 		}
 	}
 
-	private IEnumerator Write(string line)
+	public void WriteLines2(string[] lines)
+	{
+		textBox.SetActive(true);
+		StartCoroutine(CWriteLines(lines));
+		textBox.SetActive(false);
+	}
+
+	// Coroutines
+	private IEnumerator CWriteLine(string line)
 	{
 		running = true;
-		dialogText.text = "";
+		dialogText.text = "*<indent=4%> ";
 
 		foreach (char c in line)
 		{
+			src.PlayOneShot(clip);
 			dialogText.text += c;
-			GetComponent<AudioSource>().PlayOneShot(clip);
-			yield return new WaitForSeconds(0.05f);
+			yield return new WaitForSeconds(0.03f);
+		}
+
+		dialogText.text += "</indent>";
+		running = false;
+	}
+
+	private IEnumerator CWriteLines(string[] lines)
+	{
+		finished = false;
+		running = true;
+
+		foreach (string line in lines)
+		{
+			CWriteLine(line);
+			yield return new WaitForSeconds(1.0f);
 		}
 
 		running = false;
+		finished = true;
 	}
 }

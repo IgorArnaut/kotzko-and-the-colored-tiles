@@ -1,27 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class BattleManager : MonoBehaviour
 {
+	// Components
+	private AudioSource src;
+
+	// Units
+	private GameObject player;
+	private GameObject enemy;
+
+	// Victory & Defeat
 	[SerializeField]
 	private string[] defeat;
 	[SerializeField]
 	private string[] victory;
-
-	private GameObject player;
-	private GameObject enemy;
-
-	[SerializeField]
-	private GameObject textBox;
-	[SerializeField]
-	private TextMeshProUGUI dialogText;
-
 	private bool once;
 
-	[SerializeField]
-	private AudioClip clip;
+	void Awake()
+	{
+		GetComponents();
+	}
 
 	void Start()
 	{
@@ -31,51 +30,37 @@ public class BattleManager : MonoBehaviour
 
 	void Update()
 	{
-		LoseWin();
+		Victory();
+		Defeat();
 	}
 
-	private void LoseWin()
+	// Get Components
+	private void GetComponents()
+	{
+		src = GetComponent<AudioSource>();
+	}
+
+	// Defeat
+	private void Defeat()
 	{
 		if (player == null && !once)
 		{
 			once = true;
-
 			MusicManager.Manager.Stop();
 			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[0]);
-			
-			StartCoroutine(Write(defeat, "GameOver"));
-		}
-
-		if (enemy == null && !once) {
-			once = true;
-
-			MusicManager.Manager.Stop();
-			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[1]);
-			
-			StartCoroutine(Write(victory, "Dungeon"));
+			DialogManager.Manager.WriteLines2(defeat);
+			SceneManager2.Manager.Transition("GameOver");
 		}
 	}
 
-	private IEnumerator Write(string[] lines, string sceneName)
-	{
-		yield return new WaitForSeconds(2.0f);
-		textBox.SetActive(true);
-
-		foreach (string line in lines)
-		{
-			dialogText.text = "";
-
-			foreach (char c in line)
-			{
-				dialogText.text += c;
-				GetComponent<AudioSource>().PlayOneShot(clip);
-				yield return new WaitForSeconds(0.05f);
-			}
-			
-			yield return new WaitForSeconds(1.0f);
+	// Victory
+	private void Victory() {
+		if (enemy == null && !once) {
+			once = true;
+			MusicManager.Manager.Stop();
+			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[1]);
+			DialogManager.Manager.WriteLines2(victory);
+			SceneManager2.Manager.Transition("Dungeon");
 		}
-
-		textBox.SetActive(false);
-		SceneManager2.Manager.Transition(sceneName);
 	}
 }

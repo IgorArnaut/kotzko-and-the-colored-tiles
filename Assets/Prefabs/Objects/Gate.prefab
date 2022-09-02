@@ -92,7 +92,7 @@ SortingGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2736187516557526418}
-  m_Enabled: 1
+  m_Enabled: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -206,7 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionX: 0
   directionY: 0
-  flip: 0
 --- !u!1 &4189571455747872354
 GameObject:
   m_ObjectHideFlags: 0

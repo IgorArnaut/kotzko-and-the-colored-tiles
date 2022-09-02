@@ -1,55 +1,49 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-	public static SaveManager Instance;
+	// Instance
+	public static SaveManager Manager;
 
-	public Vector2 playerPos;
-	public bool[] stepped;
-	public bool[] open;
-	public bool[] locked;
+	// Data
+	[SerializeField]
+	private Progress progress;
 
 	void Awake()
 	{
-		if (Instance != null)
-		{
-			Destroy(gameObject);
-			return;
-		}
-
-		Instance = this;
-		DontDestroyOnLoad(gameObject);
+		Manager = this;
 	}
 
-	public void Save()
+	// Save data
+	public void SaveData()
 	{
-		playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-		stepped = GameObject.FindGameObjectsWithTag("GreenTile")
+		progress.playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+		progress.cameraPos = Camera.main.transform.position;
+		progress.stepped = GameObject.FindGameObjectsWithTag("GreenTile")
 			.OrderBy(gt => gt.name)
 			.Select(gt => gt.GetComponent<GreenTileAction>())
 			.Select(gt => gt.stepped)
 			.ToArray();
-
-		open = GameObject.FindGameObjectsWithTag("Chest")
+		progress.open = GameObject.FindGameObjectsWithTag("Chest")
 			.OrderBy(c => c.name)
 			.Select(c => c.GetComponent<Chest>())
 			.Select(c => c.open)
 			.ToArray();
-
-		locked = GameObject.FindGameObjectsWithTag("Gate")
+		progress.locked = GameObject.FindGameObjectsWithTag("Gate")
 			.OrderBy(g => g.name)
 			.Select(g => g.GetComponent<Gate>())
 			.Select(g => g.locked)
 			.ToArray();
+		Debug.Log("Progress saved.");
 	}
 
-	public void Load()
+	// Load data
+	public void LoadData()
 	{
 		Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+		Transform camera = Camera.main.transform;
 
 		GreenTileAction[] greenTiles = GameObject.FindGameObjectsWithTag("GreenTile")
 			.OrderBy(gt => gt.name)
@@ -68,18 +62,14 @@ public class SaveManager : MonoBehaviour
 
 		player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-		if (Instance != null)
+		if (!progress.IsNULL())
 		{
-			player.position = playerPos;
-
-			foreach (var gt in greenTiles.Zip(stepped, Tuple.Create))
-				gt.Item1.stepped = gt.Item2;
-
-			foreach (var c in chests.Zip(open, Tuple.Create))
-				c.Item1.open = c.Item2;
-
-			foreach (var g in gates.Zip(locked, Tuple.Create))
-				g.Item1.locked = g.Item2;
+			player.position = progress.playerPos;
+			camera.position = camera.position;
+			foreach (var gt in greenTiles.Zip(progress.stepped, Tuple.Create)) gt.Item1.stepped = gt.Item2;
+			foreach (var c in chests.Zip(progress.open, Tuple.Create)) c.Item1.open = c.Item2;
+			foreach (var g in gates.Zip(progress.locked, Tuple.Create)) g.Item1.locked = g.Item2;
+			Debug.Log("Progress loaded.");
 		}
 	}
 }

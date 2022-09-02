@@ -2,21 +2,30 @@
 
 public abstract class Gate : MonoBehaviour
 {
+	// Components
 	private Animator anim;
+	protected AudioSource src;
 
+	// Unlock
 	[SerializeField]
 	protected AudioClip[] clips;
 	public bool locked;
 
 	void Awake()
 	{
-		anim = GetComponent<Animator>();
-
+		GetComponents();
 	}
 
 	void Start()
 	{
 		locked = true;
+	}
+
+	// Get Components
+	private void GetComponents()
+	{
+		anim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +37,7 @@ public abstract class Gate : MonoBehaviour
 			if (!locked)
 			{
 				anim.SetBool("open", true);
-				GetComponent<AudioSource>().PlayOneShot(clips[1]);
+				src.PlayOneShot(clips[1]);
 			}
 		}
 	}
@@ -40,10 +49,11 @@ public abstract class Gate : MonoBehaviour
 			if (!locked)
 			{
 				anim.SetBool("open", false);
-				GetComponent<AudioSource>().PlayOneShot(clips[2]);
+				src.PlayOneShot(clips[2]);
 			}
 		}
 	}
 
+	// Unlock
 	public abstract void Unlock();
 }

@@ -1,78 +1,78 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossStrike : StateMachineBehaviour
 {
+	// Components
 	private Animator anim;
+	private AudioSource src;
+	private Enemy enemy;
 	private SpriteRenderer sr;
 	private Transform transform;
-	
-	private Stats stats;
 
+	// Damage Player
 	private GameObject player;
 	[SerializeField]
-	private Stats playerStats;
-	[SerializeField]
 	private BoolValue defend;
+	[SerializeField]
+	private Stats playerStats;
 
+	// Fly
+	private Stats stats;
 	[SerializeField]
 	private AudioClip[] clips;
-
-	[SerializeField]
-	private List<Vector2> targets;
 	private Vector2 target;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		anim = animator;
-		sr = animator.gameObject.GetComponent<SpriteRenderer>();
-		transform = animator.gameObject.transform;
-
+		GetComponents(animator);
 		Init();
-		anim.GetComponent<AudioSource>().PlayOneShot(clips[0]);
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		MoveToTarget();
-		HurtPlayer();
+		Fly();
+		DamagePlayer();
 	}
 
+	// Get Components
+	private void GetComponents(Animator animator)
+	{
+		anim = animator;
+		src = anim.gameObject.GetComponent<AudioSource>();
+		enemy = anim.gameObject.GetComponent<Enemy>();
+		sr = anim.gameObject.GetComponent<SpriteRenderer>();
+		transform = anim.gameObject.transform;
+	}
+
+	// Initialize
 	private void Init()
 	{
-		stats = anim.gameObject.GetComponent<Boss>().stats;
+		src.PlayOneShot(clips[0]);
 		player = GameObject.FindGameObjectWithTag("Player");
-		target = targets[Random.Range(0, targets.Count)];
+		stats = enemy.stats;
+		target = new Vector2(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
 	}
 
-	private void MoveToTarget()
+	// Fly
+	private void Fly()
 	{
-		if (transform.position.x > target.x)
-			sr.flipX = true;
-
-		if (transform.position.x < target.x)
-			sr.flipX = false;
-
-		Vector2 delta = Vector2.Lerp(transform.position, target, Time.deltaTime * stats.SPEED * 4.0f);
+		if (transform.position.x > target.x) sr.flipX = true; 
+		if (transform.position.x < target.x) sr.flipX = false;
+		Vector2 delta = Vector2.Lerp(transform.position, target, Time.deltaTime * stats.SPEED * 5.0f);
 		transform.position = delta;
 		anim.SetFloat("horizontal", delta.normalized.x);
 		anim.SetFloat("vertical", delta.normalized.y);
-
 		anim.SetBool("strike", Vector2.Distance(transform.position, target) == 0.0f);
 	}
 
-	private void HurtPlayer() {
-		bool playerCollided = anim.gameObject.GetComponent<Enemy>().playerCollided;
+	// Damage Player
+	private void DamagePlayer() {
+		bool playerCollided = enemy.playerCollided;
 
 		if (playerCollided && player != null)
 		{
-
-			if (!defend.value)
-				player.GetComponent<Animator>().SetTrigger("hurt");
-			else
-				anim.GetComponent<AudioSource>().PlayOneShot(clips[1]);
-
-
+			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt");
+			else src.PlayOneShot(clips[1]);
 			playerStats.TakeDamge((int)(1.0f));
 		}
 	}

@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class PinkTileAction : TileAction
 {
+	// Player
 	[SerializeField]
 	private Stats playerStats;
-
 	public BoolValue heal;
 
+	// Heal
 	private IEnumerator Heal()
 	{
 		while (playerStats.HP < playerStats.MAXHP)
