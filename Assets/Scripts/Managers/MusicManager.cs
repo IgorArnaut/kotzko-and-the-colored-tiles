@@ -24,17 +24,19 @@ public class MusicManager : MonoBehaviour
 		src = GetComponent<AudioSource>();
 	}
 
-	// Play & stop
+	// Plays a oneshot
 	public void PlayOneshot(AudioClip clip)
 	{
-		src.PlayOneShot(clip);
+		if (!src.isPlaying) src.PlayOneShot(clip);
 	}
 
+	// Plays audio clip
 	public void Play()
 	{
 		src.Play();
 	}
 
+	// Stops playing
 	public void Stop()
 	{
 		src.Stop();

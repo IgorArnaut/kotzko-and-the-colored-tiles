@@ -27,13 +27,14 @@ public class PlayerBattle : Player
 		GetComponents();
 	}
 
-	private void Start()
+	void Start()
 	{
 		anim.SetFloat("lastMoveX", 1.0f);
 	}
 
-	void Update()
+	override protected void Update()
 	{
+		base.Update();
 		Defend();
 
 		if (!defend.value)
@@ -51,7 +52,7 @@ public class PlayerBattle : Player
 			Move();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
@@ -60,6 +61,7 @@ public class PlayerBattle : Player
 		sr = GetComponent<SpriteRenderer>();
 	}
 
+	// Moves Player
 	override protected void Move()
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
@@ -71,11 +73,13 @@ public class PlayerBattle : Player
 		anim.SetFloat("speed", rb2D.velocity.sqrMagnitude);
 	}
 
+	// Dies
 	protected override void Die()
 	{
 		if (stats.IsDead()) anim.SetTrigger("dead");
 	}
 
+	// Jumps
 	private void Jump()
 	{
 		grounded = IsGrounded();
@@ -87,16 +91,19 @@ public class PlayerBattle : Player
 		}
 	}
 
+	// Checks if Player is grounded
 	private bool IsGrounded() {
 		RaycastHit2D rc = Physics2D.CapsuleCast(cc2D.bounds.center, cc2D.bounds.size, CapsuleDirection2D.Horizontal, 0.0f, Vector2.down , 0.1f, ground);
 		return rc.collider != null;
 	}
 
+	// Attacks
 	private void Attack()
 	{
 		if (Input.GetMouseButtonDown(0)) anim.SetTrigger("attack");
 	}
 
+	// Defends
 	private void Defend()
 	{
 		if (Input.GetMouseButton(1))
@@ -111,6 +118,7 @@ public class PlayerBattle : Player
 		}
 	}
 
+	// Heals
 	private void Heal()
 	{
 		if (Input.GetKeyDown(KeyCode.Q)) anim.SetTrigger("heal");

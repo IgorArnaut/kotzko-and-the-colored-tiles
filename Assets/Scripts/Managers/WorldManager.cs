@@ -1,53 +1,19 @@
-using System;
-using System.Collections;
-using UnityEngine;
-
-public class WorldManager : MonoBehaviour
+public class WorldManager : GameManager
 {
-	// Components
-	private AudioSource src;
-
-	// Units
-	private GameObject player;
-
-	// Victory & Defeat
-	[SerializeField]
-	private string[] defeat;
 	private bool once;
-
-	void Awake()
-	{
-		GetComponents();
-	}
-
-	void Start()
-	{
-		player = GameObject.FindGameObjectWithTag("Player");
-	}
 
 	void Update()
 	{
 		Defeat();
 	}
 
-	// Get Components
-	private void GetComponents()
-	{
-		src = GetComponent<AudioSource>();
-	}
-
-	// Defeat
+	// Does something on defeat
 	private void Defeat()
 	{
 		if (player == null && !once)
 		{
+			StartCoroutine(DoSomething(MusicManager.Manager.clips[0], defeat, "GameOver"));
 			once = true;
-			MusicManager.Manager.Stop();
-			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[0]);
-			DialogManager.Manager.WriteLines2(defeat);
-
-			if (!DialogManager.Manager.running)
-				SceneManager2.Manager.Transition("GameOver");
 		}
 	}
 }

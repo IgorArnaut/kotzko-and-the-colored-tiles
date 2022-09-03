@@ -14,13 +14,14 @@ public class PlayerWorld : Player
 	public BoolValue orange;
 	public BoolValue lemon;
 
-	protected override void Awake()
+	override protected void Awake()
 	{
 		GetComponents();
 	}
 
-	void Update()
+	override protected void Update()
 	{
+		base.Update();
 		ChangeStatus();
 		Die();
 	}
@@ -31,7 +32,7 @@ public class PlayerWorld : Player
 		Swim();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
@@ -39,7 +40,7 @@ public class PlayerWorld : Player
 		sr = GetComponent<SpriteRenderer>();
 	}
 
-	// Move
+	// Moves Player
 	override protected void Move()
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
@@ -68,14 +69,14 @@ public class PlayerWorld : Player
 		anim.SetFloat("speed", rb2D.velocity.sqrMagnitude);
 	}
 
-	// Swim
+	// Swims
 	private void Swim()
 	{
 		transform.GetChild(1).gameObject.SetActive(inWater.value);
 		anim.SetBool("inWater", inWater.value);
 	}
 
-	// Die
+	// Dies
 	protected override void Die()
 	{
 		if (orange.value && inWater.value) anim.SetTrigger("deadw");
@@ -86,7 +87,7 @@ public class PlayerWorld : Player
 		}
 	}
 
-	// Change status
+	// Changes status effect
 	private void ChangeStatus()
 	{
 		anim.SetBool("electric", electric.value);

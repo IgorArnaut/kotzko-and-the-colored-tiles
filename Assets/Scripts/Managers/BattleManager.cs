@@ -1,66 +1,46 @@
-using System.Collections;
 using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+public class BattleManager : GameManager
 {
-	// Components
-	private AudioSource src;
-
 	// Units
-	private GameObject player;
 	private GameObject enemy;
 
-	// Victory & Defeat
-	[SerializeField]
-	private string[] defeat;
+	// Messages
 	[SerializeField]
 	private string[] victory;
+	[SerializeField]
+	private string sceneName;
 	private bool once;
 
-	void Awake()
+	override protected void Start()
 	{
-		GetComponents();
-	}
-
-	void Start()
-	{
-		player = GameObject.FindGameObjectWithTag("Player");
+		base.Start();
 		enemy = GameObject.FindGameObjectWithTag("Enemy");
 	}
 
 	void Update()
 	{
-		Victory();
 		Defeat();
+		Victory();
 	}
 
-	// Get Components
-	private void GetComponents()
-	{
-		src = GetComponent<AudioSource>();
-	}
-
-	// Defeat
+	// Does something on defeat
 	private void Defeat()
 	{
 		if (player == null && !once)
 		{
+			StartCoroutine(DoSomething(MusicManager.Manager.clips[0], defeat, "GameOver"));
 			once = true;
-			MusicManager.Manager.Stop();
-			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[0]);
-			DialogManager.Manager.WriteLines2(defeat);
-			SceneManager2.Manager.Transition("GameOver");
 		}
 	}
 
-	// Victory
-	private void Victory() {
-		if (enemy == null && !once) {
+	// Does something on victory
+	private void Victory()
+	{
+		if (enemy == null && !once)
+		{
+			StartCoroutine(DoSomething(MusicManager.Manager.clips[1], victory, sceneName));
 			once = true;
-			MusicManager.Manager.Stop();
-			MusicManager.Manager.PlayOneshot(MusicManager.Manager.clips[1]);
-			DialogManager.Manager.WriteLines2(victory);
-			SceneManager2.Manager.Transition("Dungeon");
 		}
 	}
 }

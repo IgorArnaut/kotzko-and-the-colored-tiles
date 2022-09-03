@@ -25,7 +25,7 @@ public class MinionMove : StateMachineBehaviour
 		if (player != null) FollowPlayer();	else anim.SetBool("walk", false);
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -34,14 +34,14 @@ public class MinionMove : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		stats = enemy.stats;
 	}
 
-	// Follow player
+	// Follows player
 	private void FollowPlayer()
 	{
 		bool playerCollided = enemy.playerCollided;

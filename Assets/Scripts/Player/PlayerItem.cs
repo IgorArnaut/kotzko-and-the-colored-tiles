@@ -16,13 +16,13 @@ public class PlayerItem : StateMachineBehaviour
 		rb2D.bodyType = RigidbodyType2D.Dynamic;
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		rb2D = animator.gameObject.GetComponent<Rigidbody2D>();
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
 		rb2D.bodyType = RigidbodyType2D.Static;

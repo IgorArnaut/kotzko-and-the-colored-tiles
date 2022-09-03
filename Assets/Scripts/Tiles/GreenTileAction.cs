@@ -29,19 +29,19 @@ public class GreenTileAction : TileAction
 		DimTile();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		sr = GetComponent<SpriteRenderer>();
 	}
 
-	// Dim tile
+	// Dims tile
 	private void DimTile()
 	{
 		if (stepped) sr.color = Color.HSVToRGB(0.0f, 0.0f, 0.8f);
 	}
 
-	// Load Scene
+	// Loads a Scene
 	private void LoadScene()
 	{
 		clue.SetActive(false);
@@ -58,7 +58,7 @@ public class GreenTileAction : TileAction
 			clue.SetActive(true);
 			clue.GetComponent<Animator>().SetTrigger("exclamation");
 			player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-			SaveManager.Manager.SaveData();
+			SaveLoadManager.Manager.SaveData();
 			Invoke(nameof(LoadScene), 1.0f);
 		}
 	}

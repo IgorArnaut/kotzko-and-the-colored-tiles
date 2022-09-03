@@ -3,11 +3,10 @@ using UnityEngine;
 public class Status : MonoBehaviour
 {
 	// Components
+	[SerializeField]
 	private Animator anim;
 
 	// Status
-	[SerializeField]
-	private GameObject status;
 	[SerializeField]
 	private BoolValue electric;
 	[SerializeField]
@@ -17,28 +16,17 @@ public class Status : MonoBehaviour
 	[SerializeField]
 	private BoolValue lemon;
 
-	void Awake()
-	{
-		GetComponents();
-	}
-
 	void Update()
 	{
 		if (electric.value || heal.value || orange.value || lemon.value)
 		{
-			status.SetActive(true);
+			anim.gameObject.SetActive(true);
 			ChangeStatus();
 		}
-		else status.SetActive(false);
+		else anim.gameObject.SetActive(false);
 	}
 
-	// Get Components
-	private void GetComponents()
-	{
-		anim = status.GetComponent<Animator>();
-	}
-
-	// Status
+	// Changes status effect
 	private void ChangeStatus()
 	{
 		anim.SetBool("electric", electric.value);

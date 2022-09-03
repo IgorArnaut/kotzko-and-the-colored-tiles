@@ -8,7 +8,7 @@ public class PinkTileAction : TileAction
 	private Stats playerStats;
 	public BoolValue heal;
 
-	// Heal
+	// Heals Player
 	private IEnumerator Heal()
 	{
 		while (playerStats.HP < playerStats.MAXHP)

@@ -37,7 +37,7 @@ public class EnemyAttack : StateMachineBehaviour
 		DamagePlayer();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -45,14 +45,14 @@ public class EnemyAttack : StateMachineBehaviour
 		enemy = anim.gameObject.GetComponent<Enemy>();
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		stats = enemy.stats;
 	}
 
-	// Damage Player
+	// Damages Player
 	private void DamagePlayer()
 	{
 		if (playerCollided && !playerStats.IsDead() && player != null)

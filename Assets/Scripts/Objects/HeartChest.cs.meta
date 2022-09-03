@@ -5,6 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - playerInventory: {fileID: 11400000, guid: 60167b52fa446754da665391f5f28220, type: 2}
+  - clip: {fileID: 8300000, guid: 98097597221e21146b8f165de934b9c6, type: 3}
+  - heart: {fileID: 4052481613748482320, guid: eb717ce1622258c4189e800ef524396a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

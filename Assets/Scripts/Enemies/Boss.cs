@@ -11,30 +11,19 @@ public class Boss : Enemy
 	[SerializeField]
 	private LayerMask ground;
 
-	// Health bar
-	[SerializeField]
-    private RectTransform redBar;
-	private float width;
-
 	override protected void Awake()
 	{
 		GetComponents();
 	}
 
-	override protected void Start()
-	{
-        base.Start();
-		width = redBar.sizeDelta.x;
-	}
-
 	override protected void Update()
 	{
         base.Update();
-		ResizeHealthBar();
+		BossHealth.bar.ResizeHealthBar(stats.HP, stats.MAXHP);
 		ChangeColor();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
@@ -43,14 +32,7 @@ public class Boss : Enemy
 
 	}
 
-	// Health bar
-	private void ResizeHealthBar()
-	{
-		float delta = stats.HP > 0.0f ? 1.0f * stats.HP / stats.MAXHP : 0.0f;
-		redBar.sizeDelta = Vector2.Lerp(redBar.sizeDelta, new Vector2(width * delta, redBar.sizeDelta.y), Time.deltaTime / 0.01f);
-	}
-
-	// ChangeColor
+	// Changes color of boss
 	private void ChangeColor()
 	{
 		if (stats.HP < stats.MAXHP / 2.0f)

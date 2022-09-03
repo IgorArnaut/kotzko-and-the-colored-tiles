@@ -2,11 +2,11 @@
 
 public class KeyChest : Chest
 {
-	// Item
+	// Key
 	[SerializeField]
 	private GameObject key;
 
-	// Give items
+	// Gives a key
 	public override void GiveItems() 
 	{
 		key = Instantiate(key, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));

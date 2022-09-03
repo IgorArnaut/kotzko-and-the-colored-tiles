@@ -2,11 +2,11 @@
 
 public class BossChest : Chest
 {
-	// Item
+	// Boss key
 	[SerializeField]
 	private GameObject bossKey;
 
-	// Give items
+	// Gives a boss key
 	public override void GiveItems()
 	{
 		bossKey = Instantiate(bossKey, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));

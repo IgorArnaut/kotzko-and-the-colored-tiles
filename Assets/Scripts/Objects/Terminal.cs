@@ -9,10 +9,10 @@ public class Terminal : MonoBehaviour
 	// Context clue
 	private GameObject clue;
 	private bool inRange;
-
-	// Write text
 	[SerializeField]
 	private AudioClip[] clips;
+
+	// Write text
 	[SerializeField] 
 	private string[] lines;
 
@@ -29,20 +29,24 @@ public class Terminal : MonoBehaviour
 	void Update()
 	{
 		StartDialog();
-		DialogManager.Manager.StopWriting();
+		DialogManager.Manager.CancelWriting();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
 		src = GetComponent<AudioSource>();
 	}
 
-	// Start dialog
+	// Starts dialog
 	private void StartDialog()
 	{
-		if (inRange && Input.GetKeyDown(KeyCode.Z)) DialogManager.Manager.WriteLines(lines);
+		if (inRange && Input.GetKeyDown(KeyCode.E))
+		{
+			DialogManager.Manager.SetActive(true, true, true);
+			DialogManager.Manager.WriteLines(lines);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -65,9 +69,7 @@ public class Terminal : MonoBehaviour
 			anim.SetBool("inRange", false);
 			src.PlayOneShot(clips[1]);
 			clue.SetActive(false);
-
-			DialogManager.Manager.textBox.SetActive(false);
-			foreach (GameObject key in DialogManager.Manager.keyboard) key.SetActive(false);
+			DialogManager.Manager.SetActive(false, false, false);
 		}
 	}
 }

@@ -6,7 +6,7 @@ public class BossGate : Gate
 	[SerializeField]
 	private Inventory playerInventory;
 
-	// Unlock
+	// Unlocks gate
 	public override void Unlock()
 	{
 		if (playerInventory.BOSSKEY > 0 && locked)

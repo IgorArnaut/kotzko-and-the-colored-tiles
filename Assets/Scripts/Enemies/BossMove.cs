@@ -25,7 +25,7 @@ public class BossMove : StateMachineBehaviour
 		if (player != null) FollowPlayer();	else anim.SetBool("walk", false);
 	}
 
-	// GetComponents
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -34,7 +34,7 @@ public class BossMove : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -42,7 +42,7 @@ public class BossMove : StateMachineBehaviour
 		Debug.Log(stats);
 	}
 
-	// Follow Player
+	// Follows Player
 	private void FollowPlayer()
 	{
 		bool playerCollided = enemy.playerCollided;
@@ -59,7 +59,7 @@ public class BossMove : StateMachineBehaviour
 		if (playerCollided && player != null) Attack();
 	}
 
-	// Attack
+	// Attacks Player
 	private void Attack() {
 		int rnd = Random.Range(0, 2);
 		if (rnd == 0) anim.SetTrigger("attack");

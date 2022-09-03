@@ -87,6 +87,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: PlayOneShot
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: c8cbb8c43c25ecf43bba8047eca14151,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5
     functionName: Kill
     data: 

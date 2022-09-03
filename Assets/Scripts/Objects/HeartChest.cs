@@ -2,11 +2,11 @@
 
 public class HeartChest : Chest
 {
-	// Item
+	// Heart
 	[SerializeField]
 	private GameObject heart;
 
-	// Give items
+	// Gives hearts
 	public override void GiveItems()
 	{
 		heart = Instantiate(heart, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));

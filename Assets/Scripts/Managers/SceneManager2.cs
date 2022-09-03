@@ -21,13 +21,13 @@ public class SceneManager2 : MonoBehaviour
 		anim = GetComponentInChildren<Animator>();
 	}
 
-	// Transition
+	// Transitions into a Scene
 	public void Transition(string sceneName) {
         anim.SetTrigger("transition");
         StartCoroutine(LoadScene(sceneName));
     }
 
-	// Load Scene
+	// Loads a Scene in time
     private IEnumerator LoadScene(string sceneName) {
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(sceneName);

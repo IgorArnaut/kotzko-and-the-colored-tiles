@@ -9,19 +9,19 @@ public class Progress : ScriptableObject
 	public bool[] open;
 	public bool[] locked;
 
-	// Reset progress
-	public void Reset()
+	// Resets progress
+	public void ResetProgress()
 	{
-		playerPos = Vector2.zero;
-		cameraPos = Vector2.zero;
-		stepped = null;
-		open = null;
-		locked = null;
+		this.playerPos = Vector2.zero;
+		this.cameraPos = Vector2.zero;
+		this.stepped = null;
+		this.open = null;
+		this.locked = null;
 	}
 
-	// Is null?
+	// Checks if progress is null
 	public bool IsNULL()
 	{
-		return Vector2.Distance(playerPos, Vector2.zero) != 0.0f && Vector2.Distance(cameraPos, Vector2.zero) != 0.0f && stepped == null && open == null && locked == null;
+		return Vector2.Distance(this.playerPos, Vector2.zero) != 0.0f && Vector2.Distance(this.cameraPos, Vector2.zero) != 0.0f && this.stepped == null && this.open == null && this.locked == null;
 	}
 }

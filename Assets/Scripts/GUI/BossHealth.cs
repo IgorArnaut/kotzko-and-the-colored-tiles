@@ -1,24 +1,28 @@
 ﻿using UnityEngine;
 
-public class BossHealth : MonoBehaviour
+public class BossHealth : MonoBehaviour, IHealthBar
 {
+	public static BossHealth bar;
+
+	// Health bar
 	[SerializeField]
 	private RectTransform redBar;
-
-	private Stats bossStats;
-
 	private float width;
+
+	void Awake()
+	{
+		bar = this;
+	}
 
 	void Start()
 	{
-		bossStats = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>().stats;
-
 		width = redBar.sizeDelta.x;
 	}
 
-	void Update()
+	// Resizes boss health bar
+	public void ResizeHealthBar(int HP, int MAXHP)
 	{
-		float bossDelta = Mathf.Abs(1.0f * bossStats.HP / bossStats.MAXHP);
-		redBar.sizeDelta = Vector2.Lerp(redBar.sizeDelta, new Vector2(width * bossDelta, redBar.sizeDelta.y), 100.0f * Time.deltaTime);
+		float delta = HP > 0.0f ? 1.0f * HP / MAXHP : 0.0f;
+		redBar.sizeDelta = Vector2.Lerp(redBar.sizeDelta, new Vector2(width * delta, redBar.sizeDelta.y), Time.deltaTime / 0.01f);
 	}
 }

@@ -13,7 +13,7 @@ public class PlayerHeal : StateMachineBehaviour
 		Heal();
 	}
 
-	// Heal
+	// Heals
 	private void Heal()
 	{
 		if (inventory.HEARTS > 0)

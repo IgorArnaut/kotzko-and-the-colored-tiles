@@ -4,14 +4,14 @@ public class MonsterGate : Gate
 {
 	// Green tiles
 	[SerializeField] 
-	private GreenTileAction[] greenTiles;
+	private Portal[] greenTiles;
 
-	// Unlocked
+	// Unlocks gate
 	public override void Unlock()
 	{
 		if (locked && greenTiles.Length != 0)
 		{
-			foreach (GreenTileAction tile in greenTiles) if (tile.stepped == false) return;
+			foreach (Portal tile in greenTiles) if (tile.stepped == false) return;
 			locked = false;
 			src.PlayOneShot(clips[0]);
 		}

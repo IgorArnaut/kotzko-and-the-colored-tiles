@@ -9,7 +9,7 @@ public class BossFall : StateMachineBehaviour
 	private Enemy enemy;
 	private Rigidbody2D rb2D;
 
-	// Die
+	// Death
 	[SerializeField]
 	private AudioClip clip;
 	[SerializeField]
@@ -20,6 +20,7 @@ public class BossFall : StateMachineBehaviour
 	{
 		GetComponents(animator);
 		Init();
+		src.PlayOneShot(clip);
 	}
 
 	public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,7 +28,7 @@ public class BossFall : StateMachineBehaviour
 		if (IsGrounded()) anim.SetTrigger("dead");
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -37,17 +38,16 @@ public class BossFall : StateMachineBehaviour
 		rb2D = anim.gameObject.GetComponent<Rigidbody2D>();
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
-		src.PlayOneShot(clip);
 		rb2D.gravityScale = 5.0f;
 		stats = enemy.stats;
 		stats.HP = 1;
 
 	}
 
-	// Is grounded?
+	// Checks if boss is grounded
 	private bool IsGrounded()
 	{
 		RaycastHit2D rc = Physics2D.CapsuleCast(cc2D.bounds.center, cc2D.bounds.size, CapsuleDirection2D.Horizontal, 0.0f, Vector2.down, 0.1f, ground);

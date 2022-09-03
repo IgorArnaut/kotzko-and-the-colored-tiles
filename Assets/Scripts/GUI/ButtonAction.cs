@@ -27,25 +27,16 @@ public class ButtonAction : MonoBehaviour
 		src = GetComponent<AudioSource>();
 	}
 
-	// Reset data
+	// Resets data & progress
 	private void ResetData()
 	{
-		progress.Reset();
+		progress.ResetProgress();
+		playerStats.ResetStats(100, 100, 10, 10, 5.0f);
+		playerInventory.ResetInventory();
 		Debug.Log("Progress reset.");
-
-		playerStats.MAXHP = 100;
-		playerStats.HP = 100;
-		playerStats.ATK = 10;
-		playerStats.DEF = 10;
-		playerStats.SPEED = 5.0f;
-
-		playerInventory.GEMS = 0;
-		playerInventory.HEARTS = 0;
-		playerInventory.KEYS = 0;
-		playerInventory.BOSSKEY = 0;
 	}
 
-	// Play Game
+	// Plays Game
 	public void PlayGame(string sceneName)
 	{
 		Debug.Log("Playing game...");
@@ -54,7 +45,7 @@ public class ButtonAction : MonoBehaviour
 		SceneManager2.Manager.Transition(sceneName);
 	}
 
-	// Quit Game
+	// Quits Game
 	public void QuitGame()
 	{
 		Debug.Log("Quitting game...");

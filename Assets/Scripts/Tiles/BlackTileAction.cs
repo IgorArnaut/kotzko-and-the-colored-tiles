@@ -28,13 +28,13 @@ public class BlackTileAction : TileAction
 		black = IsBlack();	
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		tilemap = GetComponent<Tilemap>();
 	}
 
-	// Is black?
+	// Checks if tile is black?
 	private bool IsBlack()
 	{
 		foreach (Vector3Int tilePos in tilemap.cellBounds.allPositionsWithin) if (tilemap.GetAnimationFrame(tilePos) == 0) return true;
@@ -48,7 +48,7 @@ public class BlackTileAction : TileAction
 
 	override protected void DoEnterAction()
 	{
-		if (black) playerStats.TakeDamge(playerStats.HP);
+		if (black) playerStats.HP = 0;
 	}
 
 	override protected void DoExitAction()

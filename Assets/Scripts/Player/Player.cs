@@ -7,13 +7,18 @@ public abstract class Player : MonoBehaviour
 
 	abstract protected void Awake();
 
-	// Move
+	virtual protected void Update()
+	{
+		PlayerHealth.bar.ResizeHealthBar(stats.HP, stats.MAXHP);
+	}
+
+	// Moves Player
 	abstract protected void Move();
 
-	// Die
+	// Dies
 	abstract protected void Die();
 
-	// Kill
+	// Kills Player
 	public void Kill()
 	{
 		Destroy(gameObject);

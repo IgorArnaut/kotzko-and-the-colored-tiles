@@ -23,7 +23,7 @@ public class MinionIdle : StateMachineBehaviour
 		Stand();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -31,13 +31,13 @@ public class MinionIdle : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
-	// Stand
+	// Stands
 	private void Stand()
 	{
 		if (player != null)

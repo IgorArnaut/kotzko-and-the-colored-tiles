@@ -10,7 +10,7 @@ public abstract class Enemy : MonoBehaviour
 
 	abstract protected void Awake();
 
-	virtual protected void Start()
+	void Start()
 	{
 		stats = ScriptableObject.Instantiate(stats);
 	}
@@ -20,9 +20,10 @@ public abstract class Enemy : MonoBehaviour
 		Die();
 	}
 
-	// Death
+	// Dies
 	abstract protected void Die();
 
+	// Kills Enemy
 	protected void Kill()
 	{
 		Destroy(gameObject);

@@ -32,13 +32,14 @@ public class PlayerAttack : StateMachineBehaviour
 		DamageEnemy();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
 		pb = anim.gameObject.GetComponent<PlayerBattle>();
 	}
 
+	// Damages Enemy
 	private void DamageEnemy()
 	{
 		if (enemyCollided && !enemyStats.IsDead() && enemy != null)

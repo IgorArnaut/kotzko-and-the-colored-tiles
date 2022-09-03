@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4877044531553474486}
   - component: {fileID: 6024556310918459538}
+  - component: {fileID: 6115794785038855389}
   - component: {fileID: 903227086229633393}
   - component: {fileID: 6744485398441523732}
-  - component: {fileID: 6115794785038855389}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -88,6 +88,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6115794785038855389
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510239331473270792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6572e28c3a48b946b162ba42241e622, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &903227086229633393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,23 +138,3 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: -0.21608193
---- !u!95 &6115794785038855389
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3510239331473270792}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6572e28c3a48b946b162ba42241e622, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

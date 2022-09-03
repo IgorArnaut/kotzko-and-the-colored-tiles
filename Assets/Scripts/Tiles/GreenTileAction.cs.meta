@@ -4,8 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - tileEntered: {fileID: 11400000, guid: cb654469683e315498705a257a45aac5, type: 2}
-  - playerPos: {fileID: 11400000, guid: 0c39ed1f294cbbb479bb4fa485c61b0b, type: 2}
+  - clip: {fileID: 8300000, guid: 75a5cd3c02b8f0f45b46d7d5f680687c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

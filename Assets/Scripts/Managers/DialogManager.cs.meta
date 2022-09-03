@@ -3,7 +3,10 @@ guid: 737a3d783cae5e949abf01cfd0aafd92
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - textBox: {instanceID: 0}
+  - dialogText: {instanceID: 0}
+  - clip: {fileID: 8300000, guid: 6b7b4252d40f4c842b393dd270756a2c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

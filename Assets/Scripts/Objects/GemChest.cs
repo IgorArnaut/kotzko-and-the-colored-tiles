@@ -2,11 +2,11 @@
 
 public class GemChest : Chest
 {
-	// Item
+	// Gem
 	[SerializeField]
 	private GameObject gem;
 
-	// Give items
+	// Gives gems
 	public override void GiveItems()
 	{
 		gem = Instantiate(gem, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));

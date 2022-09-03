@@ -23,7 +23,6 @@ public class DialogManager : MonoBehaviour
 	public bool finished;
 	private int i;
 
-
 	void Awake()
 	{
 		Manager = this;
@@ -33,6 +32,7 @@ public class DialogManager : MonoBehaviour
 	void Start()
 	{
 		i = 0;
+		finished = false;
 	}
 
 	// Get Components
@@ -41,37 +41,40 @@ public class DialogManager : MonoBehaviour
 		src = GetComponent<AudioSource>();
 	}
 
-	// Stop writing
-	public void StopWriting()
+	public void SetActive(bool tb, bool z, bool x)
+	{
+		textBox.SetActive(tb);
+		keyboard[0].SetActive(z);
+		keyboard[1].SetActive(x);
+	}
+
+	// Cancels writing
+	public void CancelWriting()
 	{
 		if (Input.GetKeyDown(KeyCode.X))
 		{
 			keyboard[1].GetComponent<Animator>().SetTrigger("press");
 			StopAllCoroutines();
-
-			textBox.SetActive(false);
-			foreach (GameObject key in keyboard) key.SetActive(false);
-
+			SetActive(false, false, false);
 			dialogText.text = "";
 			running = false;
 			i = 0;
 		}
 	}
 
-	// Write text
+	// Writes a line of text
 	public void WriteLine(string line)
 	{
-		textBox.SetActive(true);
+		finished = false;
 		StartCoroutine(CWriteLine(line));
-		textBox.SetActive(false);
+		SetActive(false, false, false);
 	}
 
+	// Writes a line of text (on key press)
 	public void WriteLines(string[] lines)
 	{
-		textBox.SetActive(true);
-		foreach (GameObject key in keyboard) key.SetActive(true);
-
-		if (Input.GetKeyDown(KeyCode.Z) && !running)
+		finished = false;
+		if (Input.GetKeyDown(KeyCode.E) && !running)
 		{
 			keyboard[0].GetComponent<Animator>().SetTrigger("press");
 
@@ -82,23 +85,21 @@ public class DialogManager : MonoBehaviour
 			}
 			else
 			{
-				textBox.SetActive(false);
-				foreach (GameObject key in keyboard) key.SetActive(false);
-
+				SetActive(false, false, false);
 				dialogText.text = "";
 				i = 0;
 			}
 		}
 	}
 
+	// Writes lines of text
 	public void WriteLines2(string[] lines)
 	{
-		textBox.SetActive(true);
+		finished = false;
 		StartCoroutine(CWriteLines(lines));
-		textBox.SetActive(false);
 	}
 
-	// Coroutines
+	// Writes a line of text in time
 	private IEnumerator CWriteLine(string line)
 	{
 		running = true;
@@ -115,18 +116,20 @@ public class DialogManager : MonoBehaviour
 		running = false;
 	}
 
+	// Writes lines of text in time
 	private IEnumerator CWriteLines(string[] lines)
 	{
-		finished = false;
 		running = true;
 
 		foreach (string line in lines)
 		{
-			CWriteLine(line);
+			StartCoroutine(CWriteLine(line));
 			yield return new WaitForSeconds(1.0f);
 		}
 
 		running = false;
-		finished = true;
+		SetActive(false, false, false);
+		dialogText.text = "";
+		i = 0;
 	}
 }

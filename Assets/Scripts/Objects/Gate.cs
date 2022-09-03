@@ -21,7 +21,7 @@ public abstract class Gate : MonoBehaviour
 		locked = true;
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
@@ -54,6 +54,6 @@ public abstract class Gate : MonoBehaviour
 		}
 	}
 
-	// Unlock
+	// Unlocks gate
 	public abstract void Unlock();
 }

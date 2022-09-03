@@ -40,7 +40,7 @@ public class BossSummon : StateMachineBehaviour
 		DestroySwords();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -50,14 +50,14 @@ public class BossSummon : StateMachineBehaviour
 		sr = anim.gameObject.GetComponent<SpriteRenderer>();
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
 		sr.flipX = false;
 		swords = new(8);
 	}
 
-	// Throw swords
+	// Throws swords
 	private void ThrowSwords()
 	{
 		foreach (GameObject sword in swords)
@@ -70,14 +70,14 @@ public class BossSummon : StateMachineBehaviour
 		}
 	}
 
-	// Destroy swords
+	// Destroys swords
 	private void DestroySwords()
 	{
 		foreach (GameObject sword in swords) Destroy(sword);
 		swords.Clear();
 	}
 
-	// Spawn swords
+	// Spawns swords
 	private IEnumerator SpawnSwords()
 	{
 		finished = false;

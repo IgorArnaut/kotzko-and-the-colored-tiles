@@ -16,7 +16,7 @@ public class BossStrike : StateMachineBehaviour
 	[SerializeField]
 	private Stats playerStats;
 
-	// Fly
+	// Strike
 	private Stats stats;
 	[SerializeField]
 	private AudioClip[] clips;
@@ -26,15 +26,17 @@ public class BossStrike : StateMachineBehaviour
 	{
 		GetComponents(animator);
 		Init();
+
+		src.PlayOneShot(clips[0]);
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		Fly();
+		Strike();
 		DamagePlayer();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -44,17 +46,16 @@ public class BossStrike : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initialize
+	// Initializes values
 	private void Init()
 	{
-		src.PlayOneShot(clips[0]);
 		player = GameObject.FindGameObjectWithTag("Player");
 		stats = enemy.stats;
 		target = new Vector2(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
 	}
 
-	// Fly
-	private void Fly()
+	// Strikes towards target
+	private void Strike()
 	{
 		if (transform.position.x > target.x) sr.flipX = true; 
 		if (transform.position.x < target.x) sr.flipX = false;
@@ -65,7 +66,7 @@ public class BossStrike : StateMachineBehaviour
 		anim.SetBool("strike", Vector2.Distance(transform.position, target) == 0.0f);
 	}
 
-	// Damage Player
+	// Damages Player
 	private void DamagePlayer() {
 		bool playerCollided = enemy.playerCollided;
 

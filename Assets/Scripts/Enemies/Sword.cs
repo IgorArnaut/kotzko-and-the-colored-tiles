@@ -19,7 +19,7 @@ public class Sword : MonoBehaviour
 		GetComponents();
 	}
 
-	// Get Components
+	// Gets Components
 	private void GetComponents()
 	{
 		src = GetComponent<AudioSource>();
@@ -35,7 +35,7 @@ public class Sword : MonoBehaviour
 		}
 	}
 
-	// Damage Player
+	// Damages Player
 	private void DamagePlayer()
 	{
 		if (!playerStats.IsDead() && player != null)
