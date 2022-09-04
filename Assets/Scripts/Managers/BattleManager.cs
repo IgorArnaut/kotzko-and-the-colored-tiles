@@ -10,7 +10,6 @@ public class BattleManager : GameManager
 	private string[] victory;
 	[SerializeField]
 	private string sceneName;
-	private bool once;
 
 	override protected void Start()
 	{
@@ -18,21 +17,10 @@ public class BattleManager : GameManager
 		enemy = GameObject.FindGameObjectWithTag("Enemy");
 	}
 
-	void Update()
+	override protected void Update()
 	{
-		Defeat();
+		base.Update();
 		Victory();
-	}
-
-	// Radi nesto
-	private void Defeat()
-	{
-		if (player == null && !once)
-		{
-			once = true;
-			started.value = false;
-			StartCoroutine(DoSomething(MusicManager.Manager.clips[0], defeat, "GameOver"));
-		}
 	}
 
 	// Radi nesto

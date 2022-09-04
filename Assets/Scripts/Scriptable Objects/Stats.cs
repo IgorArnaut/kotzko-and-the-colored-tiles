@@ -28,7 +28,7 @@ public class Stats : ScriptableObject
 		return this.HP <= 0;
 	}
 
-	// Resetuje sve vrednosti
+	// Resetuje vrednosti
 	public void ResetStats(int MAXHP, int HP, int ATK, int DEF, float SPEED)
 	{
 		this.MAXHP = MAXHP;

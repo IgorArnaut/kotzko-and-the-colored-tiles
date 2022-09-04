@@ -59,17 +59,17 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 1036503109, guid: f85d1e8c76e3fd3439977fb7f9d389db, type: 3}
-    - time: 0.125
-      value: {fileID: -1323621272, guid: f85d1e8c76e3fd3439977fb7f9d389db, type: 3}
     - time: 0.25
+      value: {fileID: -1323621272, guid: f85d1e8c76e3fd3439977fb7f9d389db, type: 3}
+    - time: 0.5
       value: {fileID: -1165813583, guid: f85d1e8c76e3fd3439977fb7f9d389db, type: 3}
-    - time: 0.375
+    - time: 0.75
       value: {fileID: 1127378692, guid: f85d1e8c76e3fd3439977fb7f9d389db, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 8
+  m_SampleRate: 4
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -107,7 +107,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -165,7 +165,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.125
+  - time: 0.25
     functionName: PlayOneShot
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: 36ac9d3e49374004d98a03459f9ae5d1,
@@ -173,7 +173,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.375
+  - time: 0.75
     functionName: PlayOneShot
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: bdbc033289b458244b36b368a4c63ec1,

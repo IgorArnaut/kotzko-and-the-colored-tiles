@@ -9,16 +9,6 @@ public class ButtonAction : MonoBehaviour
 	[SerializeField]
 	private AudioClip clip;
 
-	// Resetovanje podataka
-	[SerializeField]
-	private Stats playerStats;
-	[SerializeField]
-	private Inventory playerInventory;
-	[SerializeField]
-	private Progress progress;
-	[SerializeField]
-	private BoolValue started;
-
 	void Awake()
 	{
 		GetComponents();
@@ -30,21 +20,11 @@ public class ButtonAction : MonoBehaviour
 		src = GetComponent<AudioSource>();
 	}
 
-	// Resetuje podatke
-	private void ResetData()
-	{
-		playerStats.ResetStats(100, 100, 10, 10, 5.0f);
-		playerInventory.ResetInventory();
-		progress.ResetProgress();
-		started.value = false;
-		Debug.Log("Progress reset.");
-	}
-
 	// Pokrece igru
 	public void PlayGame(string sceneName)
 	{
 		Debug.Log("Playing game...");
-		ResetData();
+		ResetManager.Manager.ResetData();
 		src.PlayOneShot(clip);
 		SceneManager2.Manager.Transition(sceneName);
 	}
@@ -53,7 +33,7 @@ public class ButtonAction : MonoBehaviour
 	public void QuitGame()
 	{
 		Debug.Log("Quitting game...");
-		ResetData();
+		ResetManager.Manager.ResetData();
 		Application.Quit();
 	}
 }

@@ -6,34 +6,35 @@ public class GameManager : MonoBehaviour
 	// Jedinice
 	protected GameObject player;
 
-	// Pokretanje igre
-	[SerializeField]
-	protected BoolValue started;
-
-	// Objekti
-	[SerializeField]
-	private Progress progress;
-	[SerializeField]
-	private Stats playerStats;
-	[SerializeField]
-	private Inventory inventory;
-
 	// Poruke
 	[SerializeField]
 	protected string[] defeat;
+	protected bool once;
 
 	virtual protected void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
+	virtual protected void Update()
+	{
+		Defeat();
+	}
+
 	virtual protected void OnApplicationQuit()
 	{
 		Debug.Log("Quitting game...");
-		playerStats.ResetStats(100, 100, 10, 10, 5.0f);
-		inventory.ResetInventory();
-		progress.ResetProgress();
-		started.value = false;
+	}
+
+	// Radi nesto
+	private void Defeat()
+	{
+		if (player == null && !once)
+		{
+			once = true;
+			ResetManager.Manager.ResetData();
+			StartCoroutine(DoSomething(MusicManager.Manager.clips[0], defeat, "GameOver"));
+		}
 	}
 
 	// Radi nesto

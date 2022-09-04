@@ -1,10 +1,14 @@
+using UnityEngine;
 using UnityEngine.Playables;
 
 public class WorldManager : GameManager
 {
 	// Komponente
 	private PlayableDirector director;
-	private bool once;
+
+	// Pokretanje igre
+	[SerializeField]
+	private BoolValue started;
 
 	void Awake()
 	{
@@ -17,9 +21,9 @@ public class WorldManager : GameManager
 		if (!started.value) director.Play();
 	}
 
-	void Update()
+	override protected void Update()
 	{
-		Defeat();
+		base.Update();
 	}
 
 	// Uzima komponente
@@ -28,16 +32,6 @@ public class WorldManager : GameManager
 		director = GetComponent<PlayableDirector>();
 	}
 
-	// Radi nesto
-	private void Defeat()
-	{
-		if (player == null && !once)
-		{
-			once = true;
-			started.value = false;
-			StartCoroutine(DoSomething(MusicManager.Manager.clips[0], defeat, "GameOver"));
-		}
-	}
 
 	// Podesava vrednost started
 	public void SetStarted()

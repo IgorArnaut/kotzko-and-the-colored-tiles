@@ -8,7 +8,7 @@ public class DialogManager : MonoBehaviour
 	public static DialogManager Manager;
 
 	// Komponente
-	private AudioSource src;
+	public AudioSource src;
 
 	// Kutija za text
 	public GameObject textBox;
@@ -17,7 +17,7 @@ public class DialogManager : MonoBehaviour
 	// Pisanje teksta
 	public AudioClip clip;
 	public GameObject[] keyboard;
-	public bool running;
+	private bool running;
 	private int i;
 
 	void Awake()
@@ -96,7 +96,7 @@ public class DialogManager : MonoBehaviour
 	private IEnumerator CWriteLine(string line)
 	{
 		running = true;
-		dialogText.text = "*<indent=4%> ";
+		dialogText.text = "*<indent=4%>";
 
 		foreach (char c in line)
 		{
@@ -116,7 +116,16 @@ public class DialogManager : MonoBehaviour
 
 		foreach (string line in lines)
 		{
-			StartCoroutine(CWriteLine(line));
+			dialogText.text = "*<indent=4%>";
+
+			foreach (char c in line)
+			{
+				src.PlayOneShot(clip);
+				dialogText.text += c;
+				yield return new WaitForSeconds(0.03f);
+			}
+
+			dialogText.text += "</indent>";
 			yield return new WaitForSeconds(1.0f);
 		}
 

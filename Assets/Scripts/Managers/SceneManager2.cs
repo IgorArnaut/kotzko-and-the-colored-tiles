@@ -32,4 +32,9 @@ public class SceneManager2 : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(sceneName);
     }
+
+	public void ResetData()
+	{
+
+	}
 }
