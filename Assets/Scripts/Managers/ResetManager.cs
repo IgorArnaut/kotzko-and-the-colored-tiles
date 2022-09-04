@@ -28,9 +28,9 @@ public class ResetManager : MonoBehaviour
 	// Resetuje sve podatke
 	public void ResetData()
 	{
+		progress.ResetProgress();
 		playerStats.ResetStats(100, 100, 10, 10, 5.0f);
 		playerInventory.ResetInventory();
-		progress.ResetProgress();
 		foreach (BoolValue bv in values) bv.ResetValue();
 	}
 }

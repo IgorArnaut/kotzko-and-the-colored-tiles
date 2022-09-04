@@ -33,9 +33,9 @@ public class Boss : Enemy
 	{
 		if (stats.HP < stats.MAXHP / 2.0f)
 		{
+			anim.SetBool("phase2", true);
 			rb2D.gravityScale = 0.0f;
 			sr.color = Color.HSVToRGB(0.0f, 0.3f, 1.0f);
-			anim.SetBool("phase2", true);
 		}
 	}
 

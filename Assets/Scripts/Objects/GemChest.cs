@@ -10,8 +10,8 @@ public class GemChest : Chest
 	override protected void GiveItems()
 	{
 		base.GiveItems();
-		gem = Instantiate(gem, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));
 		int gems = Random.Range(1, 6);
+		gem = Instantiate(gem, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));
 		playerInventory.GEMS += gems;
 
 		switch (gems)

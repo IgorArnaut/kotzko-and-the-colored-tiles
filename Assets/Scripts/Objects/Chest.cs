@@ -51,8 +51,8 @@ public abstract class Chest : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Player") && !open)
 		{
-			inRange = false;
 			clue.SetActive(false);
+			inRange = false;
 		}
 	}
 
@@ -68,9 +68,9 @@ public abstract class Chest : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.E) && inRange)
 		{
-			open = true;
-			src.PlayOneShot(clip);
 			anim.SetTrigger("open");
+			src.PlayOneShot(clip);
+			open = true;
 			GiveItems();
 		}
 	}

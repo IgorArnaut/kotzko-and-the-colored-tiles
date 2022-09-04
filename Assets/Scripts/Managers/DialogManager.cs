@@ -37,6 +37,7 @@ public class DialogManager : MonoBehaviour
 		src = GetComponent<AudioSource>();
 	}
 
+	// Cini kutiju za tekst aktivnom
 	public void SetActive(bool tb, bool z, bool x)
 	{
 		textBox.SetActive(tb);

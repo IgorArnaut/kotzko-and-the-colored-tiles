@@ -16,14 +16,14 @@ public class AudioPlayer : MonoBehaviour
 		src = GetComponent<AudioSource>();
 	}
 
-	// Pusta klip jednom
+	// Pusta zvuk jednom
 	public void PlayOneShot(AudioClip clip)
 	{
 		src.PlayOneShot(clip);
 	}
 	
 
-	// Pusta klip jednom 2
+	// Pusta zvuk jednom 2
 	public void PlayOneShot2(AudioClip clip)
 	{
 		if (!src.isPlaying) src.PlayOneShot(clip);

@@ -21,12 +21,12 @@ public class ButtonAction : MonoBehaviour
 	}
 
 	// Pokrece igru
-	public void PlayGame(string sceneName)
+	public void PlayGame()
 	{
 		Debug.Log("Playing game...");
 		ResetManager.Manager.ResetData();
 		src.PlayOneShot(clip);
-		SceneManager2.Manager.Transition(sceneName);
+		SceneManager2.Manager.Transition("Dungeon");
 	}
 
 	// Prekida igru

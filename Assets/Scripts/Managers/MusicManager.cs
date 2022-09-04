@@ -8,7 +8,7 @@ public class MusicManager : MonoBehaviour
 	// Komponente
 	private AudioSource src;
 
-	// Klipovi
+	// Zvuci
 	public AudioClip[] clips;
 
 	void Awake()
@@ -23,19 +23,19 @@ public class MusicManager : MonoBehaviour
 		src = GetComponent<AudioSource>();
 	}
 
-	// Pusta klip jednom
+	// Pusta zvuk jednom
 	public void PlayOneshot(AudioClip clip)
 	{
 		if (!src.isPlaying) src.PlayOneShot(clip);
 	}
 
-	// Pusta klip
+	// Pusta zvuk
 	public void Play()
 	{
 		src.Play();
 	}
 
-	// Stops playing
+	// Prekida pustanje
 	public void Stop()
 	{
 		src.Stop();

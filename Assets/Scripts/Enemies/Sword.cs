@@ -39,8 +39,7 @@ public class Sword : MonoBehaviour
 	{
 		if (!playerStats.IsDead() && player != null)
 		{
-			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt");
-			else src.PlayOneShot(clip);
+			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt"); else src.PlayOneShot(clip);
 			playerStats.TakeDamge(10);
 			Destroy(gameObject);
 		}

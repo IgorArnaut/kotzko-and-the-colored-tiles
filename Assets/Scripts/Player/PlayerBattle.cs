@@ -83,9 +83,9 @@ public class PlayerBattle : Player
 	override protected void Move()
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
-		if (inputX == -1.0f || inputX == 1.0f) anim.SetFloat("lastMoveX", inputX);
 		if (inputX == 1.0f) sr.flipX = false;
 		if (inputX == -1.0f) sr.flipX = true;
+		if (inputX == -1.0f || inputX == 1.0f) anim.SetFloat("lastMoveX", inputX);
 		if (rb2D.bodyType != RigidbodyType2D.Static) rb2D.velocity = new Vector2(inputX * stats.SPEED, rb2D.velocity.y);
 		anim.SetFloat("horizontal", rb2D.velocity.x);
 		anim.SetFloat("speed", rb2D.velocity.sqrMagnitude);
@@ -126,13 +126,13 @@ public class PlayerBattle : Player
 	{
 		if (Input.GetMouseButton(1))
 		{
-			defend.value = true;
 			anim.SetBool("defend", true);
+			defend.value = true;
 		} 
 		else
 		{
-			defend.value = false;
 			anim.SetBool("defend", false);
+			defend.value = false;
 		}
 	}
 

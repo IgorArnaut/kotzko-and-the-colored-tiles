@@ -46,12 +46,6 @@ public class PlayerWorld : Player
 		float inputX = Input.GetAxisRaw("Horizontal");
 		float inputY = Input.GetAxisRaw("Vertical");
 
-		if (inputX == -1.0f || inputX == 1.0f || inputY == -1.0f || inputY == 1.0f)
-		{
-			anim.SetFloat("lastMoveX", inputX);
-			anim.SetFloat("lastMoveY", inputY);
-		}
-
 		if (inputX == 1.0f) {
 			sr.flipX = true;
 			transform.GetChild(1).GetComponent<SpriteRenderer>().flipX = true;
@@ -60,6 +54,12 @@ public class PlayerWorld : Player
 		if (inputX == -1.0f) {
 			sr.flipX = false;
 			transform.GetChild(1).GetComponent<SpriteRenderer>().flipX = false;
+		}
+
+		if (inputX == -1.0f || inputX == 1.0f || inputY == -1.0f || inputY == 1.0f)
+		{
+			anim.SetFloat("lastMoveX", inputX);
+			anim.SetFloat("lastMoveY", inputY);
 		}
 
 		if (rb2D.bodyType != RigidbodyType2D.Static) rb2D.velocity = new Vector2(inputX, inputY) * stats.SPEED;
@@ -72,8 +72,8 @@ public class PlayerWorld : Player
 	// Pliva
 	private void Swim()
 	{
-		transform.GetChild(1).gameObject.SetActive(inWater.value);
 		anim.SetBool("inWater", inWater.value);
+		transform.GetChild(1).gameObject.SetActive(inWater.value);
 	}
 
 	// Umire
@@ -81,10 +81,7 @@ public class PlayerWorld : Player
 	{
 		if (orange.value && inWater.value) anim.SetTrigger("deadw");
 
-		if (stats.IsDead())
-		{
-			if (!inWater.value) anim.SetTrigger("dead"); else anim.SetTrigger("deadw");
-		}
+		if (stats.IsDead()) if (!inWater.value) anim.SetTrigger("dead"); else anim.SetTrigger("deadw");
 	}
 
 	// Menja status efekat

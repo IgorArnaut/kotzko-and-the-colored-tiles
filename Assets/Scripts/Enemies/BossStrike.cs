@@ -56,10 +56,10 @@ public class BossStrike : StateMachineBehaviour
 	// Poleti do igraca 
 	private void Strike()
 	{
+		Vector2 delta = Vector2.MoveTowards(transform.position, target, Time.deltaTime * stats.SPEED * 5.0f);
+		transform.position = delta;
 		if (transform.position.x > target.x) sr.flipX = true; 
 		if (transform.position.x < target.x) sr.flipX = false;
-		Vector2 delta = Vector2.Lerp(transform.position, target, Time.deltaTime * stats.SPEED * 5.0f);
-		transform.position = delta;
 		anim.SetFloat("horizontal", delta.normalized.x);
 		anim.SetFloat("vertical", delta.normalized.y);
 		anim.SetBool("strike", Vector2.Distance(transform.position, target) == 0.0f);
@@ -71,8 +71,7 @@ public class BossStrike : StateMachineBehaviour
 
 		if (playerCollided && player != null)
 		{
-			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt");
-			else src.PlayOneShot(clips[1]);
+			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt"); else src.PlayOneShot(clips[1]);
 			playerStats.TakeDamge((int)(1.0f));
 		}
 	}

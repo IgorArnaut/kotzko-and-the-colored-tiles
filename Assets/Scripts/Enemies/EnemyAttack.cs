@@ -57,8 +57,7 @@ public class EnemyAttack : StateMachineBehaviour
 	{
 		if (playerCollided && !playerStats.IsDead() && player != null)
 		{
-			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt");
-			else src.PlayOneShot(clip);
+			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt"); else src.PlayOneShot(clip);
 			playerStats.TakeDamge(stats.ATK);
 		}
 	}
