@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class BossGate : Gate
 {
-	// Inventory
+	// Boss kljuc
 	[SerializeField]
 	private Inventory playerInventory;
 
-	// Unlocks gate
+	// Otkljucava kapiju
 	public override void Unlock()
 	{
 		if (playerInventory.BOSSKEY > 0 && locked)

@@ -2,15 +2,15 @@
 
 public class EnemyAttack : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private AudioSource src;
 	private Enemy enemy;
 
-	// Attack
+	// Napad
 	private Stats stats;
 
-	// Damage Player
+	// Povredjivanje igraca
 	[SerializeField]
 	private AudioClip clip;
 	private GameObject player;
@@ -37,7 +37,7 @@ public class EnemyAttack : StateMachineBehaviour
 		DamagePlayer();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -45,14 +45,14 @@ public class EnemyAttack : StateMachineBehaviour
 		enemy = anim.gameObject.GetComponent<Enemy>();
 	}
 
-	// Initializes values
+	// Inicira neke vrednosti
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		stats = enemy.stats;
 	}
 
-	// Damages Player
+	// Povredjuje igraca
 	private void DamagePlayer()
 	{
 		if (playerCollided && !playerStats.IsDead() && player != null)

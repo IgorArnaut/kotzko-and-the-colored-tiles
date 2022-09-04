@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Water : TileAction
 {
-	// Player
+	// Igrac
 	[SerializeField]
 	private Stats playerStats;
 	public BoolValue inWater;
@@ -13,12 +13,14 @@ public class Water : TileAction
 		temp = playerStats.SPEED;
 	}
 
+	// Radi nesto u koliziji
 	override protected void DoEnterAction()
 	{
 		inWater.value = true;
 		playerStats.SPEED *= 0.75f;
 	}
 
+	// Radi nesto van kolizije
 	override protected void DoExitAction()
 	{
 		inWater.value = false;

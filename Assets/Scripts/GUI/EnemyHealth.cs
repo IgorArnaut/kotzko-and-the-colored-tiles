@@ -2,9 +2,10 @@
 
 public class EnemyHealth : MonoBehaviour, IHealthBar
 {
+	// Instanca
 	public static EnemyHealth bar;
 
-	// Health bar
+	// Linija
 	private float width;
 
 	void Awake()
@@ -17,7 +18,7 @@ public class EnemyHealth : MonoBehaviour, IHealthBar
 		width = transform.localScale.x;
 	}
 
-	// Resizes boss health bar
+	// Menja duzinu linije
 	public void ResizeHealthBar(int HP, int MAXHP)
 	{
 		float delta = HP > 0.0f ? 1.0f * HP / MAXHP : 0.0f;

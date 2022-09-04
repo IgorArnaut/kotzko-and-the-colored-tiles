@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class OrangeTileAction : TileAction
 {
-	// Player
+	// Igrac
 	[SerializeField]
 	private Stats playerStats;
 	public BoolValue orange;
@@ -14,21 +14,23 @@ public class OrangeTileAction : TileAction
 		temp = playerStats.SPEED;
 	}
 
-	// Orange
+	// Boji igraca u narandzasto i smanjuje mu brzinu
 	private IEnumerator Orange()
 	{
 		orange.value = true;
 		playerStats.SPEED /= 2;
-		yield return new WaitForSeconds(60.0f);
+		yield return new WaitForSeconds(30.0f);
 		playerStats.SPEED = temp;
 		orange.value = false;
 	}
 
+	// Radi nesto u koliziji
 	override protected void DoEnterAction()
 	{
 		StartCoroutine(nameof(Orange));
 	}
 
+	// Radi nesto van kolizije
 	override protected void DoExitAction()
 	{
 		return;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Minion : Enemy
 {
-	// Components
+	// Komponente
 	private Animator anim;
 
 	protected override void Awake()
@@ -16,13 +16,13 @@ public class Minion : Enemy
 		EnemyHealth.bar.ResizeHealthBar(stats.HP, stats.MAXHP);
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
 	}
 
-	// Dies
+	// Umire
 	override protected void Die()
 	{
 		if (stats.IsDead()) anim.SetTrigger("dead");

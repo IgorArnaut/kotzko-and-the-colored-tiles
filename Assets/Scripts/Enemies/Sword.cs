@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-	// Components
+	// Komponente
 	private AudioSource src;
 
-	// Damage Player
+	// Povredjivanje igraca
 	[SerializeField]
 	private AudioClip clip;
 	private GameObject player;
@@ -19,13 +19,6 @@ public class Sword : MonoBehaviour
 		GetComponents();
 	}
 
-	// Gets Components
-	private void GetComponents()
-	{
-		src = GetComponent<AudioSource>();
-	}
-
-	// Collision
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
@@ -35,7 +28,13 @@ public class Sword : MonoBehaviour
 		}
 	}
 
-	// Damages Player
+	// Uzima komponente
+	private void GetComponents()
+	{
+		src = GetComponent<AudioSource>();
+	}
+
+	// Povredjuje igraca
 	private void DamagePlayer()
 	{
 		if (!playerStats.IsDead() && player != null)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
-	// Components
+	// Komponente
     private AudioSource src;
 
 	void Awake()
@@ -10,18 +10,20 @@ public class AudioPlayer : MonoBehaviour
 		GetComponents();
 	}
 
-	// Gets components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		src = GetComponent<AudioSource>();
 	}
 
-	// Plays a oneshot
+	// Pusta klip jednom
 	public void PlayOneShot(AudioClip clip)
 	{
 		src.PlayOneShot(clip);
 	}
 	
+
+	// Pusta klip jednom 2
 	public void PlayOneShot2(AudioClip clip)
 	{
 		if (!src.isPlaying) src.PlayOneShot(clip);

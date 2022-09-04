@@ -2,13 +2,14 @@
 
 public class HeartChest : Chest
 {
-	// Heart
+	// Srce
 	[SerializeField]
 	private GameObject heart;
 
-	// Gives hearts
-	public override void GiveItems()
+	// Daje srca
+	override protected void GiveItems()
 	{
+		base.GiveItems();
 		heart = Instantiate(heart, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));
 		int hearts = Random.Range(1, 6);
 		playerInventory.HEARTS += hearts;
@@ -19,7 +20,5 @@ public class HeartChest : Chest
 			case 1: StartCoroutine(Write("You have obtained a heart!", heart)); break;
 			default: StartCoroutine(Write("You have obtained " + hearts + " hearts!", heart)); break;
 		}
-
-		PlayerItem();
 	}
 }

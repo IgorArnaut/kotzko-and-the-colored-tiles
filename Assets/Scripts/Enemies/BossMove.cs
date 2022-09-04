@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class BossMove : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private Enemy enemy;
 	private SpriteRenderer sr;
 	private Transform transform;
 
-	// Follow Player
+	// Pracenje igraca
 	private GameObject player;
 	private Stats stats;
 	[SerializeField]
@@ -25,7 +25,7 @@ public class BossMove : StateMachineBehaviour
 		if (player != null) FollowPlayer();	else anim.SetBool("walk", false);
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -34,7 +34,7 @@ public class BossMove : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initializes values
+	// Inicira neke vrednosti
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -42,7 +42,7 @@ public class BossMove : StateMachineBehaviour
 		Debug.Log(stats);
 	}
 
-	// Follows Player
+	// Prati igraca
 	private void FollowPlayer()
 	{
 		bool playerCollided = enemy.playerCollided;
@@ -59,7 +59,7 @@ public class BossMove : StateMachineBehaviour
 		if (playerCollided && player != null) Attack();
 	}
 
-	// Attacks Player
+	// Napada igraca
 	private void Attack() {
 		int rnd = Random.Range(0, 2);
 		if (rnd == 0) anim.SetTrigger("attack");

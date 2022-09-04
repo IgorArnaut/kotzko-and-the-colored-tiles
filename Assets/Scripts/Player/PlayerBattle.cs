@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class PlayerBattle : Player
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private CapsuleCollider2D cc2D;
 	private Rigidbody2D rb2D;
 	private SpriteRenderer sr;
 
-	// Jump
+	// Skakanje
 	[SerializeField]
 	private LayerMask ground;
 	private bool grounded;
 	[SerializeField]
 	private float jumpForce;
 
-	// Defend
+	// Odbrana
 	public BoolValue defend;
 
-	// Enemy
+	// Neprijatelj
 	public GameObject enemy;
 	public bool enemyCollided;
 
@@ -52,7 +52,25 @@ public class PlayerBattle : Player
 			Move();
 	}
 
-	// Gets Components
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("Enemy"))
+		{
+			enemyCollided = true;
+			enemy = collision.gameObject;
+		}
+	}
+
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("Enemy"))
+		{
+			enemyCollided = false;
+			enemy = null;
+		}
+	}
+
+	// Uzima komponente
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
@@ -61,7 +79,7 @@ public class PlayerBattle : Player
 		sr = GetComponent<SpriteRenderer>();
 	}
 
-	// Moves Player
+	// Pokrece igraca
 	override protected void Move()
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
@@ -73,13 +91,13 @@ public class PlayerBattle : Player
 		anim.SetFloat("speed", rb2D.velocity.sqrMagnitude);
 	}
 
-	// Dies
+	// Umire
 	protected override void Die()
 	{
 		if (stats.IsDead()) anim.SetTrigger("dead");
 	}
 
-	// Jumps
+	// Skace
 	private void Jump()
 	{
 		grounded = IsGrounded();
@@ -91,19 +109,19 @@ public class PlayerBattle : Player
 		}
 	}
 
-	// Checks if Player is grounded
+	// Proverava da li je igrac na zemlji
 	private bool IsGrounded() {
 		RaycastHit2D rc = Physics2D.CapsuleCast(cc2D.bounds.center, cc2D.bounds.size, CapsuleDirection2D.Horizontal, 0.0f, Vector2.down , 0.1f, ground);
 		return rc.collider != null;
 	}
 
-	// Attacks
+	// Napada
 	private void Attack()
 	{
 		if (Input.GetMouseButtonDown(0)) anim.SetTrigger("attack");
 	}
 
-	// Defends
+	// Brani
 	private void Defend()
 	{
 		if (Input.GetMouseButton(1))
@@ -118,27 +136,9 @@ public class PlayerBattle : Player
 		}
 	}
 
-	// Heals
+	// Leci
 	private void Heal()
 	{
 		if (Input.GetKeyDown(KeyCode.Q)) anim.SetTrigger("heal");
-	}
-
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.CompareTag("Enemy"))
-		{
-			enemyCollided = true;
-			enemy = collision.gameObject;
-		}
-	}
-	
-	private void OnCollisionExit2D(Collision2D collision)
-	{
-		if (collision.gameObject.CompareTag("Enemy"))
-		{
-			enemyCollided = false;
-			enemy = null;
-		}
 	}
 }

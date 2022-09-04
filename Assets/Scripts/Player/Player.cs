@@ -2,7 +2,7 @@
 
 public abstract class Player : MonoBehaviour
 {
-	// Stats
+	// Satistika
 	public Stats stats;
 
 	abstract protected void Awake();
@@ -12,13 +12,13 @@ public abstract class Player : MonoBehaviour
 		PlayerHealth.bar.ResizeHealthBar(stats.HP, stats.MAXHP);
 	}
 
-	// Moves Player
+	// Pokrece igraca
 	abstract protected void Move();
 
-	// Dies
+	// Umire
 	abstract protected void Die();
 
-	// Kills Player
+	// Ubija igraca
 	public void Kill()
 	{
 		Destroy(gameObject);

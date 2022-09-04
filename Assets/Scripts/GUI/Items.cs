@@ -1,10 +1,9 @@
-using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Items : MonoBehaviour
 {
+	// Inventar
 	[SerializeField]
 	private Inventory playerInventory;
 	[SerializeField]
@@ -19,7 +18,7 @@ public class Items : MonoBehaviour
 
 	}
 
-	// Changes displayed value
+	// Menja kolicine predmeta
 	private void ChangeValue(int value, GameObject item)
 	{
 		if (value > 0) item.SetActive(true); else item.SetActive(false);

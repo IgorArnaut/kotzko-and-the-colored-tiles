@@ -3,14 +3,14 @@ using UnityEngine.Tilemaps;
 
 public class BlackTileAction : TileAction
 {
-	// Components
+	// Komponente
 	private Tilemap tilemap;
 
-	// Player
+	// Igrac
 	[SerializeField]
 	private Stats playerStats;
 
-	// Black
+	// Crna boja
 	public bool black; 
 
 	void Awake()
@@ -28,13 +28,13 @@ public class BlackTileAction : TileAction
 		black = IsBlack();	
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		tilemap = GetComponent<Tilemap>();
 	}
 
-	// Checks if tile is black?
+	// Proverava da li su polja crna
 	private bool IsBlack()
 	{
 		foreach (Vector3Int tilePos in tilemap.cellBounds.allPositionsWithin) if (tilemap.GetAnimationFrame(tilePos) == 0) return true;
@@ -46,11 +46,13 @@ public class BlackTileAction : TileAction
 		if (collision.gameObject.CompareTag("Player") && black) playerStats.TakeDamge(playerStats.HP);
 	}
 
+	// Radi nesto u koliziji
 	override protected void DoEnterAction()
 	{
 		if (black) playerStats.HP = 0;
 	}
 
+	// Radi nesto van kolizije
 	override protected void DoExitAction()
 	{
 		return;

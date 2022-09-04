@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class BattleManager : GameManager
 {
-	// Units
+	// Jedinice
 	private GameObject enemy;
 
-	// Messages
+	// Poruke
 	[SerializeField]
 	private string[] victory;
 	[SerializeField]
@@ -24,23 +24,24 @@ public class BattleManager : GameManager
 		Victory();
 	}
 
-	// Does something on defeat
+	// Radi nesto
 	private void Defeat()
 	{
 		if (player == null && !once)
 		{
-			StartCoroutine(DoSomething(MusicManager.Manager.clips[0], defeat, "GameOver"));
 			once = true;
+			started.value = false;
+			StartCoroutine(DoSomething(MusicManager.Manager.clips[0], defeat, "GameOver"));
 		}
 	}
 
-	// Does something on victory
+	// Radi nesto
 	private void Victory()
 	{
 		if (enemy == null && !once)
 		{
-			StartCoroutine(DoSomething(MusicManager.Manager.clips[1], victory, sceneName));
 			once = true;
+			StartCoroutine(DoSomething(MusicManager.Manager.clips[1], victory, sceneName));
 		}
 	}
 }

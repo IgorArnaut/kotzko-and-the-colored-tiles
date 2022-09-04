@@ -4,23 +4,20 @@ using TMPro;
 
 public class DialogManager : MonoBehaviour
 {
-	// Manager
+	// Instanca
 	public static DialogManager Manager;
 
-	// Compoentns
+	// Komponente
 	private AudioSource src;
 
-	// Text box
+	// Kutija za text
 	public GameObject textBox;
 	public TextMeshProUGUI dialogText;
 
-	// Write text
-	[SerializeField]
+	// Pisanje teksta
 	public AudioClip clip;
-	[SerializeField]
 	public GameObject[] keyboard;
 	public bool running;
-	public bool finished;
 	private int i;
 
 	void Awake()
@@ -32,10 +29,9 @@ public class DialogManager : MonoBehaviour
 	void Start()
 	{
 		i = 0;
-		finished = false;
 	}
 
-	// Get Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		src = GetComponent<AudioSource>();
@@ -48,32 +44,35 @@ public class DialogManager : MonoBehaviour
 		keyboard[1].SetActive(x);
 	}
 
-	// Cancels writing
+	// Prekida pisanje
 	public void CancelWriting()
 	{
 		if (Input.GetKeyDown(KeyCode.X))
 		{
 			keyboard[1].GetComponent<Animator>().SetTrigger("press");
 			StopAllCoroutines();
-			SetActive(false, false, false);
-			dialogText.text = "";
-			running = false;
-			i = 0;
+			ResetText();
 		}
 	}
 
-	// Writes a line of text
-	public void WriteLine(string line)
+	// Resetuje tekst
+	public void ResetText()
 	{
-		finished = false;
-		StartCoroutine(CWriteLine(line));
 		SetActive(false, false, false);
+		dialogText.text = "";
+		running = false;
+		i = 0;
 	}
 
-	// Writes a line of text (on key press)
+	// Pise liniju teksta
+	public void WriteLine(string line)
+	{
+		StartCoroutine(CWriteLine(line));
+	}
+
+	// Pise liniju teksta na dugme
 	public void WriteLines(string[] lines)
 	{
-		finished = false;
 		if (Input.GetKeyDown(KeyCode.E) && !running)
 		{
 			keyboard[0].GetComponent<Animator>().SetTrigger("press");
@@ -83,23 +82,17 @@ public class DialogManager : MonoBehaviour
 				StartCoroutine(CWriteLine(lines[i]));
 				i++;
 			}
-			else
-			{
-				SetActive(false, false, false);
-				dialogText.text = "";
-				i = 0;
-			}
+			else ResetText();
 		}
 	}
 
-	// Writes lines of text
+	// Pise linije teksta
 	public void WriteLines2(string[] lines)
 	{
-		finished = false;
 		StartCoroutine(CWriteLines(lines));
 	}
 
-	// Writes a line of text in time
+	// Pise liniju teksta karakter po karakter
 	private IEnumerator CWriteLine(string line)
 	{
 		running = true;
@@ -116,7 +109,7 @@ public class DialogManager : MonoBehaviour
 		running = false;
 	}
 
-	// Writes lines of text in time
+	// Pise linije teksta karakter po karakter
 	private IEnumerator CWriteLines(string[] lines)
 	{
 		running = true;
@@ -128,8 +121,6 @@ public class DialogManager : MonoBehaviour
 		}
 
 		running = false;
-		SetActive(false, false, false);
-		dialogText.text = "";
-		i = 0;
+		ResetText();
 	}
 }

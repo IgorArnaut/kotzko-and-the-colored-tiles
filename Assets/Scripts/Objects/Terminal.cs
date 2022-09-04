@@ -2,17 +2,17 @@
 
 public class Terminal : MonoBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private AudioSource src;
 
-	// Context clue
+	// Blizina
 	private GameObject clue;
 	private bool inRange;
 	[SerializeField]
 	private AudioClip[] clips;
 
-	// Write text
+	// Tekst
 	[SerializeField] 
 	private string[] lines;
 
@@ -30,23 +30,6 @@ public class Terminal : MonoBehaviour
 	{
 		StartDialog();
 		DialogManager.Manager.CancelWriting();
-	}
-
-	// Gets Components
-	private void GetComponents()
-	{
-		anim = GetComponent<Animator>();
-		src = GetComponent<AudioSource>();
-	}
-
-	// Starts dialog
-	private void StartDialog()
-	{
-		if (inRange && Input.GetKeyDown(KeyCode.E))
-		{
-			DialogManager.Manager.SetActive(true, true, true);
-			DialogManager.Manager.WriteLines(lines);
-		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -70,6 +53,23 @@ public class Terminal : MonoBehaviour
 			src.PlayOneShot(clips[1]);
 			clue.SetActive(false);
 			DialogManager.Manager.SetActive(false, false, false);
+		}
+	}
+
+	// Uzima komponente
+	private void GetComponents()
+	{
+		anim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
+	}
+
+	// Pokrece dijalog
+	private void StartDialog()
+	{
+		if (inRange && Input.GetKeyDown(KeyCode.E))
+		{
+			DialogManager.Manager.SetActive(true, true, true);
+			DialogManager.Manager.WriteLines(lines);
 		}
 	}
 }

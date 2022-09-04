@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class PlayerWorld : Player
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private Rigidbody2D rb2D;
 	private SpriteRenderer sr;
 
-	// Status
+	// Status efekti
 	public BoolValue inWater;
 	public BoolValue electric;
 	public BoolValue heal;
 	public BoolValue orange;
-	public BoolValue lemon;
+	public BoolValue purple;
 
 	override protected void Awake()
 	{
@@ -32,7 +32,7 @@ public class PlayerWorld : Player
 		Swim();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
@@ -40,7 +40,7 @@ public class PlayerWorld : Player
 		sr = GetComponent<SpriteRenderer>();
 	}
 
-	// Moves Player
+	// Pokrece igraca
 	override protected void Move()
 	{
 		float inputX = Input.GetAxisRaw("Horizontal");
@@ -69,14 +69,14 @@ public class PlayerWorld : Player
 		anim.SetFloat("speed", rb2D.velocity.sqrMagnitude);
 	}
 
-	// Swims
+	// Pliva
 	private void Swim()
 	{
 		transform.GetChild(1).gameObject.SetActive(inWater.value);
 		anim.SetBool("inWater", inWater.value);
 	}
 
-	// Dies
+	// Umire
 	protected override void Die()
 	{
 		if (orange.value && inWater.value) anim.SetTrigger("deadw");
@@ -87,14 +87,14 @@ public class PlayerWorld : Player
 		}
 	}
 
-	// Changes status effect
+	// Menja status efekat
 	private void ChangeStatus()
 	{
 		anim.SetBool("electric", electric.value);
 
 		if (orange.value)
 		{
-			sr.color = Color.Lerp(Color.HSVToRGB(40.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
+			sr.color = Color.Lerp(Color.HSVToRGB(30.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
 
 			if (inWater.value)
 			{
@@ -102,7 +102,7 @@ public class PlayerWorld : Player
 				anim.SetTrigger("deadw");
 			}
 		}
-		else if (lemon.value) sr.color = Color.Lerp(Color.HSVToRGB(60.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
+		else if (purple.value) sr.color = Color.Lerp(Color.HSVToRGB(270.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
 		else if (heal.value) sr.color = Color.Lerp(Color.HSVToRGB(300.0f / 360.0f, 0.3f, 1.0f), Color.white, Mathf.PingPong(Time.time, 2.0f));
 		else sr.color = Color.white;
 	}

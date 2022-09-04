@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5550870633811545386}
   - component: {fileID: 5550870633811545387}
   - component: {fileID: 5550870633811545384}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5550870635717783014}
   - component: {fileID: 5550870635717783015}
   - component: {fileID: 5550870635717783008}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

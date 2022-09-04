@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	// Units
+	// Jedinice
 	protected GameObject player;
 
-	// ScriptableObjects
+	// Pokretanje igre
+	[SerializeField]
+	protected BoolValue started;
+
+	// Objekti
 	[SerializeField]
 	private Progress progress;
 	[SerializeField]
@@ -14,7 +18,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private Inventory inventory;
 
-	// Messages
+	// Poruke
 	[SerializeField]
 	protected string[] defeat;
 
@@ -23,23 +27,24 @@ public class GameManager : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
-	void OnApplicationQuit()
+	virtual protected void OnApplicationQuit()
 	{
-		progress.ResetProgress();
+		Debug.Log("Quitting game...");
 		playerStats.ResetStats(100, 100, 10, 10, 5.0f);
 		inventory.ResetInventory();
+		progress.ResetProgress();
+		started.value = false;
 	}
 
-	// Does something
+	// Radi nesto
 	protected IEnumerator DoSomething(AudioClip clip, string[] messages, string sceneName)
 	{
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(0.5f);
 		MusicManager.Manager.Stop();
 		MusicManager.Manager.PlayOneshot(clip);
 		DialogManager.Manager.SetActive(true, false, false);
 		DialogManager.Manager.WriteLines2(messages);
-		
-		if (DialogManager.Manager.finished)
-			SceneManager2.Manager.Transition(sceneName);
+		yield return new WaitForSeconds(2.0f);
+		SceneManager2.Manager.Transition(sceneName);
 	}
 }

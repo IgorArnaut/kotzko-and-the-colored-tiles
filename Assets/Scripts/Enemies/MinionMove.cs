@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MinionMove : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private Enemy enemy;
 	private SpriteRenderer sr;
 	private Transform transform;
 
-	// Follow Player
+	// Pracenje igraca
 	private GameObject player;
 	private Stats stats;
 	[SerializeField]
@@ -25,7 +25,7 @@ public class MinionMove : StateMachineBehaviour
 		if (player != null) FollowPlayer();	else anim.SetBool("walk", false);
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -34,14 +34,14 @@ public class MinionMove : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initializes values
+	// Inicira neke vrednosti
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		stats = enemy.stats;
 	}
 
-	// Follows player
+	// Prati igraca
 	private void FollowPlayer()
 	{
 		bool playerCollided = enemy.playerCollided;

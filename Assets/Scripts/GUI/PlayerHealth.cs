@@ -2,9 +2,10 @@
 
 public class PlayerHealth : MonoBehaviour, IHealthBar
 {
+	// Instanca
 	public static PlayerHealth bar;
 
-	// Health bar
+	// Linija
 	[SerializeField]
 	private Animator face;
 	[SerializeField]
@@ -21,7 +22,7 @@ public class PlayerHealth : MonoBehaviour, IHealthBar
 		width = greenBar.sizeDelta.x;
 	}
 
-	// Resizes player health bar
+	// Menja duzinu linije
 	public void ResizeHealthBar(int HP, int MAXHP)
 	{
 		float delta = HP > 0.0f ? 1.0f * HP / MAXHP : 0.0f;

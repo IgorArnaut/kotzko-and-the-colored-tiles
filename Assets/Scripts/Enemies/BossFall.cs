@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class BossFall : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private AudioSource src;
 	private CapsuleCollider2D cc2D;
 	private Enemy enemy;
 	private Rigidbody2D rb2D;
 
-	// Death
+	// Smrt
 	[SerializeField]
 	private AudioClip clip;
 	[SerializeField]
@@ -28,7 +28,7 @@ public class BossFall : StateMachineBehaviour
 		if (IsGrounded()) anim.SetTrigger("dead");
 	}
 
-	// Gets Components
+	// Uzima Komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -38,7 +38,7 @@ public class BossFall : StateMachineBehaviour
 		rb2D = anim.gameObject.GetComponent<Rigidbody2D>();
 	}
 
-	// Initializes values
+	// Inicira neke vrednosti
 	private void Init()
 	{
 		rb2D.gravityScale = 5.0f;
@@ -47,7 +47,7 @@ public class BossFall : StateMachineBehaviour
 
 	}
 
-	// Checks if boss is grounded
+	// Proverava da li je Boss na zemlji
 	private bool IsGrounded()
 	{
 		RaycastHit2D rc = Physics2D.CapsuleCast(cc2D.bounds.center, cc2D.bounds.size, CapsuleDirection2D.Horizontal, 0.0f, Vector2.down, 0.1f, ground);

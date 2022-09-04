@@ -13,7 +13,9 @@ public abstract class TileAction : MonoBehaviour
 		if (collision.gameObject.CompareTag("Player")) DoExitAction();
 	}
 
+	// Radi nesto u koliziji
 	protected abstract void DoEnterAction();
 
+	// Radi nesto van kolizije
 	protected abstract void DoExitAction();
  }

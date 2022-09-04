@@ -3,10 +3,10 @@ using UnityEngine;
 [ExecuteAlways]
 public class Orientation : MonoBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 
-	// Directions
+	// Pravci
 	[SerializeField] 
 	private float directionX;
 	[SerializeField]
@@ -22,13 +22,13 @@ public class Orientation : MonoBehaviour
 		ChangeDirection();
     }
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
 	}
 
-	// Changes direction of an object
+	// Menja smer i pravac kapije
 	private void ChangeDirection()
 	{
 		anim.SetFloat("directionX", directionX);

@@ -3,55 +3,55 @@
 [CreateAssetMenu]
 public class Inventory : ScriptableObject
 {
-	// Gems, hearts, keys, bosskey
+	// Predmeti
 	public int GEMS;
 	public int HEARTS;
 	public int KEYS;
 	public int BOSSKEY;
 
-	// Adds gems
+	// Dodaje dragulje
 	public void AddGEMS(int amount)
 	{
 		GEMS += amount;
 	}
 
-	// Adds hearts
+	// Dodaje srca
 	public void AddHearts(int amount)
 	{
 		HEARTS += amount;
 	}
 
-	// Removes hearts
+	// Oduzima srca
 	public void RemovesHEARTS(int amount)
 	{
 		HEARTS -= amount;
 	}
 
-	// Adds a key
+	// Dodaje kljuc
 	public void AddKEY()
 	{
 		KEYS++;
 	}
 
-	// Removes a key
+	// Oduzima kljuc
 	public void RemoveKEY()
 	{
 		if (KEYS > 0) KEYS--;
 	}
 
-	// Adds a boss key
+	// Dodaje Boss kljuc
 	public void AddBOSSKEY()
 	{
 		if (BOSSKEY < 1) BOSSKEY++;
 	}
 
-	// Removes a boss key
+	// Oduzima Boss kljuc
 	public void RemoveBOSSKEY()
 	{
 		if (BOSSKEY > 0) BOSSKEY--;
 	}
 
-	// Resets all items
+	// Resetuje sve predmete
 	public void ResetInventory()
 	{
 		GEMS = 0;

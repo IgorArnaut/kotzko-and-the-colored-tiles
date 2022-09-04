@@ -2,41 +2,45 @@ using UnityEngine;
 
 public class ButtonAction : MonoBehaviour
 {
-	// Components
+	// Komponente
 	private AudioSource src;
 
-	// Play Game
+	// Pokretanje igre
 	[SerializeField]
 	private AudioClip clip;
 
-	// Reset data
+	// Resetovanje podataka
 	[SerializeField]
 	private Stats playerStats;
 	[SerializeField]
 	private Inventory playerInventory;
 	[SerializeField]
 	private Progress progress;
+	[SerializeField]
+	private BoolValue started;
 
 	void Awake()
 	{
 		GetComponents();
 	}
 
+	// Uzima komponente
 	private void GetComponents()
 	{
 		src = GetComponent<AudioSource>();
 	}
 
-	// Resets data & progress
+	// Resetuje podatke
 	private void ResetData()
 	{
-		progress.ResetProgress();
 		playerStats.ResetStats(100, 100, 10, 10, 5.0f);
 		playerInventory.ResetInventory();
+		progress.ResetProgress();
+		started.value = false;
 		Debug.Log("Progress reset.");
 	}
 
-	// Plays Game
+	// Pokrece igru
 	public void PlayGame(string sceneName)
 	{
 		Debug.Log("Playing game...");
@@ -45,10 +49,11 @@ public class ButtonAction : MonoBehaviour
 		SceneManager2.Manager.Transition(sceneName);
 	}
 
-	// Quits Game
+	// Prekida igru
 	public void QuitGame()
 	{
 		Debug.Log("Quitting game...");
+		ResetData();
 		Application.Quit();
 	}
 }

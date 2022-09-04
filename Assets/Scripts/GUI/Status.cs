@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
-	// Components
+	// Komponente
 	[SerializeField]
 	private Animator anim;
 
-	// Status
+	// Status efekti
 	[SerializeField]
 	private BoolValue electric;
 	[SerializeField]
@@ -14,24 +14,24 @@ public class Status : MonoBehaviour
 	[SerializeField]
 	private BoolValue orange;
 	[SerializeField]
-	private BoolValue lemon;
+	private BoolValue purple;
 
 	void Update()
 	{
-		if (electric.value || heal.value || orange.value || lemon.value)
+		if (electric.value || heal.value || orange.value || purple.value)
 		{
 			anim.gameObject.SetActive(true);
-			ChangeStatus();
+			ChangeIcon();
 		}
 		else anim.gameObject.SetActive(false);
 	}
 
-	// Changes status effect
-	private void ChangeStatus()
+	// Menja ikonicu
+	private void ChangeIcon()
 	{
 		anim.SetBool("electric", electric.value);
 		anim.SetBool("heal", heal.value);
 		anim.SetBool("orange", orange.value);
-		anim.SetBool("lemon", lemon.value);
+		anim.SetBool("lemon", purple.value);
 	}
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BossSummon : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private AudioSource src;
 	private Boss boss;
 	private CapsuleCollider2D cc2D;
 	private SpriteRenderer sr;
 
-	// Spawn swords
+	// Spawnovanje maceva
 	[SerializeField]
 	private AudioClip clip;
 	[SerializeField] 
@@ -19,7 +19,7 @@ public class BossSummon : StateMachineBehaviour
 	private List<GameObject> swords; 
 	private bool finished;
 
-	// Throw swords
+	// Bacanje maceva
 	[SerializeField]
 	private float speed;
 
@@ -40,7 +40,7 @@ public class BossSummon : StateMachineBehaviour
 		DestroySwords();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -50,14 +50,14 @@ public class BossSummon : StateMachineBehaviour
 		sr = anim.gameObject.GetComponent<SpriteRenderer>();
 	}
 
-	// Initializes values
+	// Inicira neke vrednosti
 	private void Init()
 	{
 		sr.flipX = false;
 		swords = new(8);
 	}
 
-	// Throws swords
+	// Baca maceve
 	private void ThrowSwords()
 	{
 		foreach (GameObject sword in swords)
@@ -66,18 +66,18 @@ public class BossSummon : StateMachineBehaviour
 			Vector2 tPos;
 			tPos.x = cc2D.bounds.center.x + 10.0f * Mathf.Sin(angle * Mathf.Deg2Rad);
 			tPos.y = cc2D.bounds.center.y + 10.0f * Mathf.Cos(angle * Mathf.Deg2Rad);
-			if (sword != null) sword.transform.SetPositionAndRotation(Vector2.Lerp(sword.transform.position, tPos, Time.deltaTime * 10.0f), Quaternion.Euler(0.0f, 0.0f, Time.deltaTime));
+			if (sword != null) sword.transform.SetPositionAndRotation(Vector2.Lerp(sword.transform.position, tPos, Time.deltaTime * 10.0f), Quaternion.Euler(Vector3.forward * Time.deltaTime));
 		}
 	}
 
-	// Destroys swords
+	// Unistava maceve
 	private void DestroySwords()
 	{
 		foreach (GameObject sword in swords) Destroy(sword);
 		swords.Clear();
 	}
 
-	// Spawns swords
+	// Spawnuje maceve
 	private IEnumerator SpawnSwords()
 	{
 		finished = false;
@@ -89,7 +89,7 @@ public class BossSummon : StateMachineBehaviour
 			swordPos.x = cc2D.bounds.center.x + 1.5f * Mathf.Sin(angle * Mathf.Deg2Rad);
 			swordPos.y = cc2D.bounds.center.y + 1.5f * Mathf.Cos(angle * Mathf.Deg2Rad);
 			swords.Add(Instantiate(sword, swordPos, Quaternion.Euler(Vector3.back * angle)));
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.05f);
 		}
 
 		src.PlayOneShot(clip);

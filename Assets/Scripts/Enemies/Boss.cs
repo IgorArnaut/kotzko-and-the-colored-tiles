@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private Rigidbody2D rb2D;
 	private SpriteRenderer sr;
-
-	// Ground
-	[SerializeField]
-	private LayerMask ground;
 
 	override protected void Awake()
 	{
@@ -23,7 +19,7 @@ public class Boss : Enemy
 		ChangeColor();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		anim = GetComponent<Animator>();
@@ -32,7 +28,7 @@ public class Boss : Enemy
 
 	}
 
-	// Changes color of boss
+	// Menja boju Boss kad mu he HP upola mnaji
 	private void ChangeColor()
 	{
 		if (stats.HP < stats.MAXHP / 2.0f)
@@ -43,7 +39,7 @@ public class Boss : Enemy
 		}
 	}
 
-	// Death
+	// Umire
 	override protected void Die()
 	{
 		if (stats.IsDead())
@@ -52,14 +48,4 @@ public class Boss : Enemy
 			anim.SetTrigger("fall");
 		}
 	}
-
-
-	// Collision
-	private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Player")) playerCollided = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Player")) playerCollided = false;
-    }
 }

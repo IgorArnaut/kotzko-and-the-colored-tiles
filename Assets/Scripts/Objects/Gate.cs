@@ -2,11 +2,11 @@
 
 public abstract class Gate : MonoBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	protected AudioSource src;
 
-	// Unlock
+	// Otkljucavanje
 	[SerializeField]
 	protected AudioClip[] clips;
 	public bool locked;
@@ -19,13 +19,6 @@ public abstract class Gate : MonoBehaviour
 	void Start()
 	{
 		locked = true;
-	}
-
-	// Gets Components
-	private void GetComponents()
-	{
-		anim = GetComponent<Animator>();
-		src = GetComponent<AudioSource>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -54,6 +47,13 @@ public abstract class Gate : MonoBehaviour
 		}
 	}
 
-	// Unlocks gate
+	// Uzima komponente
+	private void GetComponents()
+	{
+		anim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
+	}
+
+	// Otkljucava kapiju
 	public abstract void Unlock();
 }

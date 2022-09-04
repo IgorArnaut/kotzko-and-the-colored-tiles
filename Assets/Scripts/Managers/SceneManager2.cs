@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SceneManager2 : MonoBehaviour
 {
-	// Instance
+	// Instanca
 	public static SceneManager2 Manager;
 
-	// Componenets
+	// Komponente
 	private Animator anim;
 
     void Awake() {
@@ -15,19 +15,19 @@ public class SceneManager2 : MonoBehaviour
 		GetComponents();
 	}
 
-	// Get Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		anim = GetComponentInChildren<Animator>();
 	}
 
-	// Transitions into a Scene
+	// Menja se u scenu
 	public void Transition(string sceneName) {
         anim.SetTrigger("transition");
         StartCoroutine(LoadScene(sceneName));
     }
 
-	// Loads a Scene in time
+	// Pokrece scenu posle nekog vremena
     private IEnumerator LoadScene(string sceneName) {
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(sceneName);

@@ -2,10 +2,10 @@
 
 public abstract class Enemy : MonoBehaviour
 {
-	// Stats
+	// Statistika
 	public Stats stats;
 
-	// Player
+	// Igrac
 	public bool playerCollided;
 
 	abstract protected void Awake();
@@ -20,16 +20,6 @@ public abstract class Enemy : MonoBehaviour
 		Die();
 	}
 
-	// Dies
-	abstract protected void Die();
-
-	// Kills Enemy
-	protected void Kill()
-	{
-		Destroy(gameObject);
-	}
-
-	// Collision
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player")) playerCollided = true;
@@ -38,5 +28,14 @@ public abstract class Enemy : MonoBehaviour
 	private void OnCollisionExit2D(Collision2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player")) playerCollided = false;
+	}
+
+	// Umire
+	abstract protected void Die();
+
+	// Ubija neprijatelja
+	protected void Kill()
+	{
+		Destroy(gameObject);
 	}
 }

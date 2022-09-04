@@ -1,5 +1,5 @@
 ﻿public interface IHealthBar
 {
-	// Resizes health bar
+	// Menja velicinu linije
 	void ResizeHealthBar(int HP, int MAXHP);
 }

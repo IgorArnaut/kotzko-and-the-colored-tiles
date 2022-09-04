@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerAttack : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private PlayerBattle pb;
 
-	// Stats
+	// Statistika
 	[SerializeField]
 	private Stats stats;
 
-	// Enemy
+	// Neprijatelj
 	private GameObject enemy;
 	private Stats enemyStats;
 	private bool enemyCollided;
@@ -32,14 +32,14 @@ public class PlayerAttack : StateMachineBehaviour
 		DamageEnemy();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
 		pb = anim.gameObject.GetComponent<PlayerBattle>();
 	}
 
-	// Damages Enemy
+	// Povredjuje neprijatelja
 	private void DamageEnemy()
 	{
 		if (enemyCollided && !enemyStats.IsDead() && enemy != null)

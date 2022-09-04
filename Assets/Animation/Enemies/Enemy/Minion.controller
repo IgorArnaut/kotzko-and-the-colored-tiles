@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418e9e0775f0fec4b8952b045afe1c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 12
 --- !u!1102 &7123142167816627402
 AnimatorState:
   serializedVersion: 6
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9542a9d290fc74f9a97fd0ea33458c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 12
 --- !u!1101 &8925844124624185097
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class GreenTileAction : TileAction
 {
-	// Components
+	// Komponente
 	private SpriteRenderer sr;
 
-	// Player
+	// Igrac
 	private GameObject player;
 	private GameObject clue;
 
-	// Transition
+	// Stajanje
 	[SerializeField]
 	private AudioClip clip;
 	public bool stepped;
@@ -29,19 +29,19 @@ public class GreenTileAction : TileAction
 		DimTile();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		sr = GetComponent<SpriteRenderer>();
 	}
 
-	// Dims tile
+	// Potamnjuje polje
 	private void DimTile()
 	{
 		if (stepped) sr.color = Color.HSVToRGB(0.0f, 0.0f, 0.8f);
 	}
 
-	// Loads a Scene
+	// Pokrece scenu
 	private void LoadScene()
 	{
 		clue.SetActive(false);
@@ -50,6 +50,7 @@ public class GreenTileAction : TileAction
 		SceneManager2.Manager.Transition("Battle");
 	}
 
+	// Radi nesto u koliziji
 	override protected void DoEnterAction()
 	{
 		if (!stepped)
@@ -63,6 +64,7 @@ public class GreenTileAction : TileAction
 		}
 	}
 
+	// Radi nesto van kolizije
 	override protected void DoExitAction()
 	{
 		return;

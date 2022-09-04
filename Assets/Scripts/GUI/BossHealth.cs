@@ -2,9 +2,10 @@
 
 public class BossHealth : MonoBehaviour, IHealthBar
 {
+	// Instanca
 	public static BossHealth bar;
 
-	// Health bar
+	// Linija
 	[SerializeField]
 	private RectTransform redBar;
 	private float width;
@@ -19,7 +20,7 @@ public class BossHealth : MonoBehaviour, IHealthBar
 		width = redBar.sizeDelta.x;
 	}
 
-	// Resizes boss health bar
+	// Menja duzinu linije
 	public void ResizeHealthBar(int HP, int MAXHP)
 	{
 		float delta = HP > 0.0f ? 1.0f * HP / MAXHP : 0.0f;

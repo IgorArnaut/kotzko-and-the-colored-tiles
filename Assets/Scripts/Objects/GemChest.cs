@@ -2,13 +2,14 @@
 
 public class GemChest : Chest
 {
-	// Gem
+	// Dragulj
 	[SerializeField]
 	private GameObject gem;
 
-	// Gives gems
-	public override void GiveItems()
+	// Daje dragulje
+	override protected void GiveItems()
 	{
+		base.GiveItems();
 		gem = Instantiate(gem, player.transform.position + Vector3.up * 2.0f, Quaternion.Euler(0.0f, 0.0f, 0.0f));
 		int gems = Random.Range(1, 6);
 		playerInventory.GEMS += gems;
@@ -20,6 +21,5 @@ public class GemChest : Chest
 			default: StartCoroutine(Write("You have obtained " + gems + " gems!", gem)); break;
 		}
 
-		PlayerItem();
 	}
 }

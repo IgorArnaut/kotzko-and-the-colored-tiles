@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class MinionIdle : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private SpriteRenderer sr;
 	private Transform transform;
 
-	// Stand
+	// Stajanje
 	private GameObject player;
 	[SerializeField]
 	private float distance;
@@ -23,7 +23,7 @@ public class MinionIdle : StateMachineBehaviour
 		Stand();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -31,13 +31,13 @@ public class MinionIdle : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initializes values
+	// Inicira neke vrednosti
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
-	// Stands
+	// Stoji
 	private void Stand()
 	{
 		if (player != null)

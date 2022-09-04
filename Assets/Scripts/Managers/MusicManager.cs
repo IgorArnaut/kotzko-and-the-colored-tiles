@@ -2,14 +2,13 @@
 
 public class MusicManager : MonoBehaviour
 {
-	// Instance
+	// Instanca
 	public static MusicManager Manager;
 
-	// Components
+	// Komponente
 	private AudioSource src;
 
-	// Audio clips
-	[SerializeField]
+	// Klipovi
 	public AudioClip[] clips;
 
 	void Awake()
@@ -18,19 +17,19 @@ public class MusicManager : MonoBehaviour
 		GetComponents();
 	}
 
-	// Get Components
+	// Uzima komponente
 	private void GetComponents()
 	{
 		src = GetComponent<AudioSource>();
 	}
 
-	// Plays a oneshot
+	// Pusta klip jednom
 	public void PlayOneshot(AudioClip clip)
 	{
 		if (!src.isPlaying) src.PlayOneShot(clip);
 	}
 
-	// Plays audio clip
+	// Pusta klip
 	public void Play()
 	{
 		src.Play();

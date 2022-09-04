@@ -3,32 +3,32 @@
 [CreateAssetMenu]
 public class Stats : ScriptableObject
 {
-	// Stats
+	// Vrednosti
 	public int MAXHP;
 	public int HP;
 	public int ATK;
 	public int DEF;
 	public float SPEED;
 
-	// Increases HP
+	// Povecava HP
 	public void Heal(int amount)
 	{
-		if (this.HP < this.MAXHP) this.HP += amount;
+		if (this.HP + amount < this.MAXHP) this.HP += amount;
 	}
 
-	// Decreases HP
+	// Smanjuje HP
 	public void TakeDamge(int amount)
 	{
-		if (this.HP > 0) this.HP -= (int) (amount * (100.0f / (100 + this.DEF)));
+		if (this.HP - amount > 0) this.HP -= (int) (amount * (100.0f / (100 + this.DEF)));
 	}
 
-	// Checks if HP is 0
+	// Proverava da li je HP 0
 	public bool IsDead()
 	{
 		return this.HP <= 0;
 	}
 
-	// Resets all stats
+	// Resetuje sve vrednosti
 	public void ResetStats(int MAXHP, int HP, int ATK, int DEF, float SPEED)
 	{
 		this.MAXHP = MAXHP;

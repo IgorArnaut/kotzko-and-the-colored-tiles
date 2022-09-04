@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
-	// Instance
+	// Instanca
 	public static SaveLoadManager Manager;
 
-	// Data
+	// Podaci
 	[SerializeField]
 	private Progress progress;
 
@@ -17,42 +17,42 @@ public class SaveLoadManager : MonoBehaviour
 		LoadData();
 	}
 
-	// Saves data
+	// Cuva podatke
 	public void SaveData()
 	{
 		progress.playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
 		progress.cameraPos = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
 		progress.stepped = GameObject.FindGameObjectsWithTag("GreenTile")
-			.OrderBy(gt => gt.transform.position)
-			.Select(gt => gt.GetComponent<Portal>())
+			.OrderBy(gt => Vector3.Distance(gt.transform.position, Vector3.zero))
+			.Select(gt => gt.GetComponent<GreenTileAction>())
 			.Select(gt => gt.stepped)
 			.ToArray();
 		progress.open = GameObject.FindGameObjectsWithTag("Chest")
-			.OrderBy(c => c.transform.position)
+			.OrderBy(c => Vector3.Distance(c.transform.position, Vector3.zero))
 			.Select(c => c.GetComponent<Chest>())
 			.Select(c => c.open)
 			.ToArray();
 		progress.locked = GameObject.FindGameObjectsWithTag("Gate")
-			.OrderBy(g => g.transform.position)
+			.OrderBy(g => Vector3.Distance(g.transform.position, Vector3.zero))
 			.Select(g => g.GetComponent<Gate>())
 			.Select(g => g.locked)
 			.ToArray();
 		Debug.Log("Progress saved.");
 	}
 
-	// Loads data
+	// Uvozi podatke
 	public void LoadData()
 	{
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
 		GameObject[] greenTiles = GameObject.FindGameObjectsWithTag("GreenTile")
-			.OrderBy(gt => gt.transform.position)
+			.OrderBy(gt => Vector3.Distance(gt.transform.position, Vector3.zero))
 			.ToArray();
 		GameObject[] chests = GameObject.FindGameObjectsWithTag("Chest")
-			.OrderBy(c => c.transform.position)
+			.OrderBy(c => Vector3.Distance(c.transform.position, Vector3.zero))
 			.ToArray();
 		GameObject[] gates = GameObject.FindGameObjectsWithTag("Gate")
-			.OrderBy(g => g.transform.position)
+			.OrderBy(g => Vector3.Distance(g.transform.position, Vector3.zero))
 			.ToArray();
 
 		player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;

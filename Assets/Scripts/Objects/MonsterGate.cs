@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class MonsterGate : Gate
 {
-	// Green tiles
+	// Zelena polja
 	[SerializeField] 
-	private Portal[] greenTiles;
+	private GreenTileAction[] greenTiles;
 
-	// Unlocks gate
+	// Otkljucava kapiju
 	public override void Unlock()
 	{
 		if (locked && greenTiles.Length != 0)
 		{
-			foreach (Portal tile in greenTiles) if (tile.stepped == false) return;
+			foreach (GreenTileAction tile in greenTiles) if (tile.stepped == false) return;
 			locked = false;
 			src.PlayOneShot(clips[0]);
 		}

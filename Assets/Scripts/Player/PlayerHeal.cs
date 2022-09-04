@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHeal : StateMachineBehaviour
 {
-	// Heal
+	// Lecenje
 	[SerializeField]
 	private Stats stats;
 	[SerializeField]
@@ -13,7 +13,7 @@ public class PlayerHeal : StateMachineBehaviour
 		Heal();
 	}
 
-	// Heals
+	// Leci igraca
 	private void Heal()
 	{
 		if (inventory.HEARTS > 0)

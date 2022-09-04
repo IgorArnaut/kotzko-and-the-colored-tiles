@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e79bf90f1269d4781eabe0c61734cc, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  gems: 0
-  hearts: 0
-  keys: 0
-  bossKey: 0
+  GEMS: 0
+  HEARTS: 0
+  KEYS: 0
+  BOSSKEY: 0

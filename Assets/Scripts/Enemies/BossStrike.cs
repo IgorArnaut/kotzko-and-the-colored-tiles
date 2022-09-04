@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class BossStrike : StateMachineBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private AudioSource src;
 	private Enemy enemy;
 	private SpriteRenderer sr;
 	private Transform transform;
 
-	// Damage Player
+	// Povredjivanje igraca
 	private GameObject player;
 	[SerializeField]
 	private BoolValue defend;
 	[SerializeField]
 	private Stats playerStats;
 
-	// Strike
+	// Napad
 	private Stats stats;
 	[SerializeField]
 	private AudioClip[] clips;
@@ -26,7 +26,6 @@ public class BossStrike : StateMachineBehaviour
 	{
 		GetComponents(animator);
 		Init();
-
 		src.PlayOneShot(clips[0]);
 	}
 
@@ -36,7 +35,7 @@ public class BossStrike : StateMachineBehaviour
 		DamagePlayer();
 	}
 
-	// Gets Components
+	// Uzima komponente
 	private void GetComponents(Animator animator)
 	{
 		anim = animator;
@@ -46,15 +45,15 @@ public class BossStrike : StateMachineBehaviour
 		transform = anim.gameObject.transform;
 	}
 
-	// Initializes values
+	// Inicira neke vredosti
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
 		stats = enemy.stats;
-		target = new Vector2(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+		target = player.transform.position;
 	}
 
-	// Strikes towards target
+	// Poleti do igraca 
 	private void Strike()
 	{
 		if (transform.position.x > target.x) sr.flipX = true; 
@@ -66,7 +65,7 @@ public class BossStrike : StateMachineBehaviour
 		anim.SetBool("strike", Vector2.Distance(transform.position, target) == 0.0f);
 	}
 
-	// Damages Player
+	// Povredjuje igraca
 	private void DamagePlayer() {
 		bool playerCollided = enemy.playerCollided;
 

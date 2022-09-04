@@ -3,20 +3,18 @@ using UnityEngine;
 
 public abstract class Chest : MonoBehaviour
 {
-	// Components
+	// Komponente
 	private Animator anim;
 	private AudioSource src;
 
-	// Player
+	// Igrac
 	protected GameObject player;
 	[SerializeField] 
 	protected Inventory playerInventory;
-
-	// Context clue
 	private GameObject clue;
 	private bool inRange;
 
-	// Open chest
+	// Otvaranje kovcega
 	[SerializeField]
 	private AudioClip clip;
 	public bool open;
@@ -39,13 +37,6 @@ public abstract class Chest : MonoBehaviour
 		if (!open) Open(); else anim.SetTrigger("open2");
 	}
 
-	// Get Components
-	private void GetComponents()
-	{
-		anim = GetComponent<Animator>();
-		src = GetComponent<AudioSource>();
-	}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player") && !open)
@@ -65,7 +56,14 @@ public abstract class Chest : MonoBehaviour
 		}
 	}
 
-	// Open chest
+	// Uzima komponente
+	private void GetComponents()
+	{
+		anim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
+	}
+
+	// Otvara 
 	private void Open()
 	{
 		if (Input.GetKeyDown(KeyCode.E) && inRange)
@@ -77,21 +75,20 @@ public abstract class Chest : MonoBehaviour
 		}
 	}
 
-	protected void PlayerItem()
+	// Daje predmete
+	virtual protected void GiveItems()
 	{
 		clue.SetActive(false);
 		player.GetComponent<Animator>().SetTrigger("item");
 	}
-
-	// Give items
-	public abstract void GiveItems();
 
 	// Write text
 	protected IEnumerator Write(string line, GameObject obj)
 	{
 		DialogManager.Manager.SetActive(true, false, false);
 		DialogManager.Manager.WriteLine(line);
+		yield return new WaitForSeconds(2.0f);
+		DialogManager.Manager.SetActive(false, false, false);
 		Destroy(obj);
-		yield return new WaitForSeconds(0.0f);
 	}
 }
