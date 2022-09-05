@@ -16829,7 +16829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1011409943, guid: 791d3e9689797a442a330e8eed41e7c5, type: 3}
       propertyPath: lines.Array.data[1]
-      value: It will cause a chemical reaction that kill you.
+      value: It will cause a chemical reaction that will kill you.
       objectReference: {fileID: 0}
     - target: {fileID: 548633585570601671, guid: 791d3e9689797a442a330e8eed41e7c5,
         type: 3}
@@ -130798,6 +130798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564998772374297854, guid: c55967c3063725e4e96dede2c2f8f74f,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5872425328798051398, guid: c55967c3063725e4e96dede2c2f8f74f,
         type: 3}

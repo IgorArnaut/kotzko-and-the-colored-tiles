@@ -1429,6 +1429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5550870633811545381, guid: 68c36e1be3d212748a3313c0cfb52ecc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5550870633811545385, guid: 68c36e1be3d212748a3313c0cfb52ecc,
         type: 3}
       propertyPath: m_Pivot.x
