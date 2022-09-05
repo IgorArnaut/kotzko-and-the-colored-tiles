@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
@@ -17,6 +18,11 @@ public class Sword : MonoBehaviour
 	void Awake()
 	{
 		GetComponents();
+	}
+
+	void Start()
+	{
+		StartCoroutine(nameof(Live));
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -40,8 +46,15 @@ public class Sword : MonoBehaviour
 		if (!playerStats.IsDead() && player != null)
 		{
 			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt"); else src.PlayOneShot(clip);
-			playerStats.TakeDamge(10);
+			playerStats.TakeDamge(5);
 			Destroy(gameObject);
 		}
+	}
+
+	// Zivi
+	private IEnumerator Live()
+	{
+		yield return new WaitForSeconds(0.5f);
+		Destroy(gameObject);
 	}
 }

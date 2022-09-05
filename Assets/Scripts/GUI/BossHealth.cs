@@ -24,6 +24,6 @@ public class BossHealth : MonoBehaviour, IHealthBar
 	public void ResizeHealthBar(int HP, int MAXHP)
 	{
 		float delta = HP > 0.0f ? 1.0f * HP / MAXHP : 0.0f;
-		redBar.sizeDelta = Vector2.MoveTowards(redBar.sizeDelta, new Vector2(width * delta, redBar.sizeDelta.y), Time.deltaTime / 0.01f);
+		redBar.sizeDelta = Vector2.Lerp(redBar.sizeDelta, new Vector2(width * delta, redBar.sizeDelta.y), Time.deltaTime / 0.01f);
 	}
 }

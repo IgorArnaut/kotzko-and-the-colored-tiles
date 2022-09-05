@@ -27,6 +27,6 @@ public class PlayerHealth : MonoBehaviour, IHealthBar
 	{
 		float delta = HP > 0.0f ? 1.0f * HP / MAXHP : 0.0f;
 		face.SetFloat("health", delta);
-		greenBar.sizeDelta = Vector2.MoveTowards(greenBar.sizeDelta, new Vector2(width * delta, greenBar.sizeDelta.y), Time.deltaTime / 0.01f);
+		greenBar.sizeDelta = Vector2.Lerp(greenBar.sizeDelta, new Vector2(width * delta, greenBar.sizeDelta.y), Time.deltaTime / 0.01f);
 	}
 }

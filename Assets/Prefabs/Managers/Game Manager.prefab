@@ -62,8 +62,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e8db50dfb02514bb4b8d577f451978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  started: {fileID: 11400000, guid: 929ac02f61ce9a74a94c5724971dbc52, type: 2}
-  progress: {fileID: 11400000, guid: 18d19a1cbd183e44f821266d8f21820d, type: 2}
-  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
-  inventory: {fileID: 11400000, guid: 60167b52fa446754da665391f5f28220, type: 2}
   defeat: []

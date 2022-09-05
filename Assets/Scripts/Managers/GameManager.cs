@@ -40,12 +40,11 @@ public class GameManager : MonoBehaviour
 	// Radi nesto
 	protected IEnumerator DoSomething(AudioClip clip, string[] messages, string sceneName)
 	{
-		yield return new WaitForSeconds(0.5f);
 		MusicManager.Manager.Stop();
 		MusicManager.Manager.PlayOneshot(clip);
 		DialogManager.Manager.SetActive(true, false, false);
-		DialogManager.Manager.WriteLines2(messages);
-		yield return new WaitForSeconds(2.0f);
+		yield return StartCoroutine(DialogManager.Manager.CWriteLines(messages));
+		DialogManager.Manager.ResetText();
 		SceneManager2.Manager.Transition(sceneName);
 	}
 }

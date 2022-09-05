@@ -69,6 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7071688774165422789, guid: 302bc39118fa8bf4580f2c3764e136ef, type: 3}
+    - {fileID: 3361708528873065439, guid: 302bc39118fa8bf4580f2c3764e136ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 302bc39118fa8bf4580f2c3764e136ef, type: 3}
 --- !u!1 &635149579478020712 stripped
 GameObject:
@@ -88,10 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7778691742f7ca54cbf0d55b6e4c037d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  started: {fileID: 11400000, guid: 929ac02f61ce9a74a94c5724971dbc52, type: 2}
-  progress: {fileID: 11400000, guid: 18d19a1cbd183e44f821266d8f21820d, type: 2}
-  playerStats: {fileID: 11400000, guid: 2dbb8b9ee22385a4da4f49d2967ad824, type: 2}
-  inventory: {fileID: 11400000, guid: 60167b52fa446754da665391f5f28220, type: 2}
   defeat:
   - You are defeated!
   victory:

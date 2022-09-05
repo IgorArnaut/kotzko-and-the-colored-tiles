@@ -9,6 +9,7 @@ public class BossSummon : StateMachineBehaviour
 	private AudioSource src;
 	private Boss boss;
 	private CapsuleCollider2D cc2D;
+	private Rigidbody2D rb2D;
 	private SpriteRenderer sr;
 
 	// Spawnovanje maceva
@@ -16,8 +17,13 @@ public class BossSummon : StateMachineBehaviour
 	private AudioClip clip;
 	[SerializeField] 
 	private GameObject sword;
+	private Vector2 center;
 	private List<GameObject> swords; 
 	private bool finished;
+
+	// Statistika
+	private Stats stats;
+	private int temp;
 
 	// Bacanje maceva
 	[SerializeField]
@@ -47,13 +53,19 @@ public class BossSummon : StateMachineBehaviour
 		src = anim.gameObject.GetComponent<AudioSource>();
 		boss = anim.gameObject.GetComponent<Boss>();
 		cc2D = anim.gameObject.GetComponent<CapsuleCollider2D>();
+		rb2D = anim.gameObject.GetComponent<Rigidbody2D>();
 		sr = anim.gameObject.GetComponent<SpriteRenderer>();
 	}
 
 	// Inicira neke vrednosti
 	private void Init()
 	{
+		center = cc2D.bounds.center;
+		rb2D.bodyType = RigidbodyType2D.Static;
 		sr.flipX = false;
+		stats = anim.gameObject.GetComponent<Enemy>().stats;
+		temp = stats.DEF;
+		stats.DEF *= 2;
 		swords = new(8);
 	}
 
@@ -64,17 +76,18 @@ public class BossSummon : StateMachineBehaviour
 		{
 			float angle = (360.0f / 8.0f) * swords.IndexOf(sword);
 			Vector2 tPos;
-			tPos.x = cc2D.bounds.center.x + 10.0f * Mathf.Sin(angle * Mathf.Deg2Rad);
-			tPos.y = cc2D.bounds.center.y + 10.0f * Mathf.Cos(angle * Mathf.Deg2Rad);
-			if (sword != null) sword.transform.SetPositionAndRotation(Vector2.Lerp(sword.transform.position, tPos, Time.deltaTime * 10.0f), Quaternion.Euler(Vector3.forward * Time.deltaTime));
+			tPos.x = center.x + 10.0f * Mathf.Sin(angle * Mathf.Deg2Rad);
+			tPos.y = center.y + 10.0f * Mathf.Cos(angle * Mathf.Deg2Rad);
+			if (sword != null) sword.transform.SetPositionAndRotation(Vector2.Lerp(sword.transform.position, tPos, Time.deltaTime * 10.0f), Quaternion.Euler(Vector3.back * angle));
 		}
 	}
 
 	// Unistava maceve
 	private void DestroySwords()
 	{
-		foreach (GameObject sword in swords) Destroy(sword);
 		swords.Clear();
+		stats.DEF = temp;
+		rb2D.bodyType = RigidbodyType2D.Kinematic;
 	}
 
 	// Spawnuje maceve

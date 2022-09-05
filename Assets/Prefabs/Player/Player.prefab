@@ -255,7 +255,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6b7b4252d40f4c842b393dd270756a2c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -358,7 +358,7 @@ MonoBehaviour:
   electric: {fileID: 11400000, guid: 71230ebf69e5e4c45b89cb8a3e65b37b, type: 2}
   heal: {fileID: 11400000, guid: 0aabd857927d9dd41a8a4183bc886055, type: 2}
   orange: {fileID: 11400000, guid: 120ed66d48c9da44aa38a82fc1fa1e40, type: 2}
-  lemon: {fileID: 11400000, guid: 6a357dc4906be6a479056eff471f758e, type: 2}
+  purple: {fileID: 11400000, guid: 6a357dc4906be6a479056eff471f758e, type: 2}
 --- !u!114 &456435280
 MonoBehaviour:
   m_ObjectHideFlags: 0

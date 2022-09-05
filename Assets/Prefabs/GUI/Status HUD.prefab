@@ -107,7 +107,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7383860592500241125}
   - component: {fileID: 2792895506242745490}
-  - component: {fileID: 4726471693654229870}
   - component: {fileID: 4796789961323698581}
   - component: {fileID: 1879075204365069386}
   m_Layer: 5
@@ -159,14 +158,6 @@ Canvas:
   m_SortingLayerID: 445364103
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!222 &4726471693654229870
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5576896663792045142}
-  m_CullTransparentMesh: 1
 --- !u!114 &4796789961323698581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -206,4 +197,4 @@ MonoBehaviour:
   electric: {fileID: 11400000, guid: 71230ebf69e5e4c45b89cb8a3e65b37b, type: 2}
   heal: {fileID: 11400000, guid: 0aabd857927d9dd41a8a4183bc886055, type: 2}
   orange: {fileID: 11400000, guid: 120ed66d48c9da44aa38a82fc1fa1e40, type: 2}
-  lemon: {fileID: 11400000, guid: 6a357dc4906be6a479056eff471f758e, type: 2}
+  purple: {fileID: 11400000, guid: 6a357dc4906be6a479056eff471f758e, type: 2}

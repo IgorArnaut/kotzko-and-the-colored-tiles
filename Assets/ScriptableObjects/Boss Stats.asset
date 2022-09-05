@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHP: 125
   HP: 125
-  ATK: 10
-  DEF: 10
+  ATK: 8
+  DEF: 8
   SPEED: 3

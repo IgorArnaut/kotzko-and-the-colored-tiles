@@ -86,9 +86,8 @@ public abstract class Chest : MonoBehaviour
 	protected IEnumerator Write(string line, GameObject obj)
 	{
 		DialogManager.Manager.SetActive(true, false, false);
-		DialogManager.Manager.WriteLine(line);
-		yield return new WaitForSeconds(2.0f);
-		DialogManager.Manager.SetActive(false, false, false);
+		yield return StartCoroutine(DialogManager.Manager.CWriteLine(line));
+		DialogManager.Manager.ResetText();
 		Destroy(obj);
 	}
 }

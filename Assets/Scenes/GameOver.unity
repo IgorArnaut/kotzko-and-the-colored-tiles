@@ -140,6 +140,11 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: e296cff063da8614f8c259433a23edec, type: 3}
+    - target: {fileID: 4522592328935411497, guid: 2907f4654053a914bbc2b1091203d278,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4522592328935411502, guid: 2907f4654053a914bbc2b1091203d278,
         type: 3}
       propertyPath: m_RootOrder
@@ -148,12 +153,12 @@ PrefabInstance:
     - target: {fileID: 4522592328935411502, guid: 2907f4654053a914bbc2b1091203d278,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4522592328935411502, guid: 2907f4654053a914bbc2b1091203d278,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4522592328935411502, guid: 2907f4654053a914bbc2b1091203d278,
         type: 3}
@@ -320,6 +325,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5550870633811545386, guid: 68c36e1be3d212748a3313c0cfb52ecc,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 596118953}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68c36e1be3d212748a3313c0cfb52ecc, type: 3}
 --- !u!224 &322130411 stripped
@@ -512,8 +522,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: REPLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fdf94722cc43d7942a26ef94bcd337c0, type: 2}
-  m_sharedMaterial: {fileID: 6431959243713915327, guid: fdf94722cc43d7942a26ef94bcd337c0,
+  m_fontAsset: {fileID: 11400000, guid: 060ae89be1ea1c743add732d374b5939, type: 2}
+  m_sharedMaterial: {fileID: -7235723819364560407, guid: 060ae89be1ea1c743add732d374b5939,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -538,8 +548,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 144
+  m_fontSizeBase: 144
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -650,8 +660,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fdf94722cc43d7942a26ef94bcd337c0, type: 2}
-  m_sharedMaterial: {fileID: 6431959243713915327, guid: fdf94722cc43d7942a26ef94bcd337c0,
+  m_fontAsset: {fileID: 11400000, guid: 060ae89be1ea1c743add732d374b5939, type: 2}
+  m_sharedMaterial: {fileID: -7235723819364560407, guid: 060ae89be1ea1c743add732d374b5939,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -676,8 +686,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 144
+  m_fontSizeBase: 144
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -785,7 +795,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1540,7 +1550,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1639448486}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
         m_MethodName: PlayGame
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1768,8 +1778,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Game Over
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c22f31a0c1b880429b2ef0c5344835e, type: 2}
-  m_sharedMaterial: {fileID: 8718797171002890215, guid: 5c22f31a0c1b880429b2ef0c5344835e,
+  m_fontAsset: {fileID: 11400000, guid: 282c11807bd33c04aa1ac7ed4ac707dd, type: 2}
+  m_sharedMaterial: {fileID: 6837729330609312829, guid: 282c11807bd33c04aa1ac7ed4ac707dd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1794,8 +1804,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 144
+  m_fontSizeBase: 144
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

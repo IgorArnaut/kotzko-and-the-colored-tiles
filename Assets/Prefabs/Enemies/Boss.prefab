@@ -175,7 +175,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6b7b4252d40f4c842b393dd270756a2c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -275,10 +275,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 5e8b5ab1e971de04fbd2868f39fbb16f, type: 2}
   playerCollided: 0
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
-  redBar: {fileID: 0}
 --- !u!114 &2577263216103603517
 MonoBehaviour:
   m_ObjectHideFlags: 0

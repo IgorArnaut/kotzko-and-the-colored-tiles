@@ -65,12 +65,6 @@ public class DialogManager : MonoBehaviour
 		i = 0;
 	}
 
-	// Pise liniju teksta
-	public void WriteLine(string line)
-	{
-		StartCoroutine(CWriteLine(line));
-	}
-
 	// Pise liniju teksta na dugme
 	public void WriteLines(string[] lines)
 	{
@@ -87,14 +81,8 @@ public class DialogManager : MonoBehaviour
 		}
 	}
 
-	// Pise linije teksta
-	public void WriteLines2(string[] lines)
-	{
-		StartCoroutine(CWriteLines(lines));
-	}
-
 	// Pise liniju teksta karakter po karakter
-	private IEnumerator CWriteLine(string line)
+	public IEnumerator CWriteLine(string line)
 	{
 		running = true;
 		dialogText.text = "*<indent=4%>";
@@ -111,7 +99,7 @@ public class DialogManager : MonoBehaviour
 	}
 
 	// Pise linije teksta karakter po karakter
-	private IEnumerator CWriteLines(string[] lines)
+	public IEnumerator CWriteLines(string[] lines)
 	{
 		running = true;
 
@@ -131,6 +119,5 @@ public class DialogManager : MonoBehaviour
 		}
 
 		running = false;
-		ResetText();
 	}
 }

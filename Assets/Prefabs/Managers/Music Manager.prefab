@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4522592328935411502}
   - component: {fileID: 4522592328935411497}
+  - component: {fileID: 3429766124511393124}
   - component: {fileID: 4522592328935411503}
   m_Layer: 0
   m_Name: Music Manager
@@ -44,7 +45,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d0453fd655ced49439f64ca7a518caa5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -129,6 +130,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3429766124511393124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522592328935411496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals: []
+    m_Events: []
 --- !u!114 &4522592328935411503
 MonoBehaviour:
   m_ObjectHideFlags: 0

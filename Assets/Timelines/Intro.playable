@@ -368,7 +368,7 @@ MonoBehaviour:
     m_Start: 2
     m_ClipIn: 0
     m_Asset: {fileID: 4909986827561389350}
-    m_Duration: 0.5
+    m_Duration: 0.25
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1803048214361878671}
     m_EaseInDuration: 0
@@ -512,7 +512,8 @@ MonoBehaviour:
   m_Children: []
   m_Clips: []
   m_Markers:
-    m_Objects: []
+    m_Objects:
+    - {fileID: 3547133366289700570}
 --- !u!114 &1924643092470907412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -623,7 +624,7 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
---- !u!114 &3424980353539856118
+--- !u!114 &3547133366289700570
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -709,5 +710,4 @@ MonoBehaviour:
   m_Children: []
   m_Clips: []
   m_Markers:
-    m_Objects:
-    - {fileID: 3424980353539856118}
+    m_Objects: []

@@ -39,6 +39,12 @@ public class Boss : Enemy
 		}
 	}
 
+	// Unistava sve maceve tokom povrede
+	public void DestroySwords()
+	{
+		foreach (GameObject sword in GameObject.FindGameObjectsWithTag("Sword")) Destroy(sword);
+	}
+
 	// Umire
 	override protected void Die()
 	{

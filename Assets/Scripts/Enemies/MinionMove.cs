@@ -49,9 +49,20 @@ public class MinionMove : StateMachineBehaviour
 		if (!playerCollided)
 		{
 			Vector2 playerPos = player.transform.position;
+			
+			if (transform.position.x > playerPos.x)
+			{
+				sr.flipX = true;
+				anim.SetFloat("lastMoveX", 1.0f);
+			}
+
+			if (transform.position.x < playerPos.x)
+			{
+				sr.flipX = false;
+				anim.SetFloat("lastMoveX", -1.0f);
+			}
+
 			transform.position = Vector2.MoveTowards(transform.position, playerPos, stats.SPEED * Time.deltaTime);
-			if (transform.position.x > playerPos.x) sr.flipX = true;
-			if (transform.position.x < playerPos.x)	sr.flipX = false;
 			anim.SetBool("walk", Vector2.Distance(transform.position, playerPos) < distance);
 		}
 

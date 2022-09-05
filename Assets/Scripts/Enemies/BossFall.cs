@@ -41,7 +41,8 @@ public class BossFall : StateMachineBehaviour
 	// Inicira neke vrednosti
 	private void Init()
 	{
-		rb2D.gravityScale = 5.0f;
+		rb2D.bodyType = RigidbodyType2D.Dynamic;
+		rb2D.gravityScale = 10.0f;
 		stats = enemy.stats;
 		stats.HP = 1;
 

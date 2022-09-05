@@ -6,6 +6,7 @@ public class BossStrike : StateMachineBehaviour
 	private Animator anim;
 	private AudioSource src;
 	private Enemy enemy;
+	private Rigidbody2D rb2D;
 	private SpriteRenderer sr;
 	private Transform transform;
 
@@ -41,6 +42,7 @@ public class BossStrike : StateMachineBehaviour
 		anim = animator;
 		src = anim.gameObject.GetComponent<AudioSource>();
 		enemy = anim.gameObject.GetComponent<Enemy>();
+		rb2D = anim.gameObject.GetComponent<Rigidbody2D>();
 		sr = anim.gameObject.GetComponent<SpriteRenderer>();
 		transform = anim.gameObject.transform;
 	}
@@ -49,8 +51,9 @@ public class BossStrike : StateMachineBehaviour
 	private void Init()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
+		rb2D.bodyType = RigidbodyType2D.Kinematic; 
 		stats = enemy.stats;
-		target = player.transform.position;
+		target = new Vector2(player.transform.position.x, Random.Range(-3.0f, 1.0f));
 	}
 
 	// Poleti do igraca 
@@ -72,7 +75,7 @@ public class BossStrike : StateMachineBehaviour
 		if (playerCollided && player != null)
 		{
 			if (!defend.value) player.GetComponent<Animator>().SetTrigger("hurt"); else src.PlayOneShot(clips[1]);
-			playerStats.TakeDamge((int)(1.0f));
+			playerStats.TakeDamge(1);
 		}
 	}
 }

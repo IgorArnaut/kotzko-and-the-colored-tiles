@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndingManager : MonoBehaviour
 {
-	public String[] lines;
-	private bool dialog;
+	public String[] messages;
 	private bool once;
 
 	void Awake()
@@ -21,23 +19,19 @@ public class EndingManager : MonoBehaviour
 
 	void Update()
 	{
-		if (dialog && !once)
+		if (!once)
 		{
 			once = true;
-			DialogManager.Manager.WriteLines2(lines);
+			StartCoroutine(CStartDialog());
 		}
 	}
 
 	// Pokrece dijalog
-	public void StartDialog()
+	private IEnumerator CStartDialog()
 	{
-		dialog = true;
+		yield return new WaitForSeconds(1.0f);
 		DialogManager.Manager.SetActive(true, false, false);
-	}
-
-	// Resetuje dijalog
-	public void ResetDialog()
-	{
+		yield return StartCoroutine(DialogManager.Manager.CWriteLines(messages));
 		DialogManager.Manager.ResetText();
 	}
 }

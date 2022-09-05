@@ -19,7 +19,7 @@ public class Stats : ScriptableObject
 	// Smanjuje HP
 	public void TakeDamge(int amount)
 	{
-		if (this.HP - amount > 0) this.HP -= (int) (amount * (100.0f / (100 + this.DEF)));
+		if (this.HP > 0) this.HP -= (int) (amount * (100.0f / (100 + this.DEF)));
 	}
 
 	// Proverava da li je HP 0
