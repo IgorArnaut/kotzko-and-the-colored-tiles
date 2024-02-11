@@ -11,7 +11,7 @@ The other part is a 2D sideview arena in which you fight enemies and is minimall
 
 There are seven tiles and each of them causes it's own effect on the player. They are:
 * 🟥 - can't be passed.
-* 🟧 - slows down the player and makes him oscillate into orange until the player steps out. Also, once player enters water after stepping out of the orange tile, he dies.
+* 🟧 - slows down the player and makes him oscillate into orange until the player steps out. Also kills the player when he enters the water.
 * 🟨 - electrocutes the player and damages him.
 * 🟩 - teleports the player into the enemy arena when being stepped on.
 * 🟪 Purple tile - speeds up the player for a certain duration and makes him oscillate into purple.
