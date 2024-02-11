@@ -16,5 +16,5 @@ There are seven tiles and each of them causes it's own effect on the player. The
 * 🟩 - teleports the player into the enemy arena when being stepped on.
 * 🟪 Purple tile - speeds up the player for a certain duration and makes him oscillate into purple.
 * `#E65CE5` Pink tile - heals the player when being stepped on.
-* ⬛ - oscilates between the black and white. Instantly kills the player when it is black, so the player should walk on it while it's white.
+* ⬛ - oscilates between the black and white. Instantly kills the player when it is black, so the player has to walk on it while it's white.
 * 🟦 (water) - the player can swim on it, but it also executes the player when he's near a yellow tile.
