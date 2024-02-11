@@ -10,10 +10,10 @@ The other part is a 2D sideview arena in which you fight enemies and is minimall
 ### Tiles ###
 
 There are seven tiles and each of them causes it's own effect on the player. They are:
-* #E62E2E Red tile - can't be passed.
-* #E68A2E Orange tile - slows down the player and makes him oscillate into orange until the player steps out. Also, once player enters water after stepping out of the orange tile, he dies.
-* #E6C72E Yellow tile - electrocutes the player and damages him.
-* #6BE62E Green tile - teleports the player into the enemy arena when being stepped on.
-* #8A2EE6 Purple tile - speeds up the player for a certain duration and makes him oscillate into purple.
-* #E65CE5 Pink tile - heals the player when being stepped on.
-* #262626 Black tile - oscilates between the black and white. Instantly kills the player when it is black, so the player should walk on it while it's white.
+* `#E62E2E` Red tile - can't be passed.
+* `#E68A2E` Orange tile - slows down the player and makes him oscillate into orange until the player steps out. Also, once player enters water after stepping out of the orange tile, he dies.
+* `#E6C72E` Yellow tile - electrocutes the player and damages him.
+* `#6BE62E` Green tile - teleports the player into the enemy arena when being stepped on.
+* `#8A2EE6` Purple tile - speeds up the player for a certain duration and makes him oscillate into purple.
+* `#E65CE5` Pink tile - heals the player when being stepped on.
+* `#262626` Black tile - oscilates between the black and white. Instantly kills the player when it is black, so the player should walk on it while it's white.
