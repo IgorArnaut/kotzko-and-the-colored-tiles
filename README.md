@@ -1,20 +1,20 @@
 # Kotzko and the Colored Tiles #
 
-The game is made as a project for a term paper in college. The game is about a guy who going trough a dungeon. The game is mainly inspired by a cutscene from Toby Fox' game Undertale, in which skeletons named Sans and Papyrus created a trap that involved tiles where each color had their attribute, e.g. red tile not being passable and yellow tile electrocuting the player, but this time I have expanded these tiles more.
+The game is made as a project for a term paper in college. The game is about a guy who going trough a dungeon. The game is mainly inspired by a cutscene from Toby Fox' game Undertale, in which skeletons named Sans and Papyrus created a trap that involved tiles where each color added different effect to the player, for example red tile being impassable, but this time I have expanded these tiles a little more.
 
 ## Gameplay ##
 
-Most of the time you are in an dungeon in outer space. This is one part of the game and has a top down view. You can use terminals which give you information, step on tiles which affect you, open chests which give you gems, power-ups or hearts, and open gates to go trough the dungeon.
-The other part is a 2D sideview arena in which you fight enemies and is minimally inspired by Tales games.
+One part of an top-down outer space dungeon, where you can use terminals, step on tiles which give you effects, open chests and open gates to go trough the dungeon.
+The other part is a 2D sideview arena where you fight enemies and it is inspired by the battles in Tales games.
 
 ### Tiles ###
 
-There are seven tiles and each of them causes it's own effect on the player. They are:
+There are seven tiles and each of them causes its own effect on the player. They are:
 * 🟥 - can't be passed.
-* 🟧 - slows down the player and makes him oscillate into orange until the player steps out. Also kills the player when he enters the water.
-* 🟨 - electrocutes the player and damages him.
-* 🟩 - teleports the player into the enemy arena when being stepped on.
-* 🟪 Purple tile - speeds up the player for a certain duration and makes him oscillate into purple.
-* `#E65CE5` Pink tile - heals the player when being stepped on.
+* 🟧 - puts effect that slows down the player and makes him oscillate into orange. It also kills the player when he enters the water.
+* 🟨 - puts effect that electrocutes the player, damaging him.
+* 🟩 - teleports the player into the enemy arena when he steps on it.
+* 🟪 - puts effect that speeds up the player for a certain duration and makes him oscillate into purple.
+* `#E65CE5` - puts effect that heals the player when walks on it.
 * ⬛ - oscilates between the black and white. Instantly kills the player when it is black, so the player has to walk on it while it's white.
-* 🟦 (water) - the player can swim on it, but it also executes the player when he's near a yellow tile.
+* 🟦 (water) - the player can swim on it, but it also electrocutes the player when he's near a yellow tile.
