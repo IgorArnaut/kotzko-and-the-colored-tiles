@@ -9,12 +9,14 @@ The other part is a 2D sideview arena where you fight enemies and it is inspired
 
 ### Tiles ###
 
-There are seven tiles and each of them causes its own effect on the player. They are:
-* 🟥 - can't be passed.
-* 🟧 - puts effect that slows down the player and makes him oscillate into orange. It also kills the player when he enters the water.
-* 🟨 - puts effect that electrocutes the player, damaging him.
-* 🟩 - teleports the player into the enemy arena when he steps on it.
-* 🟪 - puts effect that speeds up the player for a certain duration and makes him oscillate into purple.
-* `#E65CE5` - puts effect that heals the player when walks on it.
-* ⬛ - oscilates between the black and white. Instantly kills the player when it is black, so the player has to walk on it while it's white.
-* 🟦 (water) - the player can swim on it, but it also electrocutes the player when he's near a yellow tile.
+There are seven tiles and each of them has its effect on the player.
+| Tile | Effect |
+| ----- | ------ |
+| 🟥 | <ul><li>Nothing</li><li>Cannot be passed</li></ul> |
+| 🟧 | <ul><li>Slows the player down</li><li>Gives the player oscillating orange color</li><li>Effect can kill player if he enters the water</li><li>Effect ends after certain time</li></ul> |
+| 🟨 | <ul><li>Electrocutes the player</li></ul> |
+| 🟩 | <ul><li>Teleports the player to the battle arena</li></ul> |
+| 🟪 | <ul><li>Speeds the player up</li><li>Gives the player oscillating purple color</li><li>Effect ends after player steps out of it</li> |
+| `#E65CE5` (pink) | <ul><li>Heals the player</li></ul> |
+| ⬛ | <ul><li>Changes between black and white</li><li>Kills the player instantly if it's black</li></ul> |
+| 🟦 (water) | <ul><li>Regular water</li><li>Electrocutes the player if he's near yellow tiles</li></ul> |
